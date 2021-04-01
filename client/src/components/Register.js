@@ -62,6 +62,9 @@ const Register = ({ isAuthenticated, error, register, clearErrors}) => {
       },[error, isAuthenticated], [])
 
     return <div>
+      <Link to="/">
+        <img src="/images/icons/home.svg" alt="" style={{width: 50, height: 50, padding: 15}} />
+      </Link>
 		<div style={{position:'absolute', left:'50%', top:'50%', transform:'translate(-50%, -50%)', width: 300, paddingBottom:'100px'}}>
 			{/* Battleboard Logo */}
 			<Link style={{textDecoration: 'none', color: '#000'}} to="/">
