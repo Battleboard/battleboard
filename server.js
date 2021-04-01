@@ -43,6 +43,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 const webSocketServer = new WebSocket.Server({ server });
+
 webSocketServer.on("connection", (webSocket, request) => {
 
     //was previously sending the id prefaced with: /?id= and accesing it from url with 'request.resourceURL.query.id' using websocket
@@ -171,11 +172,9 @@ webSocketServer.on("connection", (webSocket, request) => {
 
 });
 
-//takes a players health and a maximum health and returns the amount to hea
+//takes a players health and a maximum health and returns the amount to heal
 const cappedHealReduction = (currentHealth, heal, maxHealth) => {
-
     let reduceHeal = 0;
-
     //check if the amount to heal would increase the health above its maxmimum 
     if(currentHealth + heal > maxHealth){
         //reduce the heal amount by the amount it would be over
