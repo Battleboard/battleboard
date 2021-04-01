@@ -84,11 +84,13 @@ webSocketServer.on("connection", (webSocket, request) => {
             const game = games[gameId];
             const spells = result.spells;
             const health = result.health;
+            const maxHealth = result.maxHealth;
             game.clients.push({
                 "clientId": clientId,
                 "spells": spells,
                 "selectedSpell": null,
-                "health": health
+                "health": health,
+                "maxHealth":maxHealth
             })
             const payLoad = {
                 "method":"join",
@@ -123,23 +125,26 @@ webSocketServer.on("connection", (webSocket, request) => {
                 //if both players have submitted spells evaluate the damage done
                 if((game.clients[0].selectedSpell !== null) && (game.clients[1].selectedSpell !== null)){
 
-                    console.log("Evaluate damage");
-
+                    //get the damage and heal values from the players spells
                     let p0Damage = game.clients[0].selectedSpell.damage;
                     let p1Damage = game.clients[1].selectedSpell.damage;
-
                     let p0Heal = game.clients[0].selectedSpell.heal;
                     let p1Heal = game.clients[1].selectedSpell.heal;
+                    let p0MaxHealth = game.clients[0].maxHealth;
+                    let p1MaxHealth = game.clients[1].maxHealth;
 
+                    {/*Combat Sequence*/}
+                    //players deal damage
                     let p0Health = game.clients[0].health - p1Damage;
-                    let p1Health = game.clients[1].health - p0Damage;
+                    let p1Health = game.clients[1].health - p0Damage;                   
 
-                    console.log("p0 damage: ", p0Damage);
-                    console.log("p1 damage: ", p1Damage);
-                    console.log("p0 heal: ", p0Heal);
-                    console.log("p1 heal: ", p1Heal);
-                    console.log("p0health: ", p0Health);
-                    console.log("p1health: ", p1Health);
+                    //players heal
+                    //check if the player healing would result in a value above the maximum health
+                    let p0CappedHealReduction = cappedHealReduction(p0Health, p0Heal, p0MaxHealth);
+                    let p1CappedHealReduction = cappedHealReduction(p1Health, p1Heal, p1MaxHealth);
+
+                    p0Health = p0Health + p0Heal + p0CappedHealReduction;
+                    p1Health = p1Health + p1Heal + p1CappedHealReduction;
 
                     //update the game object to send back as a payload to the front end
                     game.clients[0].health = p0Health;
@@ -153,10 +158,10 @@ webSocketServer.on("connection", (webSocket, request) => {
                         "method":"evaluate",
                         "game": game
                     }
-                    console.log("Payload (evaluate): ", payLoad);
                     game.clients.forEach(c => {
                         clients[c.clientId].connection.send(JSON.stringify(payLoad))
                     })
+                    
                 }
             }
         }
@@ -165,3 +170,18 @@ webSocketServer.on("connection", (webSocket, request) => {
     })
 
 });
+
+//takes a players health and a maximum health and returns the amount to hea
+const cappedHealReduction = (currentHealth, heal, maxHealth) => {
+
+    let reduceHeal = 0;
+
+    //check if the amount to heal would increase the health above its maxmimum 
+    if(currentHealth + heal > maxHealth){
+        //reduce the heal amount by the amount it would be over
+        reduceHeal = maxHealth - (currentHealth + heal)
+        return reduceHeal;
+    }else{
+        return reduceHeal;
+    }
+}

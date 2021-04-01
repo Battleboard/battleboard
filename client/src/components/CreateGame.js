@@ -64,7 +64,8 @@ const CreateGame = ({setClient, setGame, setGameRoom}) => {
                 "clientId":store.getState().user.clientId,
                 "gameId": store.getState().user.gameId,
                 "spells": store.getState().user.spells,
-                "health": store.getState().user.health
+                "health": store.getState().user.maxHealth,
+                "maxHealth": store.getState().user.maxHealth
             }
 
             ws.send(JSON.stringify(payLoad));

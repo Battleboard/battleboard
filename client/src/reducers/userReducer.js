@@ -5,7 +5,7 @@ const initialState = {
     clientId: "",
     gameId: "",
     gameRoom: [],
-    health: 1000
+    maxHealth: 1000
 }
 
 export default function userReducer(state = initialState, action, payload){
