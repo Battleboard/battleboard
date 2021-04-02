@@ -47,5 +47,10 @@ export const setGameRoom = (game) => (dispatch) => {
     })
 }
 
-//SET_CLIENT_ID
+export const setConnection = (connection) => (dispatch) => {
+    dispatch({
+        type: SET_CONNECTION,
+        payload: connection
+    })
+}
 

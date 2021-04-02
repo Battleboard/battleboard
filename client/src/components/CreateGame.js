@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import {connect, useSelector} from 'react-redux';
 import store from '../store';
 import GameRoom from "./GameRoom";
-import {setClient, setGame, setGameRoom} from '../actions/userActions';
+import {setClient, setGame, setGameRoom, setConnection} from '../actions/userActions';
 
 import Button from './styled/Button'
 
-const CreateGame = ({setClient, setGame, setGameRoom}) => {
+const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     const [gameToJoin, setGameToJoin] = useState("");
     const [copyLink, setCopyLink] = useState("");
     const gameId = useSelector(state => state.user.gameId);
@@ -36,6 +36,7 @@ const CreateGame = ({setClient, setGame, setGameRoom}) => {
     }
 
     let ws = new WebSocket(HOST + '/' + store.getState().auth.id)
+    setConnection(ws);
 
     //create a game room
     const createGameRoom = () => {
@@ -103,4 +104,4 @@ const CreateGame = ({setClient, setGame, setGameRoom}) => {
     </div>
 };
 
-export default connect(null, {setClient, setGame, setGameRoom})(CreateGame);
+export default connect(null, {setClient, setGame, setGameRoom, setConnection})(CreateGame);
