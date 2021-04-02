@@ -5,7 +5,7 @@ const initialState = {
     clientId: "",
     gameId: "",
     gameRoom: [],
-    maxHealth: 1000,
+    maxHealth: 2500,
     phase: "select-spells",
     connection: {}
 }
