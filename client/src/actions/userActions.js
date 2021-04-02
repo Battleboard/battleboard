@@ -48,6 +48,10 @@ export const setGameRoom = (game) => (dispatch) => {
 }
 
 export const setConnection = (connection) => (dispatch) => {
+
+
+    console.log("connection: ", typeof connection);
+
     dispatch({
         type: SET_CONNECTION,
         payload: connection

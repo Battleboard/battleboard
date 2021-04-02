@@ -4,9 +4,10 @@ import Card from './Card';
 import {setGameRoom} from '../actions/userActions';
 import {connect} from 'react-redux';
 
-const GameRoom = ({connection, setGameRoom}) => {
+const GameRoom = ({setGameRoom}) => {
 
     const clients = useSelector(state => state.user.gameRoom);
+    const connection = useSelector(state => state.user.connection);
 
     const spellClicked = (spell, id) => {
 

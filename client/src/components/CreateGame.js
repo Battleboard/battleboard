@@ -10,22 +10,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     const [gameToJoin, setGameToJoin] = useState("");
     const [copyLink, setCopyLink] = useState("");
     const gameId = useSelector(state => state.user.gameId);
-
-    useEffect(() => {
-        setCopyLink(store.getState().user.gameId);
-    }, [gameId])
-
-    //set the client id when the create button loads (use the players _id in future?)
-    useEffect(() => {
-        ws.onmessage = message => {
-            const response = JSON.parse(message.data);
-            if(response.method === 'connect'){
-                setClient(response.clientId);
-            }
-        }
-      }
-      // eslint-disable-next-line
-      , [])
+    
 
     var HOST = null;
 
@@ -36,7 +21,31 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     }
 
     let ws = new WebSocket(HOST + '/' + store.getState().auth.id)
-    setConnection(ws);
+
+    useEffect(() => {
+        setConnection(ws);
+    }, [ws])
+
+
+    useEffect(() => {
+        setCopyLink(store.getState().user.gameId);
+    }, [gameId])
+
+    //set the client id when the create button loads (use the players _id in future?)
+    useEffect(() => {
+
+        
+        
+
+        ws.onmessage = message => {
+            const response = JSON.parse(message.data);
+            if(response.method === 'connect'){
+                setClient(response.clientId);
+            }
+        }
+      }
+      // eslint-disable-next-line
+      , [])
 
     //create a game room
     const createGameRoom = () => {
@@ -60,7 +69,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
         if(store.getState().user.gameId === ""){
             //set the gameId to the gameToJoin entered
             setGame(gameToJoin);
-        } else {
+        } 
             dispatch(setPhase("battle"))
 
             const payLoad = {
@@ -73,7 +82,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
             }
     
             ws.send(JSON.stringify(payLoad));
-        }
+        
 
         ws.onmessage = message => {
             const response = JSON.parse(message.data);
