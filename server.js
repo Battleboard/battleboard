@@ -131,10 +131,7 @@ webSocketServer.on("connection", (webSocket, request) => {
                     //get the damage and heal values from the players spells
                     let player1 = {
                         damage: game.clients[0].selectedSpell.damage,
-                        heal: game.clients[0].selectedSpell.heal,
                         maxHealth: game.clients[0].maxHealth,
-                        damageOverTime: game.clients[0].selectedSpell.damageOverTime,
-                        damageOverTimeDuration: game.clients[0].selectedSpell.damageOverTimeDuration,
                         debuffs: game.clients[0].debuffs,
                         selectedSpell: game.clients[0].selectedSpell
                     }
@@ -143,8 +140,6 @@ webSocketServer.on("connection", (webSocket, request) => {
                         damage: game.clients[1].selectedSpell.damage,
                         heal: game.clients[1].selectedSpell.heal,
                         maxHealth: game.clients[1].maxHealth,
-                        damageOverTime: game.clients[1].selectedSpell.damageOverTime,
-                        damageOverTimeDuration: game.clients[1].selectedSpell.damageOverTimeDuration,
                         debuffs: game.clients[1].debuffs,
                         selectedSpell: game.clients[1].selectedSpell
                     }
@@ -165,11 +160,11 @@ webSocketServer.on("connection", (webSocket, request) => {
 
                     //players heal
                     //check if the player healing would result in a value above the maximum health
-                    let p0CappedHealReduction = cappedHealReduction(p0Health, player1.heal, player1.maxHealth);
-                    let p1CappedHealReduction = cappedHealReduction(p1Health, player2.heal, player2.maxHealth);
+                    let p0CappedHealReduction = cappedHealReduction(p0Health, player1.selectedSpell.heal, player1.maxHealth);
+                    let p1CappedHealReduction = cappedHealReduction(p1Health, player2.selectedSpell.heal, player2.maxHealth);
 
-                    p0Health = p0Health + player1.heal + p0CappedHealReduction;
-                    p1Health = p1Health + player2.heal + p1CappedHealReduction;
+                    p0Health = p0Health + player1.selectedSpell.heal + p0CappedHealReduction;
+                    p1Health = p1Health + player2.selectedSpell.heal + p1CappedHealReduction;
 
                     //update the game object to send back as a payload to the front end
                     game.clients[0].health = p0Health;
@@ -238,12 +233,12 @@ const getDebuffs = (player, opponent) => {
     return player
 }
 const setDebuffs = (player, opponent) => {
-    if(player.damageOverTime !== 0){
+    if(player.selectedSpell.damageOverTime !== 0){
         opponent.debuffs.push({
             name: player.selectedSpell.name, 
             icon: player.selectedSpell.source,
-            damage: player.damageOverTime, 
-            duration: player.damageOverTimeDuration
+            damage: player.selectedSpell.damageOverTime, 
+            duration: player.selectedSpell.damageOverTimeDuration
         })
     }
     return player
