@@ -130,6 +130,137 @@
             "source": "/images/spells/backstab.svg",
             "damage": 420,
             "heal": 50
+        },
+        {
+            "name": "Fireball",
+            "source": "/images/spells/fireball.svg",
+            "damage": 280,
+            "heal":0,
+            "damageOverTime": 15, 
+            "damageOverTimeDuration":4
+        },
+        {
+            "name": "Fire Storm",
+            "source": "/images/spells/firestorm.svg",
+            "damage": 250,
+            "heal": 0,
+            "damageOverTime": 8, 
+            "damageOverTimeDuration": 6
+        },
+        {
+            "name": "Flame Pillar",
+            "source": "/images/spells/flamepillar.svg",
+            "damage": 200,
+            "heal": 0
+        },
+        {
+            "name": "Holy Reaper",
+            "source": "/images/spells/holyreaper.svg",
+            "damage": 155,
+            "heal": 220
+        },
+        {
+            "name": "Sacrifice",
+            "source": "/images/spells/sacrifice.svg",
+            "damage": 500,
+            "heal": -250
+        },
+        {
+            "name": "Searing Toxin",
+            "source":"/images/spells/searingtoxin.svg",
+            "damage": 100,
+            "heal":0,
+            "damageOverTime": 75,
+            "damageOverTimeDuration": 4
+        },
+        {
+            "name":"Victory Bash",
+            "source":"/images/spells/victorybash.svg",
+            "damage": 175,
+            "heal":0,
+            "defenceOverTime": 35, 
+            "defenceOverTimeDuration":4
+        },
+        {
+            "name": "Lightning Storm",
+            "source":"/images/spells/lightningstorm.svg",
+            "damage": 100,
+            "heal":0,
+            "damageOverTime": 100, 
+            "damageOverTimeDuration": 3
+        },
+        {
+            "name": "Heavy Slam",
+            "source":"/images/spells/heavyslam.svg",
+            "damage": 480,
+            "heal":0,
+            "stunDuration": 2
+        },
+        {
+            "name": "Side Slash",
+            "source":"/images/spells/sideslash.svg",
+            "damage": 320,
+            "heal":0,
+            "damageOverTime": 8,
+            "damageOverTimeDuration":10
+        },
+        {
+            "name":"Nothing",
+            "source":"/images/spells/nothing.svg",
+            "damage":0,
+            "heal":0
+        },
+        {
+            "name":"Shield",
+            "source":"/images/spells/shield.svg",
+            "damage":0,
+            "heal":0,
+            "shield":100
+        },
+        {
+            "name":"Vishnu Beam",
+            "source":"/images/spells/vishnubeam.svg",
+            "damage": 200,
+            "heal": 100,
+            "shield": 100
+        },
+        {
+            "name":"Slice",
+            "source":"/images/spells/slice.svg",
+            "damage": 50,
+            "heal": 0,
+            "shield": 0,
+            "damageOverTime": 10,
+            "damageOverTimeDuration": 10
+        },
+        {
+            "name":"Jesus Beam",
+            "source":"/images/spells/jesusbeam.svg",
+            "damage": 100,
+            "heal": 0,
+            "damageOverTime": 100,
+            "damageOverTimeDuration": 3
+        },
+        {
+            "name":"Holy Prayer",
+            "source":"/images/spells/holyprayer.svg",
+            "damage": 0,
+            "heal": 400,
+            "shield": 0
+        },
+        {
+            "name": "True Shot",
+            "source": "/images/spells/trueshot.svg",
+            "damage": 320,
+            "heal": 0,
+            "damageOverTime": 15,
+            "damageOverTimeDuration": 3
+        },
+        {
+            "name": "Back Stab",
+            "source": "/images/spells/backstab.svg",
+            "damage": 420,
+            "heal": 50
         }
     ]
 }

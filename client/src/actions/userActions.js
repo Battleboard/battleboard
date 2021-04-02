@@ -1,5 +1,13 @@
-import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM} from './types';
+import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE} from './types';
 import store from '../store';
+
+//SET PHASE
+export const setPhase = (phase) => (dispatch) => {
+    dispatch({
+        type: SET_PHASE,
+        payload: phase
+    })
+}
 
 //SET SPELLS
 export const setSpells = (spell) => (dispatch) =>{

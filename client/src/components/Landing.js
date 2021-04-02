@@ -35,9 +35,8 @@ const GuestLinks = () => {
 const Landing = () => {
   const auth = useSelector(state => state.auth)
 
-	return <div>
-		{auth && auth.isAuthenticated ? <AuthLinks /> : <GuestLinks/>}
-	</div>
+	return auth && auth.isAuthenticated ? <AuthLinks /> : <GuestLinks/>
+
 }
 
 export default Landing

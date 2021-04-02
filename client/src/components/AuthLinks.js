@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Logout from './Logout';
 import Spells from "./Spells";
 import CreateGame from "./CreateGame";
@@ -6,14 +7,19 @@ import { useSelector } from 'react-redux'
 
 const AuthLinks = () => {
     const gameRoom = useSelector(state => state.user.gameRoom)
-    return <div style={{display: 'flex', flexDirection: 'column'}}>
-      <Logout/>
-      <CreateGame/>
-      {gameRoom.length === 0 && <div>
-        <Spells/>
-        <SelectedSpells />
-      </div>}
-    </div>
+    const [phase, setPhase] = useState('select-spells')
+
+    const setContent = () => {
+      switch(phase){
+        case 'select-spells':
+          return <>
+            <Spells />
+            <SelectedSpells />
+          </>
+      }
+    }
+
+    return setContent()
   }
 
 export default AuthLinks

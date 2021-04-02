@@ -10,7 +10,7 @@ const Spells = ({auth, setSpells}) => {
         setSpells(spell);
     }
 
-	return  <div style={{display: 'flex', flexWrap: 'wrap', flexGrow: 2}}>
+	return  <div style={{display: 'flex', flexWrap: 'wrap', flexGrow: 2, overflow: 'auto', maxHeight: '80vh' }}>
                 {spells.map((spell, index) => {
 				    return <Card key={index} spell={spell} action={() => selectSpell(spell)}/>
 				})}

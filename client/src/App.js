@@ -8,6 +8,7 @@ import {loadUser} from './actions/authActions';
 import {Router, Route} from "react-router-dom";
 import history from './history';
 import './main.css';
+import Navigation from './components/Navigation'
 
 const App = () => {
 
@@ -15,12 +16,13 @@ const App = () => {
     store.dispatch(loadUser());
   })
 
-  return <div style={{position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, background: '#DBE4EE'}}>
+  return <div style={{position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, background: '#DBE4EE', display: 'flex', flexDirection: 'column'}}>
       <Provider store={store}>
+      <Navigation />
         <Router history={history}>
-        <Route exact path="/" component={Landing} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
         </Router>
       </Provider> 
     </div>
