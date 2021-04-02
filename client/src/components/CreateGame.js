@@ -4,6 +4,8 @@ import store from '../store';
 import GameRoom from "./GameRoom";
 import {setClient, setGame, setGameRoom} from '../actions/userActions';
 
+import Button from './styled/Button'
+
 const CreateGame = ({setClient, setGame, setGameRoom}) => {
     const [gameToJoin, setGameToJoin] = useState("");
     const [copyLink, setCopyLink] = useState("");
@@ -83,23 +85,22 @@ const CreateGame = ({setClient, setGame, setGameRoom}) => {
         setGameToJoin(e.target.value);
     }
 
-	return  <div style={{flexGrow: 1, background:"white"}}>
-
-                <p>User Name: {store.getState().auth && store.getState().auth.name}</p>
-                <p>User ID: {store.getState().auth && store.getState().auth.id}</p>
-
-                <button onClick={createGameRoom} >Create Game Room</button>
-
-                <button onClick={() => {navigator.clipboard.writeText(copyLink)}}>Copy Game Room Link</button>
-                <p>{copyLink}</p>
-
-                <input type="text" name="gameId" placeholder="Game ID" onChange={handleChange} value={gameToJoin} style={{width:"100%"}}/>
-
-                <button onClick={joinGameRoom}>Join Game</button>  
-                
-                <GameRoom connection={ws}/>
-                
+	return <div style={{background: 'lightblue', display: 'flex', height: '100%'}}>
+        <div style={{flexGrow: 4, background: '#F8F8F8'}}>
+            <div style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>
+                <p>Game Title</p>
+                <p>Host</p>
             </div>
+        </div>
+        <div style={{flexGrow: 1, background: '#FFF'}}>
+            <div style={{display: 'flex', flexDirection: 'column', width: '50%', margin: '20px auto'}}>
+                <Button style={{margin: '20px auto'}} onClick={createGameRoom}>Create Room</Button>
+                <Button style={{margin: '20px auto'}} onClick={joinGameRoom}>Join Room</Button>
+                <input type="text" name="gameId" placeholder="Game ID" onChange={handleChange} value={gameToJoin} style={{width:"100%"}}/>
+                <p>{copyLink}</p>
+            </div>
+        </div>
+    </div>
 };
 
 export default connect(null, {setClient, setGame, setGameRoom})(CreateGame);
