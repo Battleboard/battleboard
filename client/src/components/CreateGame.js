@@ -111,6 +111,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
                 <Button style={{margin: '20px auto'}} onClick={joinGameRoom}>Join Room</Button>
                 <input type="text" name="gameId" placeholder="Game ID" onChange={handleChange} value={gameToJoin} style={{width:"100%"}}/>
                 <p>{copyLink}</p>
+                <Button style={{margin: '20px auto'}} onClick={() => {navigator.clipboard.writeText(copyLink)}}>Copy Link</Button>
             </div>
         </div>
     </div>
