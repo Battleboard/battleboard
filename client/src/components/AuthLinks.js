@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import Logout from './Logout';
 import Spells from "./Spells";
 import CreateGame from "./CreateGame";
 import SelectedSpells from "./SelectedSpells";
 import { useSelector } from 'react-redux'
-import Button from './styled/Button'
+import GameRoom from "./GameRoom";
 
 const AuthLinks = () => {
     const phase = useSelector(state => state.user.phase)
+	const connection = useSelector(state => state.user.connection)
 
     const setContent = () => {
       switch(phase){
@@ -18,6 +17,8 @@ const AuthLinks = () => {
           </>
 		case 'gameroom':
 			return <CreateGame />
+		case 'battle':
+			return <GameRoom connection={connection} />
         default:
 			return 'AuthLinks Switch Broken (Error 42069)'
       }

@@ -11,10 +11,10 @@ const Spells = ({auth, setSpells}) => {
     }
 
 	return  <div style={{display: 'flex', flexWrap: 'wrap', flexGrow: 2, overflow: 'auto', maxHeight: '80vh' }}>
-                {spells.map((spell, index) => {
-				    return <Card key={index} spell={spell} action={() => selectSpell(spell)}/>
-				})}
-            </div>
+        {spells.map((spell, index) => {
+            return <Card key={index} spell={spell} action={() => selectSpell(spell)}/>
+        })}
+    </div>
 };
 
 const mapStateToProps = state => ({

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {connect, useSelector} from 'react-redux';
 import store from '../store';
-import GameRoom from "./GameRoom";
 import {setClient, setGame, setGameRoom} from '../actions/userActions';
 
 import Button from './styled/Button'
