@@ -19,33 +19,38 @@ const container_styles = {
 
 const GameRoom = ({setGameRoom}) => {
     const [currentSpells, setCurrentSpells] = useState([])
+    const [calculating, setCalculating] = useState(false)
     const clients = useSelector(state => state.user.gameRoom);
     const connection = useSelector(state => state.user.connection);
     const clientId = store.getState().user.clientId
     const gameId = store.getState().user.gameId
 
     const initializeCombat = (spell, id) => {
-        const payLoad = {
-            "method": "get-info",
-            "clientId": clientId,
-            "spell": spell,
-            "gameId": gameId
-        }
-        
-        connection.send(JSON.stringify(payLoad));
+        if (!calculating) {
+            setCalculating(true)
+            const payLoad = {
+                "method": "get-info",
+                "clientId": clientId,
+                "spell": spell,
+                "gameId": gameId
+            }
+            
+            connection.send(JSON.stringify(payLoad));
 
-        connection.onmessage = message => {
-            const response = JSON.parse(message.data);
-            console.log(response.spells)
-            if(response.method === 'get-info'){
-                //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
-                if (response.spells[0] !== null && response.spells[1] !== null) {
-                    setCurrentSpells(response.spells)
-                    console.log("response: ", response);
-                    setTimeout(() => {
-                        setCurrentSpells([])
-                        evaluateCombat(spell, id)
-                    }, 3000)
+            connection.onmessage = message => {
+                const response = JSON.parse(message.data);
+                console.log(response.spells)
+                if(response.method === 'get-info'){
+                    //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
+                    if (response.spells[0] !== null && response.spells[1] !== null) {
+                        setCurrentSpells(response.spells)
+                        console.log("response: ", response);
+                        setTimeout(() => {
+                            setCurrentSpells([])
+                            evaluateCombat(spell, id)
+                            setCalculating(false)
+                        }, 3000)
+                    }
                 }
             }
         }
