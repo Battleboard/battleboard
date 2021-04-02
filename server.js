@@ -43,6 +43,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 const webSocketServer = new WebSocket.Server({ server });
+
 webSocketServer.on("connection", (webSocket, request) => {
 
     //was previously sending the id prefaced with: /?id= and accesing it from url with 'request.resourceURL.query.id' using websocket
@@ -90,7 +91,8 @@ webSocketServer.on("connection", (webSocket, request) => {
                 "spells": spells,
                 "selectedSpell": null,
                 "health": health,
-                "maxHealth":maxHealth
+                "maxHealth":maxHealth,
+                "debuffs": []
             })
             const payLoad = {
                 "method":"join",
@@ -128,13 +130,64 @@ webSocketServer.on("connection", (webSocket, request) => {
                     //get the damage and heal values from the players spells
                     let p0Damage = game.clients[0].selectedSpell.damage;
                     let p1Damage = game.clients[1].selectedSpell.damage;
+
                     let p0Heal = game.clients[0].selectedSpell.heal;
                     let p1Heal = game.clients[1].selectedSpell.heal;
+
                     let p0MaxHealth = game.clients[0].maxHealth;
                     let p1MaxHealth = game.clients[1].maxHealth;
 
+                    let p0DamageOverTime = game.clients[0].selectedSpell.damageOverTime;
+                    let p1DamageOverTime = game.clients[1].selectedSpell.damageOverTime;
+
+                    let p0DamageOverTimeDuration = game.clients[0].selectedSpell.damageOverTimeDuration;
+                    let p1DamageOverTimeDuration = game.clients[1].selectedSpell.damageOverTimeDuration;
+
+                    let p0Debuffs = game.clients[0].debuffs;
+                    let p1Debuffs = game.clients[1].debuffs;
+
+
                     {/*Combat Sequence*/}
                     //players deal damage
+
+                    //check if each player has damage over time attached to them
+                    if(p0Debuffs.length > 0){
+                        for(let i=0; i<p0Debuffs.length; i++){
+                            p1Damage += p0Debuffs[i].damage;
+                            //decrement the debuff duration / remove the debuff from the list
+                            if(p0Debuffs[i].duration === 1){
+                                //remove the debuff
+                                p0Debuffs.splice(i,1);
+                            }else{
+                                //decrement the debuff
+                                p0Debuffs[i].duration -= 1;
+                            }
+                        }
+                    }
+
+                    if(p1Debuffs.length > 0){
+                        for(let i=0; i<p1Debuffs.length; i++){
+                            p0Damage += p1Debuffs[i].damage;
+                            //decrement the debuff duration / remove the debuff from the list
+                            if(p1Debuffs[i].duration === 1){
+                                //remove the debuff
+                                p1Debuffs.splice(i,1);
+                            }else{
+                                //decrement the debuff
+                                p1Debuffs[i].duration -= 1;
+                            }
+                        }
+                    }
+
+                    //if a players spell contains damage over time add it to the opponents debuff list
+                    if(p0DamageOverTime !== 0){
+                        p1Debuffs.push({damage: p0DamageOverTime, duration: p0DamageOverTimeDuration})
+                    }
+
+                    if(p1DamageOverTime !== 0){
+                        p0Debuffs.push({damage: p1DamageOverTime, duration: p1DamageOverTimeDuration})
+                    }
+
                     let p0Health = game.clients[0].health - p1Damage;
                     let p1Health = game.clients[1].health - p0Damage;                   
 
@@ -153,11 +206,15 @@ webSocketServer.on("connection", (webSocket, request) => {
                     game.clients[0].selectedSpell = null;
                     game.clients[1].selectedSpell = null;
 
+                    game.clients[0].debuffs = p0Debuffs;
+                    game.clients[1].debuffs = p1Debuffs;
+
                     //construct the payload to send back to both clients
                     const payLoad = {
                         "method":"evaluate",
                         "game": game
                     }
+
                     game.clients.forEach(c => {
                         clients[c.clientId].connection.send(JSON.stringify(payLoad))
                     })
@@ -171,11 +228,9 @@ webSocketServer.on("connection", (webSocket, request) => {
 
 });
 
-//takes a players health and a maximum health and returns the amount to hea
+//takes a players health and a maximum health and returns the amount to heal
 const cappedHealReduction = (currentHealth, heal, maxHealth) => {
-
     let reduceHeal = 0;
-
     //check if the amount to heal would increase the health above its maxmimum 
     if(currentHealth + heal > maxHealth){
         //reduce the heal amount by the amount it would be over
