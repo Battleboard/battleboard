@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {connect, useSelector} from 'react-redux';
+import {connect, useSelector, useDispatch} from 'react-redux';
 import store from '../store';
-import {setClient, setGame, setGameRoom, setConnection} from '../actions/userActions';
+import {setClient, setGame, setGameRoom, setConnection, setPhase} from '../actions/userActions';
 
 import Button from './styled/Button'
 
 const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
+    const dispatch = useDispatch()
     const [gameToJoin, setGameToJoin] = useState("");
     const [copyLink, setCopyLink] = useState("");
     const gameId = useSelector(state => state.user.gameId);
@@ -59,7 +60,8 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
         if(store.getState().user.gameId === ""){
             //set the gameId to the gameToJoin entered
             setGame(gameToJoin);
-        }
+        } else {
+            dispatch(setPhase("battle"))
 
             const payLoad = {
                 "method":"join",
@@ -69,16 +71,17 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
                 "health": store.getState().user.maxHealth,
                 "maxHealth": store.getState().user.maxHealth
             }
-
-            ws.send(JSON.stringify(payLoad));
     
-            ws.onmessage = message => {
-                const response = JSON.parse(message.data);
-                if(response.method === 'join'){
-                    //save the game room information to store
-                    setGameRoom(response.game)
-                }
+            ws.send(JSON.stringify(payLoad));
+        }
+
+        ws.onmessage = message => {
+            const response = JSON.parse(message.data);
+            if(response.method === 'join'){
+                //save the game room information to store
+                setGameRoom(response.game)
             }
+        }
     }
     
     const handleChange = (e) => {
