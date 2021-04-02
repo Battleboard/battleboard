@@ -16,55 +16,34 @@ const GameRoom = ({setGameRoom}) => {
     const initializeCombat = (spell, id) => {
         if (!calculating) {
             setCalculating(true)
+
             const payLoad = {
-                "method": "get-info",
+                "method": "evaluate",
                 "clientId": clientId,
                 "spell": spell,
                 "gameId": gameId
             }
             
             connection.send(JSON.stringify(payLoad));
-
+            
             connection.onmessage = message => {
                 const response = JSON.parse(message.data);
-                console.log(response.spells)
-                if(response.method === 'get-info'){
+                if(response.method === 'evaluate'){
+                    console.log("Evaluate Response: ", response);
                     //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
-                    if (response.spells[0] !== null && response.spells[1] !== null) {
-                        setCurrentSpells(response.spells)
-                        console.log("response: ", response);
-                        setTimeout(() => {
-                            setCurrentSpells([])
-                            evaluateCombat(spell, id)
-                            setCalculating(false)
-                        }, 3000)
-                    }
+                    console.log("p0 previous spell: ", response.game.clients[0].previousSpell);
+                    console.log("p1 previous spell: ", response.game.clients[1].previousSpell);
+                    setCurrentSpells([response.game.clients[0].previousSpell, response.game.clients[1].previousSpell]);
+
+                    setTimeout(() => {
+                        setCurrentSpells([])
+                        setGameRoom(response.game);
+                        setCalculating(false)
+                    }, 3000)
+
+                    
                 }
             }
-        }
-    }
-
-    const evaluateCombat = (spell, id) => {
-        console.log('evaluate combat')
-        const payLoad = {
-            "method": "evaluate",
-            "clientId": clientId,
-            "spell": spell,
-            "gameId": gameId
-        }
-        
-        connection.send(JSON.stringify(payLoad));
-
-        connection.onmessage = message => {
-            const response = JSON.parse(message.data);
-
-            console.log("response: ", response);
-            
-            if(response.method === 'evaluate'){
-                //update the health of player 1 and player 2
-                setGameRoom(response.game);
-            }
-            
         }
     }
 

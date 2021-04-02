@@ -92,7 +92,8 @@ webSocketServer.on("connection", (webSocket, request) => {
                 "selectedSpell": null,
                 "health": health,
                 "maxHealth":maxHealth,
-                "debuffs": []
+                "debuffs": [],
+                "previousSpell": null
             })
             const payLoad = {
                 "method":"join",
@@ -101,37 +102,6 @@ webSocketServer.on("connection", (webSocket, request) => {
             game.clients.forEach(c => {
                 clients[c.clientId].connection.send(JSON.stringify(payLoad))
             })
-        }
-
-        {/* return information about the game state before next turn*/}
-        if(result.method === 'get-info'){
-            let clientId = result.clientId;
-            let gameId = result.gameId;
-            let spell = result.spell;
-
-            //find the current player in the game clients
-            let game = games[gameId]
-            let index = -1;
-            for(let i=0; i<game.clients.length; i++){
-                if(game.clients[i].clientId === clientId){
-                    index = i;
-                }
-            }
-
-            //set the selected spell of the current player
-            game.clients[index].selectedSpell = spell;
-            if(game.clients.length === 2){
-                //construct the payload to send back to both clients
-                
-                const payLoad = {
-                    "method":"get-info",
-                    "spells": [ game.clients[0].selectedSpell, game.clients[1].selectedSpell ]
-                }
-
-                game.clients.forEach(c => {
-                    clients[c.clientId].connection.send(JSON.stringify(payLoad))
-                })
-            }
         }
 
         {/* evaluate the outcome of each players spell*/}
@@ -152,8 +122,6 @@ webSocketServer.on("connection", (webSocket, request) => {
 
             //set the selected spell of the current player
             game.clients[index].selectedSpell = spell;
-
-            console.log('selectedSpells: ', game.clients[0].selectedSpell, game.clients[1].selectedSpell)
 
             if(game.clients.length === 2){
 
@@ -230,6 +198,9 @@ webSocketServer.on("connection", (webSocket, request) => {
                         })
                     }
 
+                    console.log("player 1 :", player1);
+                    console.log("player 2 :", player2);
+
                     let p0Health = game.clients[0].health - player2.damage;
                     let p1Health = game.clients[1].health - player1.damage;                   
 
@@ -245,17 +216,25 @@ webSocketServer.on("connection", (webSocket, request) => {
                     game.clients[0].health = p0Health;
                     game.clients[1].health = p1Health;
 
+                    //set the players previous spell before setting the selected spell to null
+                    game.clients[0].previousSpell = game.clients[0].selectedSpell;
+                    game.clients[1].previousSpell = game.clients[1].selectedSpell;                    
+
                     game.clients[0].selectedSpell = null;
                     game.clients[1].selectedSpell = null;
 
                     game.clients[0].debuffs = player1.debuffs;
                     game.clients[1].debuffs = player2.debuffs;
 
+
+
                     //construct the payload to send back to both clients
                     const payLoad = {
                         "method":"evaluate",
                         "game": game
                     }
+
+                    console.log("payload: ", payLoad.game.clients);
 
                     game.clients.forEach(c => {
                         clients[c.clientId].connection.send(JSON.stringify(payLoad))
