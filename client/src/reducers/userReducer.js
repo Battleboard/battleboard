@@ -6,7 +6,7 @@ const initialState = {
     gameId: "",
     gameRoom: [],
     maxHealth: 1000,
-    phase: ""
+    phase: "select-spells"
 }
 
 export default function userReducer(state = initialState, action, payload){

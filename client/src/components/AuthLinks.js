@@ -6,8 +6,8 @@ import SelectedSpells from "./SelectedSpells";
 import { useSelector } from 'react-redux'
 
 const AuthLinks = () => {
-    const gameRoom = useSelector(state => state.user.gameRoom)
-    const [phase, setPhase] = useState('select-spells')
+    const phase = useSelector(state => state.user.phase)
+
 
     const setContent = () => {
       switch(phase){
@@ -16,6 +16,10 @@ const AuthLinks = () => {
             <Spells />
             <SelectedSpells />
           </>
+		case 'gameroom':
+			return 'works'
+        default:
+			return 'AuthLinks Switch Broken (Error 42069)'
       }
     }
 
