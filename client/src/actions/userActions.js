@@ -1,5 +1,10 @@
-import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION} from './types';
+import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION, RESET_GAME} from './types';
 import store from '../store';
+
+//RESET GAME
+export const resetGame = () => (dispatch) => {
+    dispatch({ type: RESET_GAME })
+}
 
 //SET PHASE
 export const setPhase = (phase) => (dispatch) => {

@@ -1,18 +1,23 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import store from '../store';
 import Card from './Card';
-import {setGameRoom} from '../actions/userActions';
-import {connect} from 'react-redux';
+import { setGameRoom, setPhase} from '../actions/userActions';
+import { connect } from 'react-redux';
 import ProgressBar from "./styled/ProgressBar";
 
 const GameRoom = ({setGameRoom}) => {
     const [currentSpells, setCurrentSpells] = useState([])
     const [calculating, setCalculating] = useState(false)
+    const dispatch = useDispatch()
     const clients = useSelector(state => state.user.gameRoom);
     const connection = useSelector(state => state.user.connection);
     const clientId = store.getState().user.clientId
     const gameId = store.getState().user.gameId
+
+    useEffect(() => {
+        if (clients[0]?.health <= 0 || clients[1]?.health <= 0 ) dispatch(setPhase("battle-over"))
+    }, [clients, dispatch])
 
     const initializeCombat = (spell, id) => {
         if (!calculating) {
@@ -40,9 +45,7 @@ const GameRoom = ({setGameRoom}) => {
                         setCurrentSpells([])
                         setGameRoom(response.game);
                         setCalculating(false)
-                    }, 3000)
-
-                    
+                    }, 3000) 
                 }
             }
         }

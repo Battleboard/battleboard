@@ -14,3 +14,4 @@ export const SET_GAME_ID = 'SET_GAME_ID';
 export const SET_GAME_ROOM = 'SET_GAME_ROOM';
 export const SET_PHASE = 'SET_PHASE';
 export const SET_CONNECTION = 'SET_CONNECTION';
+export const RESET_GAME = 'RESET_GAME';
