@@ -214,11 +214,21 @@ webSocketServer.on("connection", (webSocket, request) => {
 
                     //if a players spell contains damage over time add it to the opponents debuff list
                     if(p0DamageOverTime !== 0){
-                        p1Debuffs.push({damage: p0DamageOverTime, duration: p0DamageOverTimeDuration})
+                        p1Debuffs.push({
+                            name: game.clients[0].selectedSpell.name, 
+                            icon: game.clients[0].selectedSpell.source,
+                            damage: p0DamageOverTime, 
+                            duration: p0DamageOverTimeDuration
+                        })
                     }
 
                     if(p1DamageOverTime !== 0){
-                        p0Debuffs.push({damage: p1DamageOverTime, duration: p1DamageOverTimeDuration})
+                        p0Debuffs.push({
+                            name: game.clients[1].selectedSpell.name, 
+                            icon: game.clients[1].selectedSpell.source,
+                            damage: p1DamageOverTime, 
+                            duration: p1DamageOverTimeDuration
+                        })
                     }
 
                     let p0Health = game.clients[0].health - p1Damage;

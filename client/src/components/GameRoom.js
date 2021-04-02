@@ -97,6 +97,24 @@ const GameRoom = ({setGameRoom}) => {
             {clients.map((client, index) => {
                 return <div key={index} style={{border: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
                     <h4 style={{textAlign: 'center', width: '100%'}}>Player {index + 1} Health: {store.getState().user.gameRoom[index] && store.getState().user.gameRoom[index].health}</h4> 
+                    <p style={{textAlign: 'center'}}>Status Bar</p>
+                    <div style={{background: '#F5F5F5', height: 70, width: '95%', border: '2px solid #333', display: 'flex'}}>
+                        {client.debuffs.map((debuff, index) => {
+                            return <div style={{width: 70, height: 80}}>
+                                <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
+                                <div style={{display: 'flex'}}>
+                                    <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                        <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
+                                        <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage}</div>
+                                    </div>
+                                    <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                        <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
+                                        <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.duration}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        })}
+                    </div>
                     <div style={{width: '60%', display: 'flex', flexWrap: 'wrap', height: 550, margin: '10px auto', justifyContent: 'center'}}>
                         {client.spells.map((spell, index) => {
                             return <div key={index}>
