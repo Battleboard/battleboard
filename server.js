@@ -135,7 +135,8 @@ webSocketServer.on("connection", (webSocket, request) => {
                         maxHealth: game.clients[0].maxHealth,
                         damageOverTime: game.clients[0].selectedSpell.damageOverTime,
                         damageOverTimeDuration: game.clients[0].selectedSpell.damageOverTimeDuration,
-                        debuffs: game.clients[0].debuffs
+                        debuffs: game.clients[0].debuffs,
+                        selectedSpell: game.clients[0].selectedSpell
                     }
 
                     let player2 = {
@@ -144,62 +145,20 @@ webSocketServer.on("connection", (webSocket, request) => {
                         maxHealth: game.clients[1].maxHealth,
                         damageOverTime: game.clients[1].selectedSpell.damageOverTime,
                         damageOverTimeDuration: game.clients[1].selectedSpell.damageOverTimeDuration,
-                        debuffs: game.clients[1].debuffs
+                        debuffs: game.clients[1].debuffs,
+                        selectedSpell: game.clients[1].selectedSpell
                     }
 
                     {/*Combat Sequence*/}
                     //players deal damage
 
                     //check if each player has damage over time attached to them
-                    if(player1.debuffs.length > 0){
-                        for(let i=0; i < player1.debuffs.length; i++){
-                            player2.damage += player1.debuffs[i].damage;
-                            //decrement the debuff duration / remove the debuff from the list
-                            if(player1.debuffs[i].duration === 1){
-                                //remove the debuff
-                                player1.debuffs.splice(i,1);
-                            }else{
-                                //decrement the debuff
-                                player1.debuffs[i].duration -= 1;
-                            }
-                        }
-                    }
-
-                    if(player2.debuffs.length > 0){
-                        for(let i=0; i<player2.debuffs.length; i++){
-                            player1.damage += player2.debuffs[i].damage;
-                            //decrement the debuff duration / remove the debuff from the list
-                            if(player2.debuffs[i].duration === 1){
-                                //remove the debuff
-                                player2.debuffs.splice(i,1);
-                            }else{
-                                //decrement the debuff
-                                player2.debuffs[i].duration -= 1;
-                            }
-                        }
-                    }
+                    player1 = getDebuffs(player1, player2);
+                    player2 = getDebuffs(player2, player1);
 
                     //if a players spell contains damage over time add it to the opponents debuff list
-                    if(player1.damageOverTime !== 0){
-                        player2.debuffs.push({
-                            name: game.clients[0].selectedSpell.name, 
-                            icon: game.clients[0].selectedSpell.source,
-                            damage: player1.damageOverTime, 
-                            duration: player1.damageOverTimeDuration
-                        })
-                    }
-
-                    if(player2.damageOverTime !== 0){
-                        player1.debuffs.push({
-                            name: game.clients[1].selectedSpell.name, 
-                            icon: game.clients[1].selectedSpell.source,
-                            damage: player2.damageOverTime, 
-                            duration: player2.damageOverTimeDuration
-                        })
-                    }
-
-                    console.log("player 1 :", player1);
-                    console.log("player 2 :", player2);
+                    player1 = setDebuffs(player1, player2);
+                    player2 = setDebuffs(player2, player1);
 
                     let p0Health = game.clients[0].health - player2.damage;
                     let p1Health = game.clients[1].health - player1.damage;                   
@@ -260,4 +219,32 @@ const cappedHealReduction = (currentHealth, heal, maxHealth) => {
     }else{
         return reduceHeal;
     }
+}
+
+const getDebuffs = (player, opponent) => {
+    if(player.debuffs.length > 0){
+        for(let i=0; i < player.debuffs.length; i++){
+            opponent.damage += player.debuffs[i].damage;
+            //decrement the debuff duration / remove the debuff from the list
+            if(player.debuffs[i].duration === 1){
+                //remove the debuff
+                player.debuffs.splice(i,1);
+            }else{
+                //decrement the debuff
+                player.debuffs[i].duration -= 1;
+            }
+        }
+    }
+    return player
+}
+const setDebuffs = (player, opponent) => {
+    if(player.damageOverTime !== 0){
+        opponent.debuffs.push({
+            name: player.selectedSpell.name, 
+            icon: player.selectedSpell.source,
+            damage: player.damageOverTime, 
+            duration: player.damageOverTimeDuration
+        })
+    }
+    return player
 }
