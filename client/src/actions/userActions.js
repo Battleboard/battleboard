@@ -1,4 +1,4 @@
-import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE} from './types';
+import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION} from './types';
 import store from '../store';
 
 //SET PHASE
@@ -47,5 +47,10 @@ export const setGameRoom = (game) => (dispatch) => {
     })
 }
 
-//SET_CLIENT_ID
+export const setConnection = (connection) => (dispatch) => {
+    dispatch({
+        type: SET_CONNECTION,
+        payload: connection
+    })
+}
 

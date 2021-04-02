@@ -1,4 +1,4 @@
-import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE} from '../actions/types';
+import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION} from '../actions/types';
 
 const initialState = {
     spells:[],
@@ -6,7 +6,8 @@ const initialState = {
     gameId: "",
     gameRoom: [],
     maxHealth: 1000,
-    phase: "select-spells"
+    phase: "select-spells",
+    connection: {}
 }
 
 export default function userReducer(state = initialState, action, payload){
@@ -36,6 +37,11 @@ export default function userReducer(state = initialState, action, payload){
             return {
                 ...state,
                 phase: action.payload
+            }
+        case SET_CONNECTION:
+            return{
+                ...state,
+                connection: action.payload
             }
         default:
             return state;
