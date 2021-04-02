@@ -24,6 +24,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 
     useEffect(() => {
         setConnection(ws);
+    // eslint-disable-next-line
     }, [ws])
 
 
