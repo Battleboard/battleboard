@@ -67,7 +67,7 @@ const GameRoom = ({setGameRoom}) => {
                     <p style={{textAlign: 'center'}}>Status Bar</p>
                     <div style={{background: '#F5F5F5', height: 70, width: '95%', border: '2px solid #333', display: 'flex'}}>
                         {client.debuffs.map((debuff, index) => {
-                            return <div style={{width: 70, height: 80}}>
+                            return <div key={index} style={{width: 70, height: 80}}>
                                 <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                                 <div style={{display: 'flex'}}>
                                     <div style={{display: 'flex', height: 30, width: '50%'}}>
