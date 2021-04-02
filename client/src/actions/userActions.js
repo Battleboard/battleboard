@@ -11,9 +11,6 @@ export const setPhase = (phase) => (dispatch) => {
 
 //SET SPELLS
 export const setSpells = (spell) => (dispatch) =>{
-    
-    console.log("Spell Length: ", store.getState().user.spells.length);
-
     if(store.getState().user.spells.length < 4){
         dispatch({
             type: SET_SPELLS,
@@ -48,10 +45,6 @@ export const setGameRoom = (game) => (dispatch) => {
 }
 
 export const setConnection = (connection) => (dispatch) => {
-
-
-    console.log("connection: ", typeof connection);
-
     dispatch({
         type: SET_CONNECTION,
         payload: connection

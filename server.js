@@ -103,6 +103,37 @@ webSocketServer.on("connection", (webSocket, request) => {
             })
         }
 
+        {/* return information about the game state before next turn*/}
+        if(result.method === 'get-info'){
+            let clientId = result.clientId;
+            let gameId = result.gameId;
+            let spell = result.spell;
+
+            //find the current player in the game clients
+            let game = games[gameId]
+            let index = -1;
+            for(let i=0; i<game.clients.length; i++){
+                if(game.clients[i].clientId === clientId){
+                    index = i;
+                }
+            }
+
+            //set the selected spell of the current player
+            game.clients[index].selectedSpell = spell;
+            if(game.clients.length === 2){
+                //construct the payload to send back to both clients
+                
+                const payLoad = {
+                    "method":"get-info",
+                    "spells": [ game.clients[0].selectedSpell, game.clients[1].selectedSpell ]
+                }
+
+                game.clients.forEach(c => {
+                    clients[c.clientId].connection.send(JSON.stringify(payLoad))
+                })
+            }
+        }
+
         {/* evaluate the outcome of each players spell*/}
         if(result.method === 'evaluate'){
 
@@ -122,7 +153,9 @@ webSocketServer.on("connection", (webSocket, request) => {
             //set the selected spell of the current player
             game.clients[index].selectedSpell = spell;
 
-            if(game.clients.length == 2){
+            console.log('selectedSpells: ', game.clients[0].selectedSpell, game.clients[1].selectedSpell)
+
+            if(game.clients.length === 2){
 
                 //if both players have submitted spells evaluate the damage done
                 if((game.clients[0].selectedSpell !== null) && (game.clients[1].selectedSpell !== null)){
