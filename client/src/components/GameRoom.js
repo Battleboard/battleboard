@@ -5,17 +5,17 @@ import {setGameRoom} from '../actions/userActions';
 import {connect} from 'react-redux';
 
 const GameRoom = ({setGameRoom}) => {
-
     const clients = useSelector(state => state.user.gameRoom);
     const connection = useSelector(state => state.user.connection);
+    const clientId = store.getState().user.clientId
+    const gameId = store.getState().user.gameId
 
     const spellClicked = (spell, id) => {
-
         const payLoad = {
             "method": "evaluate",
-            "clientId": store.getState().user.clientId,
+            "clientId": clientId,
             "spell": spell,
-            "gameId": store.getState().user.gameId
+            "gameId": gameId
         }
         
         connection.send(JSON.stringify(payLoad));
@@ -28,7 +28,7 @@ const GameRoom = ({setGameRoom}) => {
             if(response.method === 'evaluate'){
                 //update the health of player 1 and player 2
                 setGameRoom(response.game);
-
+                //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
             }
             
         }
