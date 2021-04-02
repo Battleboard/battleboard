@@ -114,7 +114,7 @@ webSocketServer.on("connection", (webSocket, request) => {
             let game = games[gameId]
             let index = -1;
             for(let i=0; i<game.clients.length; i++){
-                if(game.clients[i].clientId == clientId){
+                if(game.clients[i].clientId === clientId){
                     index = i;
                 }
             }
