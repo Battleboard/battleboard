@@ -1,8 +1,12 @@
-import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-import AuthLinks from './AuthLinks'
 import Button from './styled/Button'
 import Logo from './styled/Logo'
+import Spells from "./Spells";
+import CreateGame from "./CreateGame";
+import SelectedSpells from "./SelectedSpells";
+import { useSelector, useDispatch } from 'react-redux'
+import GameRoom from "./GameRoom";
+import { setPhase, resetGame } from '../actions/userActions'
 
 const GuestLinks = () => {
   
