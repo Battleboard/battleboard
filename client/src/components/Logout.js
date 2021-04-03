@@ -1,4 +1,3 @@
-import React, {Fragment} from 'react';
 import { connect } from 'react-redux';
 import {logout} from '../actions/authActions';
 import Button from './styled/Button'

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {connect, useSelector, useDispatch} from 'react-redux';
 import store from '../store';
 import {setClient, setGame, setGameRoom, setConnection, setPhase, getRooms} from '../actions/userActions';
@@ -7,8 +7,6 @@ import Button from './styled/Button'
 
 const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     const dispatch = useDispatch()
-    const [gameToJoin, setGameToJoin] = useState("");
-    const [copyLink, setCopyLink] = useState("");
     const gameId = useSelector(state => state.user.gameId);
     const games = useSelector(state => state.user.games)
     
@@ -29,9 +27,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 
 
     useEffect(() => {
-        setCopyLink(store.getState().user.gameId);
         store.dispatch(getRooms());
-
     }, [gameId])
 
     //set the client id when the create button loads (use the players _id in future?)
@@ -91,10 +87,6 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
                 setGameRoom(response.game)
             }
         }
-    }
-    
-    const handleChange = (e) => {
-        setGameToJoin(e.target.value);
     }
 
 	return <div style={{background: 'lightblue', display: 'flex', height: '100%'}}>
