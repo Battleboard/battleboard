@@ -101,7 +101,15 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 
                 {/* Map the game list */}
                 {games && games.map((game, index) => {
-                    return <div onClick={() => joinGameRoom(game.id)} style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>Game ID:{game.id}</div>
+                    return <div key={index} onClick={() => joinGameRoom(game.id)} style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>
+
+                    <p>Game ID:{game.id}</p>
+
+                    <p>Game Username:{game.host}</p>
+
+                    </div>
+
+                    
                 })}
             
             
