@@ -8,4 +8,5 @@
 
 [root]
 npm run concurrent:install
+
 npm run dev
