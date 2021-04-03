@@ -1,13 +1,21 @@
 import React, {Fragment} from 'react';
 import { connect } from 'react-redux';
 import {logout} from '../actions/authActions';
-import { Link } from "react-router-dom";
+import Button from './styled/Button'
 
 export const Logout = ({logout}) => {
     return(
-        <Fragment>
-            <Link to="/"><button onClick={logout}>Logout</button></Link>
-        </Fragment>
+        <Button onClick={logout}             
+        style={{
+            marginRight: 20, 
+            border: '1px solid #FFF', 
+            color: '#FFF', 
+            padding: 0, 
+            marginTop: 10, 
+            height: 60
+        }} >
+            Logout
+        </Button>
     );
 }
 

@@ -1,6 +1,7 @@
 import Button from './styled/Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPhase } from '../actions/userActions'
+import Logout from './Logout';
 
 const Navigation = () => {
     const spells = useSelector(state => state.user.spells)
@@ -28,6 +29,11 @@ const Navigation = () => {
             }} 
             onClick={toBattle}
         >Battle</Button>}
+
+        {
+            auth.isAuthenticated && <Logout/>
+        }
+
     </div>
 }
 
