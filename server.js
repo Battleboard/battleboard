@@ -70,11 +70,15 @@ webSocketServer.on("connection", (webSocket, request) => {
 
         {/* create a game room */}
         if(result.method === 'create'){
+            
             const clientId = result.clientId;
+            const host = result.username;
+
             const gameId = v4();
             games[gameId] = {
                 "id": gameId,
-                "clients": []
+                "clients": [],
+                "host": host
             };
             const payLoad = {
                 "method": "create",
@@ -89,7 +93,7 @@ webSocketServer.on("connection", (webSocket, request) => {
             const clientId = result.clientId;
             
             const gameId = result.gameId;
-            console.log("game id: ", gameId);
+            const username = result.username;
             const game = games[gameId];
             const spells = result.spells;
             const health = result.health;
@@ -102,7 +106,8 @@ webSocketServer.on("connection", (webSocket, request) => {
                 "maxHealth":maxHealth,
                 "debuffs": [],
                 "previousSpell": null,
-                "gameId": gameId
+                "gameId": gameId,
+                "username": username
             })
             const payLoad = {
                 "method":"join",
@@ -196,8 +201,6 @@ webSocketServer.on("connection", (webSocket, request) => {
                         "method":"evaluate",
                         "game": game
                     }
-
-                    console.log("payload: ", payLoad.game.clients);
 
                     game.clients.forEach(c => {
                         clients[c.clientId].connection.send(JSON.stringify(payLoad))

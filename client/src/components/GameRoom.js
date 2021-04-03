@@ -67,7 +67,7 @@ const GameRoom = ({setGameRoom}) => {
             {clients.map((client, index) => {
                 console.log(client)
                 return <div key={index} style={{border: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
-                    <h4 style={{textAlign: 'center', width: '100%'}}>Player {index + 1} Health: {store.getState().user.gameRoom[index] && store.getState().user.gameRoom[index].health}</h4>
+                    <h4 style={{textAlign: 'center', width: '100%'}}>Player {client.username} Health: {store.getState().user.gameRoom[index] && store.getState().user.gameRoom[index].health}</h4>
                     <ProgressBar width={(((client.health - 0) * (100 - 0)) / (client.maxHealth - 0)) + 0} color="green"/>
                     <p style={{textAlign: 'center'}}>Status Bar</p>
                     <div style={{background: '#F5F5F5', height: 70, width: '95%', border: '2px solid #333', display: 'flex'}}>

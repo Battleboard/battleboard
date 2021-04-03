@@ -48,9 +48,11 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 
     //create a game room
     const createGameRoom = () => {
+
         const payLoad = {
             "method": "create",
-            "clientId": store.getState().user.clientId
+            "clientId": store.getState().user.clientId,
+            "username": store.getState().auth.name
         }
         
         ws.send(JSON.stringify(payLoad));
@@ -69,14 +71,14 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     const joinGameRoom = (id) => {
 
             dispatch(setPhase("battle"))
-
             const payLoad = {
                 "method":"join",
                 "clientId":store.getState().user.clientId,
                 "gameId": id,
                 "spells": store.getState().user.spells,
                 "health": store.getState().user.maxHealth,
-                "maxHealth": store.getState().user.maxHealth
+                "maxHealth": store.getState().user.maxHealth,
+                "username": store.getState().auth.name
             }
     
             ws.send(JSON.stringify(payLoad));

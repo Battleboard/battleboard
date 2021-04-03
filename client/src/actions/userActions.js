@@ -43,7 +43,6 @@ export const setGame = (gameId) => (dispatch) => {
 }
 
 export const setGameRoom = (game) => (dispatch) => {
-    console.log("game room update: ", game);
     dispatch({
         type: SET_GAME_ROOM,
         payload: game.clients
