@@ -34,8 +34,12 @@ const GameRoom = ({setGameRoom}) => {
             connection.onmessage = message => {
                 const response = JSON.parse(message.data);
                 if(response.method === 'evaluate'){
+                    console.log("Evaluate Response: ", response);
                     //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
+                    console.log("p0 previous spell: ", response.game.clients[0].previousSpell);
+                    console.log("p1 previous spell: ", response.game.clients[1].previousSpell);
                     setCurrentSpells([response.game.clients[0].previousSpell, response.game.clients[1].previousSpell]);
+
                     setTimeout(() => {
                         setCurrentSpells([])
                         setGameRoom(response.game);
@@ -61,8 +65,9 @@ const GameRoom = ({setGameRoom}) => {
         </div>
         <div style={{display: 'flex', flexGrow: 2}}>
             {clients.map((client, index) => {
+                console.log(client)
                 return <div key={index} style={{border: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
-                    <h4 style={{textAlign: 'center', width: '100%'}}>Player {client.username} Health: {store.getState().user.gameRoom[index] && store.getState().user.gameRoom[index].health}</h4>
+                    <h4 style={{textAlign: 'center', width: '100%'}}>Player {index + 1} Health: {store.getState().user.gameRoom[index] && store.getState().user.gameRoom[index].health}</h4>
                     <ProgressBar width={(((client.health - 0) * (100 - 0)) / (client.maxHealth - 0)) + 0} color="green"/>
                     <p style={{textAlign: 'center'}}>Status Bar</p>
                     <div style={{background: '#F5F5F5', height: 70, width: '95%', border: '2px solid #333', display: 'flex'}}>
