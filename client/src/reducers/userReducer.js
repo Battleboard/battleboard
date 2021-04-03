@@ -3,7 +3,6 @@ import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CO
 const initialState = {
     spells:[],
     clientId: "",
-    gameId: "",
     gameRoom: [],
     maxHealth: 2500,
     phase: "select-spells",

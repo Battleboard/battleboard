@@ -13,7 +13,6 @@ const GameRoom = ({setGameRoom}) => {
     const clients = useSelector(state => state.user.gameRoom);
     const connection = useSelector(state => state.user.connection);
     const clientId = store.getState().user.clientId
-    const gameId = store.getState().user.gameId
 
     useEffect(() => {
         if (clients[0]?.health <= 0 || clients[1]?.health <= 0 ) dispatch(setPhase("battle-over"))
@@ -27,7 +26,7 @@ const GameRoom = ({setGameRoom}) => {
                 "method": "evaluate",
                 "clientId": clientId,
                 "spell": spell,
-                "gameId": gameId
+                "gameId": store.getState().user.gameRoom[0].gameId
             }
             
             connection.send(JSON.stringify(payLoad));

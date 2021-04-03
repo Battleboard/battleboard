@@ -87,7 +87,9 @@ webSocketServer.on("connection", (webSocket, request) => {
         {/* join a game room*/}
         if(result.method === "join"){
             const clientId = result.clientId;
+            
             const gameId = result.gameId;
+            console.log("game id: ", gameId);
             const game = games[gameId];
             const spells = result.spells;
             const health = result.health;
@@ -99,7 +101,8 @@ webSocketServer.on("connection", (webSocket, request) => {
                 "health": health,
                 "maxHealth":maxHealth,
                 "debuffs": [],
-                "previousSpell": null
+                "previousSpell": null,
+                "gameId": gameId
             })
             const payLoad = {
                 "method":"join",

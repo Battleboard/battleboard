@@ -58,23 +58,22 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
             const response = JSON.parse(message.data);
             
             if(response.method === 'create'){
-                setGame(response.game.id);
+                //setGame(response.game.id);
+                joinGameRoom(response.game.id)
             }
         }
+
+        
     }
 
-    const joinGameRoom = () => {
-        //if the gameId is null set the gameId to the entered gameId
-        if(store.getState().user.gameId === ""){
-            //set the gameId to the gameToJoin entered
-            setGame(gameToJoin);
-        } 
+    const joinGameRoom = (id) => {
+
             dispatch(setPhase("battle"))
 
             const payLoad = {
                 "method":"join",
                 "clientId":store.getState().user.clientId,
-                "gameId": store.getState().user.gameId,
+                "gameId": id,
                 "spells": store.getState().user.spells,
                 "health": store.getState().user.maxHealth,
                 "maxHealth": store.getState().user.maxHealth
@@ -102,7 +101,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 
                 {/* Map the game list */}
                 {games && games.map((game, index) => {
-                    return <div style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>Game ID:{game.id}</div>
+                    return <div onClick={() => joinGameRoom(game.id)} style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>Game ID:{game.id}</div>
                 })}
             
             
@@ -110,10 +109,6 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
         <div style={{flexGrow: 1, background: '#FFF'}}>
             <div style={{display: 'flex', flexDirection: 'column', width: '50%', margin: '20px auto'}}>
                 <Button style={{margin: '20px auto'}} onClick={createGameRoom}>Create Room</Button>
-                <Button style={{margin: '20px auto'}} onClick={joinGameRoom}>Join Room</Button>
-                <input type="text" name="gameId" placeholder="Game ID" onChange={handleChange} value={gameToJoin} style={{width:"100%"}}/>
-                <p>{copyLink}</p>
-                <Button style={{margin: '20px auto'}} onClick={() => {navigator.clipboard.writeText(copyLink)}}>Copy Link</Button>
             </div>
         </div>
     </div>
