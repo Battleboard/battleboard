@@ -7,6 +7,17 @@
 ## How to run locally
 
 [root]
-npm run concurrent:install
+
+npm install
+
+cd client
+
+[client]
+
+npm install
+
+cd ..
+
+[root]
 
 npm run dev
