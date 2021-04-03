@@ -62,7 +62,4 @@ export const getRooms = () => (dispatch) => {
             type: GET_ROOMS,
             payload: Object.values(res.data.games)       
         }))
-        
-    
-
 }
