@@ -59,7 +59,6 @@ router.post('/', urlencodedParser, [
     const {name, email, password} = req.body;
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        console.log("Errors: ", errors);
         return res.status(400).json(errors.array());
     }
     const newUser = new User({

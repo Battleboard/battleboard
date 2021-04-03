@@ -54,7 +54,6 @@ const Register = ({ isAuthenticated, error, register, clearErrors}) => {
 
         if(error.id === 'REGISTER_FAIL'){
           setMsg(error.msg);
-          console.log("error.msg: ", error.msg);
         }else{
           setMsg(null);
         }
