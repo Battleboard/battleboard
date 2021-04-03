@@ -52,7 +52,7 @@ const GameRoom = ({setGameRoom}) => {
         <div style = {{borderBottom: "5px solid #19A0EC", paddingBottom: 10}}>
             {/**palyer 2 Health progress bar!!! */}
             <div style = {{width: '75%', background: '#586973', display: 'flex', flexDirection: "column", margin: "35px auto"}}>
-                <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {clients[1].username} Health: {store.getState().user.gameRoom[1] && store.getState().user.gameRoom[1].health}</h4>
+                {clients[1] && <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {clients[1].username} Health: {store.getState().user.gameRoom[1] && store.getState().user.gameRoom[1].health}</h4>}
                 {clients[1] && <ProgressBar width={(((clients[1].health - 0) * (100 - 0)) / (clients[1].maxHealth - 0)) + 0} color="green"/>}
             </div>
             {/** player 2 Status Effect Bar!!!*/}
@@ -90,7 +90,7 @@ const GameRoom = ({setGameRoom}) => {
         <div>
         {/**Player 1 Health Bar */}
         <div style = {{width: '75%', background: '#586973', display: 'flex',flexDirection:"column", margin: "35px auto"}}>
-            <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {clients[1].username} Health: {store.getState().user.gameRoom[1] && store.getState().user.gameRoom[1].health}</h4>
+            {clients[0] && <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {clients[0].username} Health: {store.getState().user.gameRoom[1] && store.getState().user.gameRoom[1].health}</h4>}
                 {clients[0] && <ProgressBar width={(((clients[0].health - 0) * (100 - 0)) / (clients[0].maxHealth - 0)) + 0} color="green"/>}
             </div>
             {/** Player 1 Status Bar */}
