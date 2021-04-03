@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    console.log("", req.rooms );
+    console.log("rooms: ", req.rooms );
     res.json(req.rooms);
   });
 

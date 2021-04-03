@@ -57,12 +57,13 @@ export const setConnection = (connection) => (dispatch) => {
     })
 }
 
-export const getRooms = (rooms) => (dispatch) => {
+export const getRooms = () => (dispatch) => {
     axios.get('/api/rooms')
         .then(res => dispatch({
             type: GET_ROOMS,
-            payload: res.data.games          
+            payload: Object.values(res.data.games)       
         }))
+        
     
 
 }

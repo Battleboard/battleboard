@@ -10,6 +10,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     const [gameToJoin, setGameToJoin] = useState("");
     const [copyLink, setCopyLink] = useState("");
     const gameId = useSelector(state => state.user.gameId);
+    const games = useSelector(state => state.user.games)
     
     var HOST = null;
 
@@ -30,8 +31,6 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     useEffect(() => {
         setCopyLink(store.getState().user.gameId);
         store.dispatch(getRooms());
-        console.log("Games Obj: ", store.getState().user.games);
-        console.log("Games Array: ", Object.entries(store.getState().user.games));
 
     }, [gameId])
 
@@ -99,14 +98,14 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 
 	return <div style={{background: 'lightblue', display: 'flex', height: '100%'}}>
         <div style={{flexGrow: 4, background: '#F8F8F8'}}>
-            <div style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>
+            
 
                 {/* Map the game list */}
-                {store.getState().user.games && Object.entries(store.getState().user.games).map((game, index) => {
-                    return <p>{game.id}</p>
+                {games && games.map((game, index) => {
+                    return <div style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>Game ID:{game.id}</div>
                 })}
             
-            </div>
+            
         </div>
         <div style={{flexGrow: 1, background: '#FFF'}}>
             <div style={{display: 'flex', flexDirection: 'column', width: '50%', margin: '20px auto'}}>
