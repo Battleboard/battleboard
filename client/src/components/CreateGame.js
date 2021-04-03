@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {connect, useSelector, useDispatch} from 'react-redux';
 import store from '../store';
-import {setClient, setGame, setGameRoom, setConnection, setPhase} from '../actions/userActions';
+import {setClient, setGame, setGameRoom, setConnection, setPhase, getRooms} from '../actions/userActions';
 
 import Button from './styled/Button'
 
@@ -11,7 +11,6 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     const [copyLink, setCopyLink] = useState("");
     const gameId = useSelector(state => state.user.gameId);
     
-
     var HOST = null;
 
     if(process.env.NODE_ENV === 'development'){
@@ -30,14 +29,14 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 
     useEffect(() => {
         setCopyLink(store.getState().user.gameId);
+        store.dispatch(getRooms());
+        console.log("Games Obj: ", store.getState().user.games);
+        console.log("Games Array: ", Object.entries(store.getState().user.games));
+
     }, [gameId])
 
     //set the client id when the create button loads (use the players _id in future?)
     useEffect(() => {
-
-        
-        
-
         ws.onmessage = message => {
             const response = JSON.parse(message.data);
             if(response.method === 'connect'){
@@ -101,8 +100,12 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 	return <div style={{background: 'lightblue', display: 'flex', height: '100%'}}>
         <div style={{flexGrow: 4, background: '#F8F8F8'}}>
             <div style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>
-                <p>Game Title</p>
-                <p>Host</p>
+
+                {/* Map the game list */}
+                {store.getState().user.games && Object.entries(store.getState().user.games).map((game, index) => {
+                    return <p>{game.id}</p>
+                })}
+            
             </div>
         </div>
         <div style={{flexGrow: 1, background: '#FFF'}}>

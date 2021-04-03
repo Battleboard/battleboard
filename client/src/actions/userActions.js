@@ -1,5 +1,6 @@
-import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION, RESET_GAME} from './types';
+import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION, RESET_GAME, GET_ROOMS} from './types';
 import store from '../store';
+import axios from 'axios';
 
 //RESET GAME
 export const resetGame = () => (dispatch) => {
@@ -56,3 +57,12 @@ export const setConnection = (connection) => (dispatch) => {
     })
 }
 
+export const getRooms = (rooms) => (dispatch) => {
+    axios.get('/api/rooms')
+        .then(res => dispatch({
+            type: GET_ROOMS,
+            payload: res.data.games          
+        }))
+    
+
+}
