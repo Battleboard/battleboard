@@ -47,35 +47,8 @@ const GameRoom = ({setGameRoom}) => {
         }
     }
 
-
-    return <div style = {{display: "flex", height: '100%', flexDirection: 'column', background: "#212121"}}>
-        <div style = {{borderBottom: "5px solid #19A0EC", paddingBottom: 10}}>
-            {/**palyer 2 Health progress bar!!! */}
-            <div style = {{width: '75%', background: '#586973', display: 'flex', flexDirection: "column", margin: "35px auto"}}>
-                <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {clients[1].username} Health: {store.getState().user.gameRoom[1] && store.getState().user.gameRoom[1].health}</h4>
-                {clients[1] && <ProgressBar width={(((clients[1].health - 0) * (100 - 0)) / (clients[1].maxHealth - 0)) + 0} color="green"/>}
-            </div>
-            {/** player 2 Status Effect Bar!!!*/}
-            <div style = {{width: '85%', background: '#C4C4C4', display: 'flex', height: 70, margin: "0px auto 10px auto"}}>
-                        {clients[1] && clients[1].debuffs.map((debuff, index) => {
-                            return <div key={index} style={{width: 70, height: 80}}>
-                                <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
-                                <div style={{display: 'flex'}}>
-                                    <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                        <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
-                                        <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage}</div>
-                                    </div>
-                                    <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                        <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
-                                        <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.duration}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        })}
-            </div>
-        </div>
-        {/** Broken Turn reveal stage */}
-        <div style = {{borderBottom: "5px solid #19A0EC", width: '100%', background: '#000000', display: 'flex', height: 250, margin: "1px auto"}}>
+	return <div style={{display: 'flex', height: '100%', flexDirection: 'column'}}>
+        <div style={{width: '100%', background: '#21A316', display: 'flex', height: 270}}>
             <div style={{border: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
                 <div style={{margin: '0px auto'}}>
                     {currentSpells.length !== 0 && <Card spell={currentSpells[0]} />}
@@ -87,15 +60,14 @@ const GameRoom = ({setGameRoom}) => {
                 </div>  
             </div>
         </div>
-        <div>
-        {/**Player 1 Health Bar */}
-        <div style = {{width: '75%', background: '#586973', display: 'flex',flexDirection:"column", margin: "35px auto"}}>
-            <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {clients[1].username} Health: {store.getState().user.gameRoom[1] && store.getState().user.gameRoom[1].health}</h4>
-                {clients[0] && <ProgressBar width={(((clients[0].health - 0) * (100 - 0)) / (clients[0].maxHealth - 0)) + 0} color="green"/>}
-            </div>
-            {/** Player 1 Status Bar */}
-            <div style = {{width: '85%', background: '#C4C4C4', display: 'flex', height: 70, margin: "0px auto 10px auto"}}>
-                {clients[0] && clients[0].debuffs.map((debuff, index) => {
+        <div style={{display: 'flex', flexGrow: 2}}>
+            {clients.map((client, index) => {
+                return <div key={index} style={{border: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
+                    <h4 style={{textAlign: 'center', width: '100%'}}>Player {client.username} Health: {store.getState().user.gameRoom[index] && store.getState().user.gameRoom[index].health}</h4>
+                    <ProgressBar width={(((client.health - 0) * (100 - 0)) / (client.maxHealth - 0)) + 0} color="green"/>
+                    <p style={{textAlign: 'center'}}>Status Bar</p>
+                    <div style={{background: '#F5F5F5', height: 70, width: '95%', border: '2px solid #333', display: 'flex'}}>
+                        {client.debuffs.map((debuff, index) => {
                             return <div key={index} style={{width: 70, height: 80}}>
                                 <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                                 <div style={{display: 'flex'}}>
@@ -110,18 +82,18 @@ const GameRoom = ({setGameRoom}) => {
                                 </div>
                             </div>
                         })}
-            </div>
-            {/**Spell Display */}
-            <div style={{width: '100%', display: 'flex', flexWrap: 'wrap', height: 300, margin: '10px auto', justifyContent: 'center', overflow: "auto"}}>
-                        {clients[0] && clients[0].spells.map((spell, index) => {
+                    </div>
+                    <div style={{width: '60%', display: 'flex', flexWrap: 'wrap', height: 550, margin: '10px auto', justifyContent: 'center'}}>
+                        {client.spells.map((spell, index) => {
                             return <div key={index}>
-                                <Card  spell={spell} action={() => initializeCombat(spell, clients[0].clientId)}/>
+                                <Card  spell={spell} action={() => initializeCombat(spell, client.clientId)}/>
                             </div>
                         })}
                     </div>
-        </div>
+                </div>
+            })}
+        </div>       
     </div>
-    
 };
 
 const mapStateToProps = state => ({
