@@ -145,6 +145,7 @@ webSocketServer.on("connection", (webSocket, request) => {
                     //get the damage and heal values from the players spells
                     let player1 = {
                         damage: game.clients[0].selectedSpell.damage,
+                        heal: game.clients[0].selectedSpell.heal,
                         maxHealth: game.clients[0].maxHealth,
                         debuffs: game.clients[0].debuffs,
                         selectedSpell: game.clients[0].selectedSpell
@@ -174,11 +175,11 @@ webSocketServer.on("connection", (webSocket, request) => {
 
                     //players heal
                     //check if the player healing would result in a value above the maximum health
-                    let p0CappedHealReduction = cappedHealReduction(p0Health, player1.selectedSpell.heal, player1.maxHealth);
-                    let p1CappedHealReduction = cappedHealReduction(p1Health, player2.selectedSpell.heal, player2.maxHealth);
+                    let p0CappedHealReduction = cappedHealReduction(p0Health, player1.heal, player1.maxHealth);
+                    let p1CappedHealReduction = cappedHealReduction(p1Health, player2.heal, player2.maxHealth);
 
-                    p0Health = p0Health + player1.selectedSpell.heal + p0CappedHealReduction;
-                    p1Health = p1Health + player2.selectedSpell.heal + p1CappedHealReduction;
+                    p0Health = p0Health + player1.heal + p0CappedHealReduction;
+                    p1Health = p1Health + player2.heal + p1CappedHealReduction;
 
                     //update the game object to send back as a payload to the front end
                     game.clients[0].health = p0Health;
@@ -231,15 +232,33 @@ const cappedHealReduction = (currentHealth, heal, maxHealth) => {
 const getDebuffs = (player, opponent) => {
     if(player.debuffs.length > 0){
         for(let i=0; i < player.debuffs.length; i++){
-            opponent.damage += player.debuffs[i].damage;
-            //decrement the debuff duration / remove the debuff from the list
-            if(player.debuffs[i].duration === 1){
-                //remove the debuff
-                player.debuffs.splice(i,1);
-            }else{
-                //decrement the debuff
-                player.debuffs[i].duration -= 1;
+
+            if(player.debuffs[i].type === 'damage'){
+                opponent.damage += player.debuffs[i].damage;
+                //decrement the debuff duration / remove the debuff from the list
+                if(player.debuffs[i].duration === 1){
+                    //remove the debuff
+                    player.debuffs.splice(i,1);
+                }else{
+                    //decrement the debuff
+                    player.debuffs[i].duration -= 1;
+                }
+
+            }else if(player.debuffs[i].type === 'heal'){
+                player.heal += player.debuffs[i].heal;
+                //decrement the debuff duration / remove the debuff from the list
+                if(player.debuffs[i].duration === 1){
+                    //remove the debuff
+                    player.debuffs.splice(i,1);
+                }else{
+                    //decrement the debuff
+                    player.debuffs[i].duration -= 1;
+                }
             }
+
+
+
+
         }
     }
     return player
@@ -250,8 +269,18 @@ const setDebuffs = (player, opponent) => {
             name: player.selectedSpell.name, 
             icon: player.selectedSpell.source,
             damage: player.selectedSpell.damageOverTime, 
-            duration: player.selectedSpell.damageOverTimeDuration
+            duration: player.selectedSpell.damageOverTimeDuration,
+            type: "damage"
         })
+    }else if(player.selectedSpell.healOverTime !== 0){
+        player.debuffs.push({
+            name: player.selectedSpell.name, 
+            icon: player.selectedSpell.source,
+            heal: player.selectedSpell.healOverTime, 
+            duration: player.selectedSpell.healOverTimeDuration,
+            type: "heal"
+        })       
     }
+
     return player
 }

@@ -6,7 +6,9 @@
             "damage": 180,
             "heal":0,
             "damageOverTime": 10, 
-            "damageOverTimeDuration": 4
+            "damageOverTimeDuration": 4,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name": "Fire Storm",
@@ -14,7 +16,9 @@
             "damage": 160,
             "heal": 0,
             "damageOverTime": 20, 
-            "damageOverTimeDuration": 4
+            "damageOverTimeDuration": 4,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name": "Flame Pillar",
@@ -22,15 +26,19 @@
             "damage": 200,
             "heal": 0,
             "damageOverTime": 0, 
-            "damageOverTimeDuration": 0
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name": "Holy Reaper",
             "source": "/images/spells/holyreaper.svg",
             "damage": 120,
-            "heal": 80,
+            "heal": 40,
             "damageOverTime": 0, 
-            "damageOverTimeDuration": 0
+            "damageOverTimeDuration": 0,
+            "healOverTime": 10,
+            "healOverTimeDuration": 4
         },
         {
             "name": "Sacrifice",
@@ -38,7 +46,9 @@
             "damage": 400,
             "heal": -200,
             "damageOverTime": 0, 
-            "damageOverTimeDuration": 0
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name": "Searing Toxin",
@@ -46,7 +56,9 @@
             "damage": 50,
             "heal":0,
             "damageOverTime": 50,
-            "damageOverTimeDuration": 4
+            "damageOverTimeDuration": 4,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
 
         },
         {
@@ -55,7 +67,9 @@
             "damage": 105,
             "heal":0,
             "damageOverTime": 105, 
-            "damageOverTimeDuration": 1
+            "damageOverTimeDuration": 1,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name": "Heavy Slam",
@@ -64,7 +78,9 @@
             "heal": -40,
             "stunDuration": 2,
             "damageOverTime": 0, 
-            "damageOverTimeDuration": 0
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name": "Side Slash",
@@ -72,7 +88,9 @@
             "damage": 30,
             "heal":0,
             "damageOverTime": 30,
-            "damageOverTimeDuration": 9
+            "damageOverTimeDuration": 9,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name":"Nothing",
@@ -80,7 +98,9 @@
             "damage":0,
             "heal":0,
             "damageOverTime": 0, 
-            "damageOverTimeDuration": 0
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name":"Vishnu Beam",
@@ -89,7 +109,9 @@
             "heal": 120,
             "shield": 100,
             "damageOverTime": 0, 
-            "damageOverTimeDuration": 0
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name":"Slice",
@@ -98,7 +120,9 @@
             "heal": 0,
             "shield": 0,
             "damageOverTime": 20,
-            "damageOverTimeDuration": 5
+            "damageOverTimeDuration": 5,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name":"Jesus Beam",
@@ -106,7 +130,9 @@
             "damage": 25,
             "heal": 0,
             "damageOverTime": 100,
-            "damageOverTimeDuration": 2
+            "damageOverTimeDuration": 2,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name":"Holy Prayer",
@@ -115,7 +141,9 @@
             "heal": 200,
             "shield": 0,
             "damageOverTime": 0, 
-            "damageOverTimeDuration": 0
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name": "True Shot",
@@ -123,7 +151,9 @@
             "damage": 180,
             "heal": 0,
             "damageOverTime": 15,
-            "damageOverTimeDuration": 3
+            "damageOverTimeDuration": 3,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         },
         {
             "name": "Back Stab",
@@ -131,7 +161,9 @@
             "damage": 150,
             "heal": 50,
             "damageOverTime": 5, 
-            "damageOverTimeDuration": 5
+            "damageOverTimeDuration": 5,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
         }
     ]
 }
