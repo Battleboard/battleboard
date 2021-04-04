@@ -6,7 +6,7 @@ import CreateGame from "./CreateGame";
 import SelectedSpells from "./SelectedSpells";
 import { useSelector, useDispatch } from 'react-redux'
 import GameRoom from "./GameRoom";
-import { setPhase, resetGame } from '../actions/userActions'
+import { setPhase, resetGame, deleteRoom } from '../actions/userActions'
 
 const GuestLinks = () => {
   
@@ -55,6 +55,7 @@ const Landing = () => {
 			case 'battle':
 				return <GameRoom connection={connection} />
 			case 'battle-over':
+				dispatch(deleteRoom(clients[0].gameId))
 				return <div style={{display: 'flex', flexDirection: 'column'}}>
 					<p>{`Player 1 hp: ${clients[0].health}`}</p>
 					<p>{`Player 2 hp: ${clients[1].health}`}</p>

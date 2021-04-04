@@ -16,3 +16,4 @@ export const SET_PHASE = 'SET_PHASE';
 export const SET_CONNECTION = 'SET_CONNECTION';
 export const RESET_GAME = 'RESET_GAME';
 export const GET_ROOMS = 'GET_ROOMS';
+export const DELETE_ROOM = 'DELETE_ROOM';

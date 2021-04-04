@@ -1,4 +1,4 @@
-import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION, RESET_GAME, GET_ROOMS} from './types';
+import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION, RESET_GAME, GET_ROOMS, DELETE_ROOM} from './types';
 import store from '../store';
 import axios from 'axios';
 
@@ -62,4 +62,10 @@ export const getRooms = () => (dispatch) => {
             type: GET_ROOMS,
             payload: Object.values(res.data.games)       
         }))
+}
+
+export const deleteRoom = (room) => () => {
+
+    axios.delete('/api/rooms/room/' + room)
+
 }
