@@ -107,7 +107,8 @@ webSocketServer.on("connection", (webSocket, request) => {
                 "debuffs": [],
                 "previousSpell": null,
                 "gameId": gameId,
-                "username": username
+                "username": username,
+                "damageResult":0
             })
             const payLoad = {
                 "method":"join",
@@ -148,7 +149,7 @@ webSocketServer.on("connection", (webSocket, request) => {
                         heal: game.clients[0].selectedSpell.heal,
                         maxHealth: game.clients[0].maxHealth,
                         debuffs: game.clients[0].debuffs,
-                        selectedSpell: game.clients[0].selectedSpell
+                        selectedSpell: game.clients[0].selectedSpell,
                     }
 
                     let player2 = {
@@ -156,7 +157,7 @@ webSocketServer.on("connection", (webSocket, request) => {
                         heal: game.clients[1].selectedSpell.heal,
                         maxHealth: game.clients[1].maxHealth,
                         debuffs: game.clients[1].debuffs,
-                        selectedSpell: game.clients[1].selectedSpell
+                        selectedSpell: game.clients[1].selectedSpell,
                     }
 
                     {/*Combat Sequence*/}
@@ -171,8 +172,8 @@ webSocketServer.on("connection", (webSocket, request) => {
                     player2 = setDebuffs(player2, player1);
 
                     let p0Health = game.clients[0].health - player2.damage;
-                    let p1Health = game.clients[1].health - player1.damage;                   
-
+                    let p1Health = game.clients[1].health - player1.damage;
+                    
                     //players heal
                     //check if the player healing would result in a value above the maximum health
                     let p0CappedHealReduction = cappedHealReduction(p0Health, player1.heal, player1.maxHealth);
@@ -180,6 +181,9 @@ webSocketServer.on("connection", (webSocket, request) => {
 
                     p0Health = p0Health + player1.heal + p0CappedHealReduction;
                     p1Health = p1Health + player2.heal + p1CappedHealReduction;
+
+                    game.clients[0].damageResult = game.clients[0].health - p0Health;
+                    game.clients[1].damageResult = game.clients[1].health - p1Health;
 
                     //update the game object to send back as a payload to the front end
                     game.clients[0].health = p0Health;
@@ -281,5 +285,6 @@ const setDebuffs = (player, opponent) => {
             type: "heal"
         })       
     }
+
     return player
 }

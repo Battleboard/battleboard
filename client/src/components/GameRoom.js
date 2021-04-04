@@ -68,7 +68,8 @@ const GameRoom = ({setGameRoom}) => {
                 if(response.method === 'evaluate'){
                     //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
                     setCurrentSpells([response.game.clients[0].previousSpell, response.game.clients[1].previousSpell]);
-
+                    console.log("damage 1: ",  response.game.clients[0].damageResult);
+                    console.log("damage: 2 ",  response.game.clients[1].damageResult);
                     setTimeout(() => {
                         setCurrentSpells([])
                         setCurrentUserSpell(null)
