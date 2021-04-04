@@ -6,9 +6,14 @@ import { setGameRoom, setPhase} from '../actions/userActions';
 import { connect } from 'react-redux';
 import ProgressBar from "./styled/ProgressBar";
 
+const title_text_styles = {margin: 0, fontSize: 24, textAlign: 'center', width: '100%', fontFamily: 'sans-serif', paddingTop: 5, color: '#000'}
+const status_bar_styles = {width: '85%', background: '#7E7E7E', display: 'flex', height: 70, margin: "0px auto 10px auto"}
+const player_stats_container_styles = {width: '75%', background: '#7E7E7E', display: 'flex', flexDirection:"column", margin: "15px auto"}
+
 const GameRoom = ({setGameRoom}) => {
     const [currentUserSpell, setCurrentUserSpell] = useState(null)
     const [currentSpells, setCurrentSpells] = useState([])
+    const [currentDamageResults, setCurrentDamageResults] = useState([])
     const [calculating, setCalculating] = useState(false)
 
     const [player, setPlayer] = useState()
@@ -68,11 +73,13 @@ const GameRoom = ({setGameRoom}) => {
                 if(response.method === 'evaluate'){
                     //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
                     setCurrentSpells([response.game.clients[0].previousSpell, response.game.clients[1].previousSpell]);
+                    setCurrentDamageResults([response.game.clients[0].damageResult], response.game.clients[1].damageResult)
                     console.log("damage 1: ",  response.game.clients[0].damageResult);
                     console.log("damage: 2 ",  response.game.clients[1].damageResult);
                     setTimeout(() => {
                         setCurrentSpells([])
                         setCurrentUserSpell(null)
+                        setCurrentDamageResults([])
                         setGameRoom(response.game);
                         setCalculating(false)
                     }, 3000) 
@@ -83,14 +90,18 @@ const GameRoom = ({setGameRoom}) => {
 
 
     return <div style = {{display: "flex", height: '100%', flexDirection: 'column', background: "#212121"}}>
-        <div style = {{borderBottom: "5px solid #19A0EC", paddingBottom: 10}}>
-            {/**palyer 2 Health progress bar!!! */}
-            <div style = {{width: '75%', background: '#586973', display: 'flex', flexDirection: "column", margin: "35px auto"}}>
-                {opponent && <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {opponent.username} Health: {opponent && opponent.health}</h4>}
+        <div style={{paddingBottom: 10}}>
+            {/* Opponent Information - Username / Health*/}
+            <div style = {player_stats_container_styles}>
+                <div style={{display: 'flex', height: 40}}>
+                    {opponent && <h4 style={{...title_text_styles, width: '50%', borderBottom: '3px solid #333'}}>{opponent.username}</h4>}
+                    {opponent && <h4 style={{...title_text_styles, width: '50%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Health: {player && player.health}</h4>}
+                </div>
                 {opponent && <ProgressBar width={(((opponent.health - 0) * (100 - 0)) / (opponent.maxHealth - 0)) + 0} color="green"/>}
             </div>
-            {/** player 2 Status Effect Bar!!!*/}
-            <div style = {{width: '85%', background: '#C4C4C4', display: 'flex', height: 70, margin: "0px auto 10px auto"}}>
+
+            {/* Opponent Status Bar*/}
+            <div style={status_bar_styles}>
                 {opponent && opponent.debuffs.map((debuff, index) => {
                     return <div key={index} style={{width: 70, height: 80}}>
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
@@ -110,13 +121,14 @@ const GameRoom = ({setGameRoom}) => {
         </div>
 
         {/** Card Reveal Area */}
-        <div style = {{borderBottom: "5px solid #19A0EC", width: '100%', background: '#000000', display: 'flex', height: 250, margin: "1px auto"}}>
-            <div style={{border: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
-                <div style={{margin: '0px auto'}}>
+        <div style = {{width: '100%', background: '#C4C4C4', display: 'flex', height: 250, margin: "1px auto"}}>
+            <div style={{display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
+                <div style={{margin: '0px auto', display: 'flex'}}>
                     {currentUserSpell && <Card spell={currentUserSpell} />}
+                    {currentSpells.length !== 0 && <div style={{color: '#FFF'}}>{currentDamageResults[1]}</div>}
                 </div>
             </div>
-            <div style={{border: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
+            <div style={{borderLeft: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
                 <div style={{margin: '0px auto'}}>
                     {currentSpells.length !== 0 && <Card spell={currentSpells[1]} />}
                 </div>  
@@ -124,13 +136,17 @@ const GameRoom = ({setGameRoom}) => {
         </div>
 
         <div>
-        {/**Player 1 Health Bar */}
-        <div style = {{width: '75%', background: '#586973', display: 'flex',flexDirection:"column", margin: "35px auto"}}>
-            {player && <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {player.username} Health: {player && player.health}</h4>}
+            {/**Player 1 Health Bar */}
+            <div style = {player_stats_container_styles}>
+                <div style={{display: 'flex', height: 40}}>
+                    {player && <h4 style={{...title_text_styles, width: '50%', borderBottom: '3px solid #333'}}>{player.username}</h4>}
+                    {player && <h4 style={{...title_text_styles, width: '50%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Health: {player && player.health}</h4>}
+                </div>
                 {player && <ProgressBar width={(((player.health - 0) * (100 - 0)) / (player.maxHealth - 0)) + 0} color="green"/>}
             </div>
+
             {/** Player 1 Status Bar */}
-            <div style = {{width: '85%', background: '#C4C4C4', display: 'flex', height: 70, margin: "0px auto 10px auto"}}>
+            <div style={status_bar_styles}>
                 {player && player.debuffs.map((debuff, index) => {
                     return <div key={index} style={{width: 70, height: 80}}>
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />

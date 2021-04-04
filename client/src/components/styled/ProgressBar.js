@@ -1,8 +1,8 @@
 const container_styles = {
-    height: 20,
-    width: '90%',
+    height: 40,
+    width: '100%',
     background: '#888',
-    margin: "10px auto 0"
+    margin: "0 auto"
 }
 
 const progress_styles = {
