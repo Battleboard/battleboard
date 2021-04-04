@@ -9,6 +9,7 @@ import ProgressBar from "./styled/ProgressBar";
 const title_text_styles = {margin: 0, fontSize: 24, textAlign: 'center', width: '100%', fontFamily: 'sans-serif', paddingTop: 5, color: '#000'}
 const status_bar_styles = {width: '85%', background: '#7E7E7E', display: 'flex', height: 70, margin: "0px auto 10px auto"}
 const player_stats_container_styles = {width: '75%', background: '#7E7E7E', display: 'flex', flexDirection:"column", margin: "15px auto"}
+const damage_result_styles = {color: 'red', fontSize: 28, marginTop: '110px', marginLeft: 30, fontWeight: 'bold'}
 
 const GameRoom = ({setGameRoom}) => {
     const [currentUserSpell, setCurrentUserSpell] = useState(null)
@@ -23,6 +24,8 @@ const GameRoom = ({setGameRoom}) => {
     const clients = useSelector(state => state.user.gameRoom);
     const connection = useSelector(state => state.user.connection);
     const clientId = store.getState().user.clientId
+
+    useEffect(() => { console.log(currentDamageResults)}, [currentDamageResults])
 
     //route the players into player and opponent
     useEffect(() => {
@@ -73,9 +76,9 @@ const GameRoom = ({setGameRoom}) => {
                 if(response.method === 'evaluate'){
                     //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
                     setCurrentSpells([response.game.clients[0].previousSpell, response.game.clients[1].previousSpell]);
-                    setCurrentDamageResults([response.game.clients[0].damageResult], response.game.clients[1].damageResult)
                     console.log("damage 1: ",  response.game.clients[0].damageResult);
                     console.log("damage: 2 ",  response.game.clients[1].damageResult);
+                    setCurrentDamageResults([response.game.clients[0].damageResult, response.game.clients[1].damageResult])
                     setTimeout(() => {
                         setCurrentSpells([])
                         setCurrentUserSpell(null)
@@ -125,12 +128,13 @@ const GameRoom = ({setGameRoom}) => {
             <div style={{display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
                 <div style={{margin: '0px auto', display: 'flex'}}>
                     {currentUserSpell && <Card spell={currentUserSpell} />}
-                    {currentSpells.length !== 0 && <div style={{color: '#FFF'}}>{currentDamageResults[1]}</div>}
+                    {currentSpells.length !== 0 && <div style={damage_result_styles}>{currentDamageResults[0]}</div>}
                 </div>
             </div>
             <div style={{borderLeft: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
-                <div style={{margin: '0px auto'}}>
+                <div style={{margin: '0px auto', display: 'flex'}}>
                     {currentSpells.length !== 0 && <Card spell={currentSpells[1]} />}
+                    {currentSpells.length !== 0 && <div style={damage_result_styles}>{currentDamageResults[1]}</div>}
                 </div>  
             </div>
         </div>
