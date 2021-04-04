@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import ProgressBar from "./styled/ProgressBar";
 
 const GameRoom = ({setGameRoom}) => {
+    const [currentUserSpell, setCurrentUserSpell] = useState(null)
     const [currentSpells, setCurrentSpells] = useState([])
     const [calculating, setCalculating] = useState(false)
 
@@ -39,15 +40,19 @@ const GameRoom = ({setGameRoom}) => {
                 setOpponent(clients[0])
             }
         }
+    // eslint-disable-next-line
     }, [clients])
 
     useEffect(() => {
         if (player?.health <= 0 || opponent?.health <= 0 ) dispatch(setPhase("battle-over"))
+    // eslint-disable-next-line
     }, [clients, dispatch])
 
     const initializeCombat = (spell, id) => {
         if (!calculating) {
             setCalculating(true)
+
+            setCurrentUserSpell(spell)
 
             const payLoad = {
                 "method": "evaluate",
@@ -66,6 +71,7 @@ const GameRoom = ({setGameRoom}) => {
 
                     setTimeout(() => {
                         setCurrentSpells([])
+                        setCurrentUserSpell(null)
                         setGameRoom(response.game);
                         setCalculating(false)
                     }, 3000) 
@@ -84,28 +90,29 @@ const GameRoom = ({setGameRoom}) => {
             </div>
             {/** player 2 Status Effect Bar!!!*/}
             <div style = {{width: '85%', background: '#C4C4C4', display: 'flex', height: 70, margin: "0px auto 10px auto"}}>
-                        {opponent && opponent.debuffs.map((debuff, index) => {
-                            return <div key={index} style={{width: 70, height: 80}}>
-                                <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
-                                <div style={{display: 'flex'}}>
-                                    <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                        <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
-                                        <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage}</div>
-                                    </div>
-                                    <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                        <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
-                                        <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.duration}</div>
-                                    </div>
-                                </div>
+                {opponent && opponent.debuffs.map((debuff, index) => {
+                    return <div key={index} style={{width: 70, height: 80}}>
+                        <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
+                        <div style={{display: 'flex'}}>
+                            <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage}</div>
                             </div>
-                        })}
+                            <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.duration}</div>
+                            </div>
+                        </div>
+                    </div>
+                })}
             </div>
         </div>
-        {/** Broken Turn reveal stage */}
+
+        {/** Card Reveal Area */}
         <div style = {{borderBottom: "5px solid #19A0EC", width: '100%', background: '#000000', display: 'flex', height: 250, margin: "1px auto"}}>
             <div style={{border: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
                 <div style={{margin: '0px auto'}}>
-                    {currentSpells.length !== 0 && <Card spell={currentSpells[0]} />}
+                    {currentUserSpell && <Card spell={currentUserSpell} />}
                 </div>
             </div>
             <div style={{border: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
@@ -114,6 +121,7 @@ const GameRoom = ({setGameRoom}) => {
                 </div>  
             </div>
         </div>
+
         <div>
         {/**Player 1 Health Bar */}
         <div style = {{width: '75%', background: '#586973', display: 'flex',flexDirection:"column", margin: "35px auto"}}>
@@ -123,29 +131,29 @@ const GameRoom = ({setGameRoom}) => {
             {/** Player 1 Status Bar */}
             <div style = {{width: '85%', background: '#C4C4C4', display: 'flex', height: 70, margin: "0px auto 10px auto"}}>
                 {player && player.debuffs.map((debuff, index) => {
-                            return <div key={index} style={{width: 70, height: 80}}>
-                                <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
-                                <div style={{display: 'flex'}}>
-                                    <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                        <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
-                                        <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage}</div>
-                                    </div>
-                                    <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                        <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
-                                        <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.duration}</div>
-                                    </div>
-                                </div>
+                    return <div key={index} style={{width: 70, height: 80}}>
+                        <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
+                        <div style={{display: 'flex'}}>
+                            <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage}</div>
                             </div>
-                        })}
+                            <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.duration}</div>
+                            </div>
+                        </div>
+                    </div>
+                })}
             </div>
             {/**Spell Display */}
             <div style={{width: '100%', display: 'flex', flexWrap: 'wrap', height: 300, margin: '10px auto', justifyContent: 'center', overflow: "auto"}}>
-                        {player && player.spells.map((spell, index) => {
-                            return <div key={index}>
-                                <Card  spell={spell} action={() => initializeCombat(spell, player.clientId)}/>vv
-                            </div>
-                        })}
+                {player && player.spells.map((spell, index) => {
+                    return <div key={index}>
+                        <Card  spell={spell} action={() => initializeCombat(spell, player.clientId)}/>vv
                     </div>
+                })}
+            </div>
         </div>
     </div>
     
