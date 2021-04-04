@@ -9,13 +9,40 @@ import ProgressBar from "./styled/ProgressBar";
 const GameRoom = ({setGameRoom}) => {
     const [currentSpells, setCurrentSpells] = useState([])
     const [calculating, setCalculating] = useState(false)
+
+    const [player, setPlayer] = useState()
+    const [opponent, setOpponent] = useState()
+
     const dispatch = useDispatch()
     const clients = useSelector(state => state.user.gameRoom);
     const connection = useSelector(state => state.user.connection);
     const clientId = store.getState().user.clientId
 
+    //route the players into player and opponent
     useEffect(() => {
-        if (clients[0]?.health <= 0 || clients[1]?.health <= 0 ) dispatch(setPhase("battle-over"))
+        //if the game room only has a single client set the player to the client
+        if(clients.length === 1){
+            setPlayer(clients[0]);
+
+        }else if(clients.length === 2){
+            let clientIndex = null;
+            //iterate through the clients and set the client with the id matching clientId to the player
+            for(let i=0; i<clients.length; i++){
+                if(clients[i].clientId === clientId){
+                    setPlayer(clients[i])
+                    clientIndex = i;
+                }
+            }
+            if(clientIndex === 0){
+                setOpponent(clients[1])
+            }else if(clientIndex === 1){
+                setOpponent(clients[0])
+            }
+        }
+    }, [clients])
+
+    useEffect(() => {
+        if (player?.health <= 0 || opponent?.health <= 0 ) dispatch(setPhase("battle-over"))
     }, [clients, dispatch])
 
     const initializeCombat = (spell, id) => {
@@ -52,12 +79,12 @@ const GameRoom = ({setGameRoom}) => {
         <div style = {{borderBottom: "5px solid #19A0EC", paddingBottom: 10}}>
             {/**palyer 2 Health progress bar!!! */}
             <div style = {{width: '75%', background: '#586973', display: 'flex', flexDirection: "column", margin: "35px auto"}}>
-                {clients[1] && <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {clients[1].username} Health: {store.getState().user.gameRoom[1] && store.getState().user.gameRoom[1].health}</h4>}
-                {clients[1] && <ProgressBar width={(((clients[1].health - 0) * (100 - 0)) / (clients[1].maxHealth - 0)) + 0} color="green"/>}
+                {opponent && <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {opponent.username} Health: {opponent && opponent.health}</h4>}
+                {opponent && <ProgressBar width={(((opponent.health - 0) * (100 - 0)) / (opponent.maxHealth - 0)) + 0} color="green"/>}
             </div>
             {/** player 2 Status Effect Bar!!!*/}
             <div style = {{width: '85%', background: '#C4C4C4', display: 'flex', height: 70, margin: "0px auto 10px auto"}}>
-                        {clients[1] && clients[1].debuffs.map((debuff, index) => {
+                        {opponent && opponent.debuffs.map((debuff, index) => {
                             return <div key={index} style={{width: 70, height: 80}}>
                                 <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                                 <div style={{display: 'flex'}}>
@@ -90,12 +117,12 @@ const GameRoom = ({setGameRoom}) => {
         <div>
         {/**Player 1 Health Bar */}
         <div style = {{width: '75%', background: '#586973', display: 'flex',flexDirection:"column", margin: "35px auto"}}>
-            {clients[0] && <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {clients[0].username} Health: {store.getState().user.gameRoom[1] && store.getState().user.gameRoom[1].health}</h4>}
-                {clients[0] && <ProgressBar width={(((clients[0].health - 0) * (100 - 0)) / (clients[0].maxHealth - 0)) + 0} color="green"/>}
+            {player && <h4 style={{margin: 0, fontSize: 24,textAlign: 'center', width: '100%'}}>Player {player.username} Health: {player && player.health}</h4>}
+                {player && <ProgressBar width={(((player.health - 0) * (100 - 0)) / (player.maxHealth - 0)) + 0} color="green"/>}
             </div>
             {/** Player 1 Status Bar */}
             <div style = {{width: '85%', background: '#C4C4C4', display: 'flex', height: 70, margin: "0px auto 10px auto"}}>
-                {clients[0] && clients[0].debuffs.map((debuff, index) => {
+                {player && player.debuffs.map((debuff, index) => {
                             return <div key={index} style={{width: 70, height: 80}}>
                                 <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                                 <div style={{display: 'flex'}}>
@@ -113,9 +140,9 @@ const GameRoom = ({setGameRoom}) => {
             </div>
             {/**Spell Display */}
             <div style={{width: '100%', display: 'flex', flexWrap: 'wrap', height: 300, margin: '10px auto', justifyContent: 'center', overflow: "auto"}}>
-                        {clients[0] && clients[0].spells.map((spell, index) => {
+                        {player && player.spells.map((spell, index) => {
                             return <div key={index}>
-                                <Card  spell={spell} action={() => initializeCombat(spell, clients[0].clientId)}/>
+                                <Card  spell={spell} action={() => initializeCombat(spell, player.clientId)}/>vv
                             </div>
                         })}
                     </div>
