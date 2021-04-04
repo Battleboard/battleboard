@@ -281,6 +281,5 @@ const setDebuffs = (player, opponent) => {
             type: "heal"
         })       
     }
-
     return player
 }

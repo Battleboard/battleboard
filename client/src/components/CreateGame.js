@@ -90,8 +90,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     }
 
 	return <div style={{background: 'lightblue', display: 'flex', height: '100%'}}>
-        <div style={{flexGrow: 4, background: '#F8F8F8'}}>
-            
+        <div style={{flexGrow: 4, background: '#F8F8F8'}}>          
 
                 {/* Map the game list */}
                 {games && games.map((game, index) => {
@@ -110,6 +109,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
         </div>
         <div style={{flexGrow: 1, background: '#FFF'}}>
             <div style={{display: 'flex', flexDirection: 'column', width: '50%', margin: '20px auto'}}>
+                <Button onClick={() => dispatch(getRooms())}>Refresh</Button>
                 <Button style={{margin: '20px auto'}} onClick={createGameRoom}>Create Room</Button>
             </div>
         </div>
