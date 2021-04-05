@@ -186,7 +186,7 @@ const GameRoom = ({setGameRoom}) => {
             <div style={{width: '100%', display: 'flex', flexWrap: 'wrap', height: 300, margin: '10px auto', justifyContent: 'center', overflow: "auto"}}>
                 {clients[player] && clients[player].spells.map((spell, index) => {
                     return <div key={index}>
-                        <Card  spell={spell} action={() => initializeCombat(spell, store.getState().user.gameRoom[player].clientId)}/>vv
+                        <Card  spell={spell} action={() => initializeCombat(spell, store.getState().user.gameRoom[player].clientId)}/>
                     </div>
                 })}
             </div>
