@@ -1,74 +1,121 @@
 {
     "spells": [
         {
+            "name": "Fortify",
+            "source": "/images/spells/fortify.svg",
+            "damage": 100,
+            "heal":0,
+            "shield": 100,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 3,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime":50,
+            "shieldOverTimeDuration":5
+        },
+        {
+            "name": "Shield",
+            "source": "/images/spells/shield.svg",
+            "damage": 0,
+            "heal":0,
+            "shield": 300,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 3,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
+        },
+        {
             "name": "Shurikens",
             "source": "/images/spells/shuriken.svg",
             "damage": 135,
             "heal":0,
+            "shield":0,
             "damageOverTime": 35, 
             "damageOverTimeDuration": 3,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Fireball",
             "source": "/images/spells/fireball.svg",
             "damage": 180,
             "heal":0,
+            "shield":0,
             "damageOverTime": 10, 
             "damageOverTimeDuration": 4,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Meditate",
             "source": "/images/spells/meditate.svg",
             "damage": 0,
             "heal": 0,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 25,
-            "healOverTimeDuration": 10
+            "healOverTimeDuration": 10,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Flame Pillar",
             "source": "/images/spells/flamepillar.svg",
             "damage": 200,
             "heal": 0,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Holy Reaper",
             "source": "/images/spells/holyreaper.svg",
             "damage": 120,
             "heal": 30,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 10,
-            "healOverTimeDuration": 3
+            "healOverTimeDuration": 3,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Sacrifice",
             "source": "/images/spells/sacrifice.svg",
             "damage": 400,
             "heal": -200,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Searing Toxin",
             "source":"/images/spells/searingtoxin.svg",
             "damage": 50,
             "heal":0,
+            "shield":0,
             "damageOverTime": 50,
             "damageOverTimeDuration": 4,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
 
         },
         {
@@ -76,60 +123,78 @@
             "source":"/images/spells/lightningstorm.svg",
             "damage": 105,
             "heal":0,
+            "shield":0,
             "damageOverTime": 105, 
             "damageOverTimeDuration": 1,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Heavy Slam",
             "source":"/images/spells/heavyslam.svg",
             "damage": 240,
             "heal": -40,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Power Drip",
-            "source": "/images/spells/boost.svg",
+            "source": "/images/spells/powerdrip.svg",
             "damage": 0,
             "heal": -250,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 45,
-            "healOverTimeDuration": 8
+            "healOverTimeDuration": 8,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Side Slash",
             "source":"/images/spells/sideslash.svg",
             "damage": 30,
             "heal":0,
+            "shield":0,
             "damageOverTime": 30,
             "damageOverTimeDuration": 9,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Slow Kill",
             "source": "/images/spells/flask.svg",
             "damage": 0,
             "heal": 0,
+            "shield":0,
             "damageOverTime": 20, 
             "damageOverTimeDuration": 22,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name":"Nothing",
             "source":"/images/spells/nothing.svg",
             "damage":0,
             "heal":0,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name":"Pummel",
@@ -140,7 +205,9 @@
             "damageOverTime": 80, 
             "damageOverTimeDuration": 2,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name":"Vishnu Beam",
@@ -151,17 +218,22 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Penance",
-            "source": "/images/spells/fountain.svg",
+            "source": "/images/spells/penance.svg",
             "damage": 50,
             "heal": 50,
+            "shield":0,
             "damageOverTime": 50, 
             "damageOverTimeDuration": 1,
             "healOverTime": 50,
-            "healOverTimeDuration": 1
+            "healOverTimeDuration": 1,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name":"Slice",
@@ -172,17 +244,22 @@
             "damageOverTime": 20,
             "damageOverTimeDuration": 5,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name":"Jesus Beam",
             "source":"/images/spells/jesusbeam.svg",
             "damage": 25,
             "heal": 0,
+            "shield":0,
             "damageOverTime": 100,
             "damageOverTimeDuration": 2,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name":"Holy Prayer",
@@ -193,87 +270,113 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "True Shot",
             "source": "/images/spells/trueshot.svg",
             "damage": 180,
             "heal": 0,
+            "shield":0,
             "damageOverTime": 15,
             "damageOverTimeDuration": 3,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Back Stab",
             "source": "/images/spells/backstab.svg",
             "damage": 150,
             "heal": 50,
+            "shield":0,
             "damageOverTime": 5, 
             "damageOverTimeDuration": 5,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Fire Storm",
             "source": "/images/spells/firestorm.svg",
             "damage": 160,
             "heal": 0,
+            "shield":0,
             "damageOverTime": 20, 
             "damageOverTimeDuration": 4,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Radiance",
             "source": "/images/spells/radiance.svg",
             "damage": 0,
             "heal": 0,
+            "shield":0,
             "damageOverTime": 25, 
             "damageOverTimeDuration": 4,
             "healOverTime": 20,
-            "healOverTimeDuration": 4
+            "healOverTimeDuration": 4,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Mend Wounds",
             "source": "/images/spells/mendwound.svg",
             "damage": 0,
             "heal": 0,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 40,
-            "healOverTimeDuration": 5
+            "healOverTimeDuration": 5,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Fountain of Life",
-            "source": "/images/spells/fountain.svg",
+            "source": "/images/spells/fountainoflife.svg",
             "damage": 0,
             "heal": 30,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 30,
-            "healOverTimeDuration": 9
+            "healOverTimeDuration": 9,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Siphon Life",
             "source": "/images/spells/siphonlife.svg",
             "damage": 100,
             "heal": 25,
+            "shield":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 25,
-            "healOverTimeDuration": 3
+            "healOverTimeDuration": 3,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         },
         {
             "name": "Singe",
             "source": "/images/spells/mutilate.svg",
             "damage": 100,
             "heal": -400,
+            "shield":0,
             "damageOverTime": 100, 
             "damageOverTimeDuration": 5,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
         }
     ]
 }
