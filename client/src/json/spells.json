@@ -7,7 +7,7 @@
             "heal":0,
             "shield": 100,
             "damageOverTime": 0, 
-            "damageOverTimeDuration": 3,
+            "damageOverTimeDuration": 0,
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":50,
