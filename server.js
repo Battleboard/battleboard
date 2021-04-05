@@ -281,7 +281,9 @@ const getDebuffs = (player, opponent) => {
     if(player.debuffs.length > 0){
         for(let i=0; i < player.debuffs.length; i++){
 
-            if(player.debuffs[i].type === 'damage'){
+            let type = player.debuffs[i].type;
+            
+            if(type === 'damage'){
                 opponent.damage += player.debuffs[i].damage;
                 //decrement the debuff duration / remove the debuff from the list
                 if(player.debuffs[i].duration === 1){
@@ -294,7 +296,7 @@ const getDebuffs = (player, opponent) => {
 
             }
             
-            if(player.debuffs[i].type === 'heal'){
+            if(type === 'heal'){
                 player.heal += player.debuffs[i].heal;
                 //decrement the debuff duration / remove the debuff from the list
                 if(player.debuffs[i].duration === 1){
@@ -306,7 +308,7 @@ const getDebuffs = (player, opponent) => {
                 }
             }
 
-            if(player.debuffs[i].type === 'shield'){
+            if(type === 'shield'){
                 player.shield += player.debuffs[i].shield;
                 //decrement the debuff duration / remove the debuff from the list
                 if(player.debuffs[i].duration === 1){
