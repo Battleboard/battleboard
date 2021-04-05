@@ -153,7 +153,7 @@ const GameRoom = ({setGameRoom}) => {
                     {clients[player] && <h4 style={{...title_text_styles, width: '25%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Health: {clients[player] && clients[player].health}</h4>}
                     {clients[player] && <h4 style={{...title_text_styles, width: '25%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Shield: {clients[player] && clients[player].shield}</h4>}
                 </div>
-                {clients[player] && <ProgressBar width={(((clients[player].health - 0) * (100 - 0)) / (clients[player].maxHealth - 0)) + 0} color="white"/>}
+                {clients[player] && <ProgressBar width={(((clients[player].shield - 0) * (100 - 0)) / (clients[player].maxShield - 0)) + 0} color="white"/>}
                 <div style={{borderBottom: '3px solid #333'}}/>
                 {clients[player] && <ProgressBar width={(((clients[player].health - 0) * (100 - 0)) / (clients[player].maxHealth - 0)) + 0} color="green"/>}
             </div>
