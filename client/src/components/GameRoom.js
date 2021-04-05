@@ -95,23 +95,15 @@ const GameRoom = ({setGameRoom}) => {
 
     return <div style = {{display: "flex", height: '100%', flexDirection: 'column', background: "#212121"}}>
         <div style={{paddingBottom: 10}}>
-
-
-            {/**Player 2 Shield Bar */}
-            <div style = {player_stats_container_styles}>
-                <div style={{display: 'flex', height: 40}}>
-                    {clients[opponent] && <h4 style={{...title_text_styles, width: '50%', borderBottom: '3px solid #333'}}>{clients[opponent].username}</h4>}
-                    {clients[opponent] && <h4 style={{...title_text_styles, width: '50%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Shield: {clients[opponent] && clients[opponent].shield}</h4>}
-                </div>
-                {clients[opponent] && <ProgressBar width={(((clients[opponent].shield - 0) * (100 - 0)) / (clients[opponent].maxShield - 0)) + 0} color="blue"/>}
-            </div>
-
             {/* Opponent Information - Username / Health*/}
             <div style = {player_stats_container_styles}>
                 <div style={{display: 'flex', height: 40}}>
                     {clients[opponent] && <h4 style={{...title_text_styles, width: '50%', borderBottom: '3px solid #333'}}>{clients[opponent].username}</h4>}
-                    {clients[opponent] && <h4 style={{...title_text_styles, width: '50%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Health: {clients[opponent] && clients[opponent].health}</h4>}
+                    {clients[opponent] && <h4 style={{...title_text_styles, width: '25%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Health: {clients[opponent] && clients[opponent].health}</h4>}
+                    {clients[opponent] && <h4 style={{...title_text_styles, width: '25%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Shield: {clients[opponent] && clients[opponent].shield}</h4>}
                 </div>
+                {clients[opponent] && <ProgressBar width={(((clients[opponent].shield - 0) * (100 - 0)) / (clients[opponent].maxShield - 0)) + 0} color="white"/>}
+                <div style={{borderBottom: '3px solid #333'}}/>
                 {clients[opponent] && <ProgressBar width={(((clients[opponent].health - 0) * (100 - 0)) / (clients[opponent].maxHealth - 0)) + 0} color="green"/>}
             </div>
 
@@ -154,27 +146,17 @@ const GameRoom = ({setGameRoom}) => {
         </div>
 
         <div>
-
-
-            {/**Player 1 Shield Bar */}
-            <div style = {player_stats_container_styles}>
-                <div style={{display: 'flex', height: 40}}>
-                    {clients[player] && <h4 style={{...title_text_styles, width: '50%', borderBottom: '3px solid #333'}}>{clients[player].username}</h4>}
-                    {clients[player] && <h4 style={{...title_text_styles, width: '50%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Shield: {clients[player] && clients[player].shield}</h4>}
-                </div>
-                {clients[player] && <ProgressBar width={(((clients[player].health - 0) * (100 - 0)) / (clients[player].maxHealth - 0)) + 0} color="blue"/>}
-            </div>
-
             {/**Player 1 Health Bar */}
             <div style = {player_stats_container_styles}>
                 <div style={{display: 'flex', height: 40}}>
                     {clients[player] && <h4 style={{...title_text_styles, width: '50%', borderBottom: '3px solid #333'}}>{clients[player].username}</h4>}
-                    {clients[player] && <h4 style={{...title_text_styles, width: '50%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Health: {clients[player] && clients[player].health}</h4>}
+                    {clients[player] && <h4 style={{...title_text_styles, width: '25%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Health: {clients[player] && clients[player].health}</h4>}
+                    {clients[player] && <h4 style={{...title_text_styles, width: '25%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Shield: {clients[player] && clients[player].shield}</h4>}
                 </div>
+                {clients[player] && <ProgressBar width={(((clients[player].health - 0) * (100 - 0)) / (clients[player].maxHealth - 0)) + 0} color="white"/>}
+                <div style={{borderBottom: '3px solid #333'}}/>
                 {clients[player] && <ProgressBar width={(((clients[player].health - 0) * (100 - 0)) / (clients[player].maxHealth - 0)) + 0} color="green"/>}
             </div>
-
-
 
             {/** Player 1 Status Bar */}
             <div style={status_bar_styles}>
@@ -196,6 +178,7 @@ const GameRoom = ({setGameRoom}) => {
                     </div>
                 })}
             </div>
+
             {/**Spell Display */}
             <div style={{width: '100%', display: 'flex', flexWrap: 'wrap', height: 300, margin: '10px auto', justifyContent: 'center', overflow: "auto"}}>
                 {clients[player] && clients[player].spells.map((spell, index) => {
