@@ -1,4 +1,4 @@
-import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION, RESET_GAME, GET_ROOMS, DELETE_ROOM} from './types';
+import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION, RESET_GAME, GET_ROOMS, REMOVE_SPELL, DELETE_ROOM} from './types';
 import store from '../store';
 import axios from 'axios';
 
@@ -15,8 +15,16 @@ export const setPhase = (phase) => (dispatch) => {
     })
 }
 
+//REMOVE SPELL
+export const removeSpell = (spell) => (dispatch) => {
+    dispatch({
+        type: REMOVE_SPELL,
+        payload: spell
+    })
+}
+
 //SET SPELLS
-export const setSpells = (spell) => (dispatch) =>{
+export const setSpells = (spell) => (dispatch) => {
     if(store.getState().user.spells.length < 4){
         dispatch({
             type: SET_SPELLS,

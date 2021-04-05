@@ -1,4 +1,4 @@
-import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION, RESET_GAME, GET_ROOMS, DELETE_ROOM} from '../actions/types';
+import {SET_SPELLS, SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_PHASE, SET_CONNECTION, RESET_GAME, GET_ROOMS, REMOVE_SPELL, DELETE_ROOM} from '../actions/types';
 
 const initialState = {
     spells:[],
@@ -17,6 +17,12 @@ export default function userReducer(state = initialState, action, payload){
                 ...state,
                 spells: state.spells.concat(action.payload)
             };
+
+        case REMOVE_SPELL:
+            return {
+                ...state,
+                spells: state.spells.filter(spell => spell !== action.payload)
+            }
 
         case SET_CLIENT_ID:
             return{
