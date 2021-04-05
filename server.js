@@ -8,8 +8,7 @@ require('dotenv').config();
 
 const users = require('./routes/api/Users');
 const auth = require('./routes/api/Auth');
-const rooms = require('./routes/api/Rooms');
-const { pbkdf2 } = require('crypto');
+const rooms = require('./routes/api/Rooms'); 
 
 const port = process.env.PORT || 5000;
 
@@ -32,7 +31,6 @@ mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useCreate
 //routes
 app.use('/api/auth', auth);
 app.use('/api/users', users);
-//app.use('/api/rooms', rooms);
 app.use('/api/rooms', function (req, res, next) {
     req.rooms = {games};
     next();
