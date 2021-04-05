@@ -142,13 +142,13 @@ const GameRoom = ({setGameRoom}) => {
             <div style={{display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
                 <div style={{margin: '0px auto', display: 'flex'}}>
                     {currentUserSpell && <Card spell={currentUserSpell} />}
-                    {currentSpells.length !== 0 && <div style={{...damage_result_styles, color: currentDamageResults[player] > 0 ? 'red' : currentDamageResults[player] === 0 ? 'black' : 'green'}}>{Math.abs(currentDamageResults[player])}</div>}
+                    {currentSpells.length !== 0 && <div style={{...damage_result_styles, color: currentDamageResults[0] > 0 ? 'red' : currentDamageResults[0] === 0 ? 'black' : 'green'}}>{Math.abs(currentDamageResults[0])}</div>}
                 </div>
             </div>
             <div style={{borderLeft: '3px solid #333', display: 'flex', margin: 0, width: '50%', flexDirection: 'column', overflow: 'auto'}}>
                 <div style={{margin: '0px auto', display: 'flex'}}>
                     {currentSpells.length !== 0 && <Card spell={currentSpells[1]} />}
-                    {currentSpells.length !== 0 && <div style={{...damage_result_styles, color: currentDamageResults[opponent] > 0 ? 'red' : currentDamageResults[opponent] === 0 ? 'black' : 'green'}}>{Math.abs(currentDamageResults[opponent])}</div>}
+                    {currentSpells.length !== 0 && <div style={{...damage_result_styles, color: currentDamageResults[1] > 0 ? 'red' : currentDamageResults[1] === 0 ? 'black' : 'green'}}>{Math.abs(currentDamageResults[1])}</div>}
                 </div>  
             </div>
         </div>
