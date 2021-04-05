@@ -20,13 +20,17 @@ const Card = ({ spell, action}) => {
 		<div style={{display: 'flex'}}>
 			<div style={{flexGrow: 2}}>
 			{Object.keys(spell).filter(e => e !== 'name' && e !== "source" && e !== 'debuffs' && e !== 'spellList').map((key, index) => {
-				return <p key={index} style={{margin: 0, padding: 5, fontSize: 12}}>{key}</p>
+				if(spell[key] !== 0){
+					return <div>
+								<p key={index} style={{margin: 0, padding: 5, fontSize: 12}}>{key}</p>
+								<p key={index} style={{margin: 0, padding: 5, fontSize: 12}}>{spell[key]}</p>
+						   </div>
+				}
 			})}
 			</div>
 			<div>
-				{Object.values(spell).slice(2, spell.length).map((value, index) => {
-					return <p key={index} style={{margin: 0, padding: 5, fontSize: 12}}>{value}</p>
-				})}
+				
+
 			</div>
 		</div>
 	</div>
