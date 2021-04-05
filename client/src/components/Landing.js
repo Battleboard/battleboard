@@ -1,3 +1,5 @@
+import React, { useEffect } from 'react';
+import store from '../store';
 import { Link } from "react-router-dom";
 import Button from './styled/Button'
 import Logo from './styled/Logo'
@@ -6,7 +8,7 @@ import CreateGame from "./CreateGame";
 import SelectedSpells from "./SelectedSpells";
 import { useSelector, useDispatch } from 'react-redux'
 import GameRoom from "./GameRoom";
-import { setPhase, resetGame } from '../actions/userActions'
+import { setPhase, resetGame, getSpells } from '../actions/userActions'
 import { deleteRoom } from '../actions/roomActions'
 
 const GuestLinks = () => {
@@ -43,8 +45,14 @@ const Landing = () => {
 	const connection = useSelector(state => state.user.connection)
 	const clients = useSelector(state => state.user.gameRoom);
 	const auth = useSelector(state => state.auth)
+
+
+	useEffect(() => {
+			store.dispatch(getSpells(auth.id));
+	}, [auth])
 	
 	const setContent = () => {
+
 		switch(phase){
 			case 'select-spells':
 				return <>

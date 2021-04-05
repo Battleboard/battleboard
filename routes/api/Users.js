@@ -9,6 +9,21 @@ const secret = process.env.jwtSecret;
 
 const User = require("../../models/User");
 
+router.get('/unlockedSpells' + '/:id', function(req, res) {
+
+    let spells = [];
+
+    if(req.params.id !== null){
+        console.log("null", req.params.id);
+        User.findOne({_id: req.params.id}).then(user => {
+            if(user){
+                spells = user.spells;
+                res.json(spells);
+            }
+        })
+    }
+});
+
 //@route POST api/users
 //@desc Register new user
 //@access Public
