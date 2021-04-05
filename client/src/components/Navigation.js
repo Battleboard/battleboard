@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPhase } from '../actions/userActions'
 import Logout from './Logout';
 
+const numberOfSpells = 4
+
 const Navigation = () => {
     const spells = useSelector(state => state.user.spells)
     const phase = useSelector(state => state.user.phase)
@@ -10,7 +12,7 @@ const Navigation = () => {
     const auth = useSelector(state => state.auth)
 
     const toBattle = () => {
-        if (spells.length === 4) {
+        if (spells.length === numberOfSpells) {
             dispatch(setPhase('gameroom'))
         }
     }
@@ -21,11 +23,12 @@ const Navigation = () => {
         {phase === 'select-spells' && auth.isAuthenticated &&  <Button 
             style={{
                 marginRight: 20, 
-                border: '1px solid #FFF', 
-                color: '#FFF', 
+                border: spells.length === numberOfSpells ? '3px solid lightgreen' : '1px solid #FFF', 
+                color: spells.length === numberOfSpells ? 'lightgreen' : '#FFF', 
                 padding: 0, 
                 marginTop: 10, 
-                height: 60
+                height: 60,
+                fontWeight: spells.length === numberOfSpells ? 'bold' : 'normal'
             }} 
             onClick={toBattle}
         >Battle</Button>}
