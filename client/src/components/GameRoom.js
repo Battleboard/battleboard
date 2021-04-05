@@ -93,6 +93,31 @@ const GameRoom = ({setGameRoom}) => {
         }
     }
 
+    const damageType = (debuff) => {
+        switch(debuff.type){
+            case 'damage':
+                return debuff.damage
+            case 'heal':
+                return debuff.heal
+            case 'shield':
+                return debuff.shield
+            default:
+                return null
+        }
+    }
+
+    const damageIcon = (debuff) => {
+        switch(debuff.type){
+            case 'damage':
+                return <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
+            case 'heal':
+                return <img src="/images/icons/healing.svg" alt="" style={{width: 15, height: 15}} />
+            case 'shield':
+                return <img src="/images/icons/shield.svg" alt="" style={{width: 15, height: 15}} />
+            default:
+                return null
+        }
+    }
 
     return <div style = {{display: "flex", height: '100%', flexDirection: 'column', background: "#212121"}}>
         <div style={{paddingBottom: 10}}>
@@ -115,11 +140,8 @@ const GameRoom = ({setGameRoom}) => {
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                         <div style={{display: 'flex'}}>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                {debuff.type === 'damage' ? <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
-                                : debuff.type === 'healing' ? <img src="/images/icons/healing.svg" alt="" style={{width: 15, height: 15}} />
-                                : <img src="/images/icons/shield.svg" alt="" style={{width: 15, height: 15}} />
-                                }
-                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage || debuff.heal || debuff.shield}</div>
+                                {damageIcon(debuff)}
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{damageType(debuff)}</div>
                             </div>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
                                 <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
@@ -167,11 +189,8 @@ const GameRoom = ({setGameRoom}) => {
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                         <div style={{display: 'flex'}}>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                {debuff.type === 'damage' ? <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
-                                : debuff.type === 'healing' ? <img src="/images/icons/healing.svg" alt="" style={{width: 15, height: 15}} />
-                                : <img src="/images/icons/shield.svg" alt="" style={{width: 15, height: 15}} />
-                                }
-                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage || debuff.heal || debuff.shield}</div>
+                                {damageIcon(debuff)}
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{damageType(debuff)}</div>
                             </div>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
                                 <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />

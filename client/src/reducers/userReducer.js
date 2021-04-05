@@ -2,12 +2,12 @@ import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS} from '../ac
 
 const initialState = {
     spells:[],
-    maxHealth: 2500,
-    startingHealth:1000,
+    maxHealth: 3000,
+    startingHealth:1500,
     phase: "select-spells",
-    maxShield:2500,
-    startingShield:500,
-    unlockedSpells:[]
+    unlockedSpells:[],
+    maxShield:3000,
+    startingShield:0
 }
 
 export default function userReducer(state = initialState, action, payload){

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPhase } from '../actions/userActions'
 import Logout from './Logout';
 
-const numberOfSpells = 4
+const numberOfSpells = 6
 
 const Navigation = () => {
     const spells = useSelector(state => state.user.spells)
@@ -35,6 +35,10 @@ const Navigation = () => {
 
         {
             auth.isAuthenticated && <Logout/>
+        }
+
+        {
+            auth.isAuthenticated && <Button></Button>
         }
 
     </div>

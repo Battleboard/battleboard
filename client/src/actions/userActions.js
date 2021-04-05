@@ -25,7 +25,7 @@ export const removeSpell = (spell) => (dispatch) => {
 
 //SET SPELLS
 export const setSpells = (spell) => (dispatch) => {
-    if(store.getState().user.spells.length < 4){
+    if(store.getState().user.spells.length < 6){
         dispatch({
             type: SET_SPELLS,
             payload: spell

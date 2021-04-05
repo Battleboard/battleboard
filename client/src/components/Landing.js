@@ -42,8 +42,8 @@ const GuestLinks = () => {
 const Landing = () => {
 	const dispatch = useDispatch()
 	const phase = useSelector(state => state.user.phase)
-	const connection = useSelector(state => state.user.connection)
-	const clients = useSelector(state => state.user.gameRoom);
+	const connection = useSelector(state => state.room.connection)
+	const clients = useSelector(state => state.room.gameRoom);
 	const auth = useSelector(state => state.auth)
 
 
