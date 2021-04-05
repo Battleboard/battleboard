@@ -28,7 +28,7 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 25,
-            "healOverTimeDuration": 14
+            "healOverTimeDuration": 10
         },
         {
             "name": "Flame Pillar",
@@ -44,11 +44,11 @@
             "name": "Holy Reaper",
             "source": "/images/spells/holyreaper.svg",
             "damage": 120,
-            "heal": 40,
+            "heal": 30,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 10,
-            "healOverTimeDuration": 4
+            "healOverTimeDuration": 3
         },
         {
             "name": "Sacrifice",
@@ -98,8 +98,8 @@
             "heal": -250,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
-            "healOverTime": 50,
-            "healOverTimeDuration": 9
+            "healOverTime": 45,
+            "healOverTimeDuration": 8
         },
         {
             "name": "Side Slash",
@@ -128,6 +128,17 @@
             "heal":0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
+        },
+        {
+            "name":"Pummel",
+            "source":"/images/spells/pummel.svg",
+            "damage": 80,
+            "heal": 0,
+            "shield": 0,
+            "damageOverTime": 80, 
+            "damageOverTimeDuration": 2,
             "healOverTime": 0,
             "healOverTimeDuration": 0
         },
