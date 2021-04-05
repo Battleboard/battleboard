@@ -36,15 +36,12 @@ const GameRoom = ({setGameRoom}) => {
         }else if(clients.length === 2){
             let clientIndex = null;
             //iterate through the clients and set the client with the id matching clientId to the player
-            // for(let i=0; i<clients.length; i++){
-            //     if(clients[i].clientId === clientId){
-            //         setPlayer(clients[i])
-            //         clientIndex = i;
-            //     }
-            // }
-
-            setPlayer(clients.filter(client => client.clientId === clientId)[0])
-
+            for(let i=0; i<clients.length; i++){
+                if(clients[i].clientId === clientId){
+                    setPlayer(clients[i])
+                    clientIndex = i;
+                }
+            }
             if(clientIndex === 0){
                 setOpponent(clients[1])
             }else if(clientIndex === 1){
