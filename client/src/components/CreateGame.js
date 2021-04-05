@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import {connect, useSelector, useDispatch} from 'react-redux';
 import store from '../store';
-import {setClient, setGame, setGameRoom, setConnection, setPhase, getRooms} from '../actions/userActions';
-
+import {setPhase} from '../actions/userActions';
+import {setClient, setGameRoom, setConnection, getRooms} from '../actions/roomActions';
 import Button from './styled/Button'
 
-const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
+const CreateGame = ({setClient, setGameRoom, setConnection}) => {
     const dispatch = useDispatch()
-    const gameId = useSelector(state => state.user.gameId);
-    const games = useSelector(state => state.user.games)
+    const gameId = useSelector(state => state.room.gameId);
+    const games = useSelector(state => state.room.games)
     
     var HOST = null;
 
@@ -47,7 +47,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 
         const payLoad = {
             "method": "create",
-            "clientId": store.getState().user.clientId,
+            "clientId": store.getState().room.clientId,
             "username": store.getState().auth.name
         }
         
@@ -72,7 +72,7 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
 
             const payLoad = {
                 "method":"join",
-                "clientId":store.getState().user.clientId,
+                "clientId":store.getState().room.clientId,
                 "gameId": id,
                 "spells": store.getState().user.spells,
                 "health": store.getState().user.startingHealth,
@@ -121,4 +121,4 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     </div>
 };
 
-export default connect(null, {setClient, setGame, setGameRoom, setConnection})(CreateGame);
+export default connect(null, {setClient, setGameRoom, setConnection})(CreateGame);

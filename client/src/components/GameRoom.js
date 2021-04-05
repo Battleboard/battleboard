@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import store from '../store';
 import Card from './Card';
-import { setGameRoom, setPhase} from '../actions/userActions';
+import { setPhase } from '../actions/userActions';
+import { setGameRoom } from '../actions/roomActions';
 import { connect } from 'react-redux';
 import ProgressBar from "./styled/ProgressBar";
 
@@ -21,9 +22,9 @@ const GameRoom = ({setGameRoom}) => {
     const [opponent, setOpponent] = useState()
 
     const dispatch = useDispatch()
-    const clients = useSelector(state => state.user.gameRoom);
-    const connection = useSelector(state => state.user.connection);
-    const clientId = store.getState().user.clientId
+    const clients = useSelector(state => state.room.gameRoom);
+    const connection = useSelector(state => state.room.connection);
+    const clientId = store.getState().room.clientId
 
     useEffect(() => { console.log(currentDamageResults)}, [currentDamageResults])
 
@@ -68,7 +69,7 @@ const GameRoom = ({setGameRoom}) => {
                 "method": "evaluate",
                 "clientId": clientId,
                 "spell": spell,
-                "gameId": store.getState().user.gameRoom[0].gameId
+                "gameId": store.getState().room.gameRoom[0].gameId
             }
             
             connection.send(JSON.stringify(payLoad));
@@ -183,7 +184,7 @@ const GameRoom = ({setGameRoom}) => {
             <div style={{width: '100%', display: 'flex', flexWrap: 'wrap', height: 300, margin: '10px auto', justifyContent: 'center', overflow: "auto"}}>
                 {clients[player] && clients[player].spells.map((spell, index) => {
                     return <div key={index}>
-                        <Card  spell={spell} action={() => initializeCombat(spell, store.getState().user.gameRoom[player].clientId)}/>
+                        <Card  spell={spell} action={() => initializeCombat(spell, store.getState().room.gameRoom[player].clientId)}/>
                     </div>
                 })}
             </div>

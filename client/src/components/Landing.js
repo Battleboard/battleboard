@@ -6,7 +6,8 @@ import CreateGame from "./CreateGame";
 import SelectedSpells from "./SelectedSpells";
 import { useSelector, useDispatch } from 'react-redux'
 import GameRoom from "./GameRoom";
-import { setPhase, resetGame, deleteRoom } from '../actions/userActions'
+import { setPhase, resetGame } from '../actions/userActions'
+import { deleteRoom } from '../actions/roomActions'
 
 const GuestLinks = () => {
   
