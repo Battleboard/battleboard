@@ -1,6 +1,16 @@
 {
     "spells": [
         {
+            "name": "Shurikens",
+            "source": "/images/spells/shuriken.svg",
+            "damage": 135,
+            "heal":0,
+            "damageOverTime": 35, 
+            "damageOverTimeDuration": 3,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
+        },
+        {
             "name": "Fireball",
             "source": "/images/spells/fireball.svg",
             "damage": 180,
