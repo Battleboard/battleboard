@@ -90,25 +90,22 @@ webSocketServer.on("connection", (webSocket, request) => {
 
         {/* join a game room*/}
         if(result.method === "join"){
-            const clientId = result.clientId;
-            
-            const gameId = result.gameId;
-            const username = result.username;
-            const game = games[gameId];
-            const spells = result.spells;
-            const health = result.health;
-            const maxHealth = result.maxHealth;
+
+            const game = games[result.gameId];
+
             game.clients.push({
-                "clientId": clientId,
-                "spells": spells,
+                "clientId": result.clientId,
+                "spells": result.spells,
                 "selectedSpell": null,
-                "health": health,
-                "maxHealth":maxHealth,
+                "health": result.health,
+                "maxHealth":result.maxHealth,
                 "debuffs": [],
                 "previousSpell": null,
-                "gameId": gameId,
-                "username": username,
-                "damageResult":0
+                "gameId": result.gameId,
+                "username": result.username,
+                "damageResult":0,
+                "shield": result.shield,
+                "maxShield": result.maxShield
             })
             const payLoad = {
                 "method":"join",
@@ -123,11 +120,11 @@ webSocketServer.on("connection", (webSocket, request) => {
         if(result.method === 'evaluate'){
 
             let clientId = result.clientId;
-            let gameId = result.gameId;
-            let spell = result.spell;
+            
+            
 
             //find the current player in the game clients
-            let game = games[gameId]
+            let game = games[result.gameId]
             let index = -1;
             for(let i=0; i<game.clients.length; i++){
                 if(game.clients[i].clientId === clientId){
@@ -136,7 +133,7 @@ webSocketServer.on("connection", (webSocket, request) => {
             }
 
             //set the selected spell of the current player
-            game.clients[index].selectedSpell = spell;
+            game.clients[index].selectedSpell = result.spell;
 
             if(game.clients.length === 2){
 
@@ -248,7 +245,9 @@ const getDebuffs = (player, opponent) => {
                     player.debuffs[i].duration -= 1;
                 }
 
-            }else if(player.debuffs[i].type === 'heal'){
+            }
+            
+            if(player.debuffs[i].type === 'heal'){
                 player.heal += player.debuffs[i].heal;
                 //decrement the debuff duration / remove the debuff from the list
                 if(player.debuffs[i].duration === 1){
@@ -276,7 +275,8 @@ const setDebuffs = (player, opponent) => {
             duration: player.selectedSpell.damageOverTimeDuration,
             type: "damage"
         })
-    }else if(player.selectedSpell.healOverTime !== 0){
+    }
+    if(player.selectedSpell.healOverTime !== 0){
         player.debuffs.push({
             name: player.selectedSpell.name, 
             icon: player.selectedSpell.source,
