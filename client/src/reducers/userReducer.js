@@ -5,9 +5,9 @@ const initialState = {
     maxHealth: 3000,
     startingHealth:1500,
     phase: "select-spells",
-    unlockedSpells:[],
     maxShield:3000,
-    startingShield:0
+    startingShield:0,
+    unlockedSpells:[]
 }
 
 export default function userReducer(state = initialState, action, payload){
