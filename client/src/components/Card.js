@@ -25,6 +25,8 @@ const Card = ({ spell, action}) => {
 						<p key={index} style={{margin: 0, padding: 5, fontSize: 12, flexGrow: 2}}>{key}</p>
 						<p key={index} style={{margin: 0, padding: 5, fontSize: 12, flexGrow: 1, textAlign: 'right'}}>{spell[key]}</p>
 					</div>
+				} else {
+					return null
 				}
 			})}
 			</div>

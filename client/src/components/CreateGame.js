@@ -95,22 +95,14 @@ const CreateGame = ({setClient, setGameRoom, setConnection}) => {
     }
 
 	return <div style={{background: 'lightblue', display: 'flex', height: '100%'}}>
-        <div style={{flexGrow: 4, background: '#F8F8F8'}}>          
+        <div style={{flexGrow: 4, background: '#212121'}}>     
 
                 {/* Map the game list */}
                 {games && games.map((game, index) => {
                     return <div key={index} onClick={() => joinGameRoom(game.id)} style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>
-
-                    <p>Game ID:{game.id}</p>
-
-                    <p>Game Username:{game.host}</p>
-
+                        <p>Host: {game.host}</p>
                     </div>
-
-                    
                 })}
-            
-            
         </div>
         <div style={{flexGrow: 1, background: '#FFF'}}>
             <div style={{display: 'flex', flexDirection: 'column', width: '50%', margin: '20px auto'}}>
