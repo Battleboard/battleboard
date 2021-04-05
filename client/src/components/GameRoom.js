@@ -121,8 +121,10 @@ const GameRoom = ({setGameRoom}) => {
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                         <div style={{display: 'flex'}}>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
-                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage}</div>
+                                {debuff.type === 'damage' ? <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
+                                : <img src="/images/icons/healing.svg" alt="" style={{width: 15, height: 15}} />
+                                }
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage || debuff.heal}</div>
                             </div>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
                                 <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
@@ -167,8 +169,10 @@ const GameRoom = ({setGameRoom}) => {
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                         <div style={{display: 'flex'}}>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
-                                <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
-                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage}</div>
+                                {debuff.type === 'damage' ? <img src="/images/icons/sword.svg" alt="" style={{width: 15, height: 15}} />
+                                : <img src="/images/icons/healing.svg" alt="" style={{width: 15, height: 15}} />
+                                }
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage || debuff.heal}</div>
                             </div>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
                                 <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
