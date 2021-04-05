@@ -102,6 +102,16 @@
             "healOverTimeDuration": 0
         },
         {
+            "name": "Slow Kill",
+            "source": "/images/spells/flask.svg",
+            "damage": 0,
+            "heal": 0,
+            "damageOverTime": 20, 
+            "damageOverTimeDuration": 22,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
+        },
+        {
             "name":"Nothing",
             "source":"/images/spells/nothing.svg",
             "damage":0,
