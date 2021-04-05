@@ -22,8 +22,8 @@ const Card = ({ spell, action}) => {
 			{Object.keys(spell).filter(e => e !== 'name' && e !== "source" && e !== 'debuffs' && e !== 'spellList').map((key, index) => {
 				if(spell[key] !== 0){
 					return <div style={{display: 'flex'}}>
-						<p key={index} style={{margin: 0, padding: 5, fontSize: 12}}>{key}</p>
-						<p key={index} style={{margin: 0, padding: 5, fontSize: 12}}>{spell[key]}</p>
+						<p key={index} style={{margin: 0, padding: 5, fontSize: 12, flexGrow: 2}}>{key}</p>
+						<p key={index} style={{margin: 0, padding: 5, fontSize: 12, flexGrow: 1, textAlign: 'right'}}>{spell[key]}</p>
 					</div>
 				}
 			})}
