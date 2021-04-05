@@ -67,14 +67,19 @@ const CreateGame = ({setClient, setGame, setGameRoom, setConnection}) => {
     const joinGameRoom = (id) => {
 
             dispatch(setPhase("battle"))
+
+            console.log("starting shield: ", store.getState().user.startingShield);
+
             const payLoad = {
                 "method":"join",
                 "clientId":store.getState().user.clientId,
                 "gameId": id,
                 "spells": store.getState().user.spells,
-                "health": store.getState().user.maxHealth,
+                "health": store.getState().user.startingHealth,
                 "maxHealth": store.getState().user.maxHealth,
-                "username": store.getState().auth.name
+                "username": store.getState().auth.name,
+                "maxShield": store.getState().user.maxShield,
+                "shield": store.getState().user.startingShield
             }
     
             ws.send(JSON.stringify(payLoad));

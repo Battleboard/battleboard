@@ -5,9 +5,12 @@ const initialState = {
     clientId: "",
     gameRoom: [],
     maxHealth: 2500,
+    startingHealth:1000,
     phase: "select-spells",
     connection: {},
-    games: []
+    games: [],
+    maxShield:2500,
+    startingShield:500
 }
 
 export default function userReducer(state = initialState, action, payload){

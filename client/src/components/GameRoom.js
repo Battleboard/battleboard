@@ -30,9 +30,6 @@ const GameRoom = ({setGameRoom}) => {
     //route the players into player and opponent
     useEffect(() => {
 
-        console.log("client 1: ", clients[0]);
-        console.log("client 2: ", clients[1]);
-
         //if the game room only has a single client set the player to the client
         if(clients.length === 1){
             setPlayer(0);
@@ -57,8 +54,6 @@ const GameRoom = ({setGameRoom}) => {
 
     useEffect(() => { 
 
-        console.log("player: ", clients[player]);
-
         if (clients[player]?.health <= 0 || clients[opponent]?.health <= 0 ) dispatch(setPhase("battle-over"))
     // eslint-disable-next-line
     }, [clients, dispatch])
@@ -81,12 +76,7 @@ const GameRoom = ({setGameRoom}) => {
             connection.onmessage = message => {
                 const response = JSON.parse(message.data);
 
-                console.log("response: ", response);
-
                 if(response.method === 'evaluate'){
-                    console.log("evaluate");
-                    console.log("player: ", player);
-                    console.log("opponent", opponent);
                     //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
                     setCurrentSpells([response.game.clients[player].previousSpell, response.game.clients[opponent].previousSpell]);
                     setCurrentDamageResults([response.game.clients[player].damageResult, response.game.clients[opponent].damageResult])
@@ -105,6 +95,17 @@ const GameRoom = ({setGameRoom}) => {
 
     return <div style = {{display: "flex", height: '100%', flexDirection: 'column', background: "#212121"}}>
         <div style={{paddingBottom: 10}}>
+
+
+            {/**Player 2 Shield Bar */}
+            <div style = {player_stats_container_styles}>
+                <div style={{display: 'flex', height: 40}}>
+                    {clients[opponent] && <h4 style={{...title_text_styles, width: '50%', borderBottom: '3px solid #333'}}>{clients[opponent].username}</h4>}
+                    {clients[opponent] && <h4 style={{...title_text_styles, width: '50%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Shield: {clients[opponent] && clients[opponent].shield}</h4>}
+                </div>
+                {clients[opponent] && <ProgressBar width={(((clients[opponent].shield - 0) * (100 - 0)) / (clients[opponent].maxShield - 0)) + 0} color="blue"/>}
+            </div>
+
             {/* Opponent Information - Username / Health*/}
             <div style = {player_stats_container_styles}>
                 <div style={{display: 'flex', height: 40}}>
@@ -153,6 +154,17 @@ const GameRoom = ({setGameRoom}) => {
         </div>
 
         <div>
+
+
+            {/**Player 1 Shield Bar */}
+            <div style = {player_stats_container_styles}>
+                <div style={{display: 'flex', height: 40}}>
+                    {clients[player] && <h4 style={{...title_text_styles, width: '50%', borderBottom: '3px solid #333'}}>{clients[player].username}</h4>}
+                    {clients[player] && <h4 style={{...title_text_styles, width: '50%', borderLeft: '3px solid #333',  borderBottom: '3px solid #333'}}>Shield: {clients[player] && clients[player].shield}</h4>}
+                </div>
+                {clients[player] && <ProgressBar width={(((clients[player].health - 0) * (100 - 0)) / (clients[player].maxHealth - 0)) + 0} color="blue"/>}
+            </div>
+
             {/**Player 1 Health Bar */}
             <div style = {player_stats_container_styles}>
                 <div style={{display: 'flex', height: 40}}>
@@ -161,6 +173,8 @@ const GameRoom = ({setGameRoom}) => {
                 </div>
                 {clients[player] && <ProgressBar width={(((clients[player].health - 0) * (100 - 0)) / (clients[player].maxHealth - 0)) + 0} color="green"/>}
             </div>
+
+
 
             {/** Player 1 Status Bar */}
             <div style={status_bar_styles}>
