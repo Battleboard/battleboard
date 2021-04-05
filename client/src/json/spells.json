@@ -4,27 +4,27 @@
             "name": "Fortify",
             "source": "/images/spells/fortify.svg",
             "damage": 100,
-            "heal":0,
-            "shield": 100,
+            "heal": 0,
+            "shield": 70,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 0,
             "healOverTimeDuration": 0,
-            "shieldOverTime":50,
-            "shieldOverTimeDuration":5
+            "shieldOverTime": 5,
+            "shieldOverTimeDuration": 5
         },
         {
             "name": "Shield",
             "source": "/images/spells/shield.svg",
             "damage": 0,
-            "heal":0,
-            "shield": 300,
+            "heal": 0,
+            "shield": 180,
             "damageOverTime": 0, 
-            "damageOverTimeDuration": 3,
+            "damageOverTimeDuration": 0,
             "healOverTime": 0,
             "healOverTimeDuration": 0,
-            "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         },
         {
             "name": "Shurikens",
@@ -61,9 +61,20 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 25,
-            "healOverTimeDuration": 10,
-            "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "healOverTimeDuration": 12
+        },
+        {
+            "name": "Shield Prism",
+            "source": "/images/spells/shieldprism.svg",
+            "damage": 0,
+            "heal": 0,
+            "shield": 75,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 35,
+            "shieldOverTimeDuration": 4
         },
         {
             "name": "Flame Pillar",
@@ -92,6 +103,16 @@
             "shieldOverTimeDuration":0
         },
         {
+            "name": "Fire Punch",
+            "source": "/images/spells/firepunch.svg",
+            "damage": 250,
+            "heal": -80,
+            "damageOverTime": 25, 
+            "damageOverTimeDuration": 2,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0
+        },
+        {
             "name": "Sacrifice",
             "source": "/images/spells/sacrifice.svg",
             "damage": 400,
@@ -103,6 +124,30 @@
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
             "shieldOverTimeDuration":0
+        },
+        {
+            "name": "Power Strike",
+            "source": "/images/spells/powerstrike.svg",
+            "damage": 210,
+            "heal": -100,
+            "shield": 100,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0
+        },
+		{
+            "name": "Drain Essence",
+            "source":"/images/spells/drainessence.svg",
+            "damage": 25,
+            "heal": 25,
+            "damageOverTime": 25,
+            "damageOverTimeDuration": 4,
+            "healOverTime": 25,
+            "healOverTimeDuration": 4
+
         },
         {
             "name": "Searing Toxin",
@@ -119,17 +164,40 @@
 
         },
         {
+            "name": "Consolidate",
+            "source":"/images/spells/consolidate.svg",
+            "damage": 0,
+            "heal": -150,
+            "shield": 0,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 50,
+            "healOverTimeDuration": 4,
+            "shieldOverTime": 50,
+            "shieldOverTimeDuration": 4
+        },
+        {
             "name": "Lightning Storm",
             "source":"/images/spells/lightningstorm.svg",
             "damage": 105,
-            "heal":0,
-            "shield":0,
+            "heal":0 ,
+            "shield": 0,
             "damageOverTime": 105, 
             "damageOverTimeDuration": 1,
             "healOverTime": 0,
             "healOverTimeDuration": 0,
-            "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
+        },
+		{
+            "name": "Blitz Heal",
+            "source":"/images/spells/blitzheal.svg",
+            "damage": 0,
+            "heal": 95,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 95,
+            "healOverTimeDuration": 1
         },
         {
             "name": "Heavy Slam",
@@ -182,6 +250,17 @@
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
             "shieldOverTimeDuration":0
+        },
+		{
+            "name":"Rejuvination Potion",
+            "source":"/images/spells/rejuv.svg",
+            "damage": 0,
+            "heal": 75,
+            "shield": 0,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 75,
+            "healOverTimeDuration": 2
         },
         {
             "name":"Nothing",
@@ -343,14 +422,11 @@
             "name": "Fountain of Life",
             "source": "/images/spells/fountainoflife.svg",
             "damage": 0,
-            "heal": 30,
-            "shield":0,
+            "heal": 25,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
-            "healOverTime": 30,
-            "healOverTimeDuration": 9,
-            "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "healOverTime": 25,
+            "healOverTimeDuration": 8
         },
         {
             "name": "Siphon Life",
