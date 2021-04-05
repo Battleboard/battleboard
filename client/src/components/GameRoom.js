@@ -119,7 +119,7 @@ const GameRoom = ({setGameRoom}) => {
                                 : debuff.type === 'healing' ? <img src="/images/icons/healing.svg" alt="" style={{width: 15, height: 15}} />
                                 : <img src="/images/icons/shield.svg" alt="" style={{width: 15, height: 15}} />
                                 }
-                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage || debuff.heal || debuff.shield}</div>
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.type === 'damage' ? debuff.damage : debuff.type === 'healing' ? debuff.heal : debuff.shield}</div>
                             </div>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
                                 <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
@@ -171,7 +171,7 @@ const GameRoom = ({setGameRoom}) => {
                                 : debuff.type === 'healing' ? <img src="/images/icons/healing.svg" alt="" style={{width: 15, height: 15}} />
                                 : <img src="/images/icons/shield.svg" alt="" style={{width: 15, height: 15}} />
                                 }
-                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.damage || debuff.heal || debuff.shield}</div>
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{debuff.type === 'damage' ? debuff.damage : debuff.type === 'healing' ? debuff.heal : debuff.shield}</div>
                             </div>
                             <div style={{display: 'flex', height: 30, width: '50%'}}>
                                 <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
