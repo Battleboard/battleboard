@@ -18,6 +18,10 @@ const GameRoom = ({setGameRoom}) => {
     const [currentDamageResults, setCurrentDamageResults] = useState([])
     const [calculating, setCalculating] = useState(false)
 
+    const [playerDebuffs, setPlayerDebuffs] = useState([])
+    const [opponentDebuffs, setOpponentDebuffs] = useState([])
+
+    //sets player and opponent to the index that the player object exists in clients game object
     const [player, setPlayer] = useState()
     const [opponent, setOpponent] = useState()
 
@@ -81,6 +85,9 @@ const GameRoom = ({setGameRoom}) => {
                     //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
                     setCurrentSpells([response.game.clients[player].previousSpell, response.game.clients[opponent].previousSpell]);
                     setCurrentDamageResults([response.game.clients[player].damageResult, response.game.clients[opponent].damageResult])
+                    console.log("player debuffs: ", response.game.clients[player].debuffs);
+                    setPlayerDebuffs(response.game.clients[player].debuffs)
+                    setOpponentDebuffs(response.game.clients[opponent].debuffs)
                     setTimeout(() => {
                         setCurrentSpells([])
                         setCurrentUserSpell(null)
@@ -135,7 +142,7 @@ const GameRoom = ({setGameRoom}) => {
 
             {/* Opponent Status Bar*/}
             <div style={status_bar_styles}>
-                {clients[opponent] && clients[opponent].debuffs.map((debuff, index) => {
+                {opponentDebuffs && opponentDebuffs.map((debuff, index) => {
                     return <div key={index} style={{width: 70, height: 80}}>
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                         <div style={{display: 'flex'}}>
@@ -184,7 +191,7 @@ const GameRoom = ({setGameRoom}) => {
 
             {/** Player 1 Status Bar */}
             <div style={status_bar_styles}>
-                {clients[player] && clients[player].debuffs.map((debuff, index) => {
+                {playerDebuffs && playerDebuffs.map((debuff, index) => {
                     return <div key={index} style={{width: 70, height: 80}}>
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                         <div style={{display: 'flex'}}>

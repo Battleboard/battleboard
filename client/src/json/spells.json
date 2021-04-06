@@ -61,7 +61,9 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 25,
-            "healOverTimeDuration": 12
+            "healOverTimeDuration": 12,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         },
         {
             "name": "Shield Prism",
@@ -110,7 +112,9 @@
             "damageOverTime": 25, 
             "damageOverTimeDuration": 2,
             "healOverTime": 0,
-            "healOverTimeDuration": 0
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         },
         {
             "name": "Sacrifice",
@@ -146,8 +150,9 @@
             "damageOverTime": 25,
             "damageOverTimeDuration": 4,
             "healOverTime": 25,
-            "healOverTimeDuration": 4
-
+            "healOverTimeDuration": 4,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         },
         {
             "name": "Searing Toxin",
@@ -161,7 +166,6 @@
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
             "shieldOverTimeDuration":0
-
         },
         {
             "name": "Consolidate",
@@ -197,7 +201,9 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 95,
-            "healOverTimeDuration": 1
+            "healOverTimeDuration": 1,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         },
         {
             "name": "Heavy Slam",
@@ -229,14 +235,14 @@
             "name": "Side Slash",
             "source":"/images/spells/sideslash.svg",
             "damage": 30,
-            "heal":0,
-            "shield":0,
+            "heal": 0,
+            "shield": 0,
             "damageOverTime": 30,
             "damageOverTimeDuration": 9,
             "healOverTime": 0,
             "healOverTimeDuration": 0,
-            "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         },
         {
             "name": "Slow Kill",
@@ -260,7 +266,9 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 75,
-            "healOverTimeDuration": 2
+            "healOverTimeDuration": 2,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         },
         {
             "name":"Nothing",
@@ -414,7 +422,7 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 40,
-            "healOverTimeDuration": 5,
+            "healOverTimeDuration": 6,
             "shieldOverTime":0,
             "shieldOverTimeDuration":0
         },
@@ -426,7 +434,9 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 25,
-            "healOverTimeDuration": 8
+            "healOverTimeDuration": 9,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         },
         {
             "name": "Siphon Life",
@@ -445,14 +455,40 @@
             "name": "Singe",
             "source": "/images/spells/mutilate.svg",
             "damage": 100,
-            "heal": -400,
-            "shield":0,
+            "heal": -300,
+            "shield": 0,
             "damageOverTime": 100, 
             "damageOverTimeDuration": 5,
             "healOverTime": 0,
             "healOverTimeDuration": 0,
-            "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
+        },
+        {
+            "name": "Fissure",
+            "source": "/images/spells/fissure.svg",
+            "damage": 100,
+            "heal": -400,
+            "shield": 0,
+            "damageOverTime": 120, 
+            "damageOverTimeDuration": 5,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
+        },
+        {
+            "name": "Eruption",
+            "source": "/images/spells/eruption.svg",
+            "damage": 100,
+            "heal": -400,
+            "shield": 0,
+            "damageOverTime": 100, 
+            "damageOverTimeDuration": 6,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         }
     ]
 }
