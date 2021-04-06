@@ -24,11 +24,11 @@ const BattleOver = ({ player, opponent }) => {
 
     const displayResults = () => {
         switch(true){
-            case (clients[0].health < 0 && clients[1].health < 0):
+            case (clients[0]?.health < 0 && clients[1]?.health < 0):
                 return <p>draw</p>
-            case clients[0].health > 0 && clients[0].health > clients[1].health:
+            case clients[0]?.health > 0 && clients[0]?.health > clients[1]?.health:
                 return <p>{clients[0].username} wins</p>
-            case clients[1].health > 0 && clients[1].health > clients[0].health:
+            case clients[1]?.health > 0 && clients[1]?.health > clients[0]?.health:
                 return <p>{clients[1].username} wins</p>
             default:
                 return 'bugged'
