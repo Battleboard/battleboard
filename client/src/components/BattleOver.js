@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteRoom } from '../actions/roomActions'
-import { setUserInfo, setPhase, resetGame } from '../actions/userActions'
+import { setUserInfo, resetGame } from '../actions/userActions'
+import Button from './styled/Button'
 
 const BattleOver = ({ player, opponent }) => {
     const dispatch = useDispatch()
@@ -21,6 +22,19 @@ const BattleOver = ({ player, opponent }) => {
         }
     }
 
+    const displayResults = () => {
+        switch(true){
+            case (clients[0].health < 0 && clients[1].health < 0):
+                return <p>draw</p>
+            case clients[0].health > 0 && clients[0].health > clients[1].health:
+                return <p>{clients[0].username} wins</p>
+            case clients[1].health > 0 && clients[1].health > clients[0].health:
+                return <p>{clients[1].username} wins</p>
+            default:
+                return 'bugged'
+        }
+    }
+
     useEffect(() => {
         if (auth.id){
             dispatch(deleteRoom(clients[0].gameId))
@@ -29,14 +43,13 @@ const BattleOver = ({ player, opponent }) => {
     // eslint-disable-next-line
     }, [auth])
 
-    return <div style={{display: 'flex', flexDirection: 'column'}}>
-        <p>{`Player 1 hp: ${clients[0].health}`}</p>
-        <p>{`Player 2 hp: ${clients[1].health}`}</p>
-        {clients[0].health > clients[1].health ? <p>player 1 wins</p> : <p>player 2 wins</p>}
-        <button onClick={() => {
-            dispatch(setPhase('select-spells'))
+    return <div style={{display: 'flex', flexDirection: 'column', textAlign: 'center'}}>
+        {clients[0] && <p>{`${clients[0].username} Health: ${clients[0].health}`}</p>}
+        {clients[1] && <p>{`${clients[1].username} Health: ${clients[1].health}`}</p>}
+        {displayResults()}
+        <Button style={{margin: '0 auto'}} onClick={() => {
             dispatch(resetGame())
-        }}>restart</button>
+        }}>Back to Gameroom</Button>
     </div>
 }
 
