@@ -422,7 +422,7 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 40,
-            "healOverTimeDuration": 5,
+            "healOverTimeDuration": 6,
             "shieldOverTime":0,
             "shieldOverTimeDuration":0
         },
