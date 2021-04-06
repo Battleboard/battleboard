@@ -106,8 +106,9 @@ const CreateGame = ({setClient, setGameRoom, setConnection}) => {
         </div>
         <div style={{flexGrow: 1, background: '#FFF'}}>
             <div style={{display: 'flex', flexDirection: 'column', width: '50%', margin: '20px auto'}}>
-                <Button onClick={() => dispatch(getRooms())}>Refresh</Button>
+                <Button style={{margin: '20px auto'}} onClick={() => dispatch(getRooms())}>Refresh</Button>
                 <Button style={{margin: '20px auto'}} onClick={createGameRoom}>Create Room</Button>
+                <Button style={{margin: '20px auto'}} onClick={() => dispatch(setPhase('profile'))}>Profile</Button>
             </div>
         </div>
     </div>

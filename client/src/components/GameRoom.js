@@ -12,46 +12,16 @@ const status_bar_styles = {width: '85%', background: '#7E7E7E', display: 'flex',
 const player_stats_container_styles = {width: '75%', background: '#7E7E7E', display: 'flex', flexDirection:"column", margin: "15px auto"}
 const damage_result_styles = {color: 'red', fontSize: 28, marginTop: '110px', marginLeft: 30, fontWeight: 'bold'}
 
-const GameRoom = ({setGameRoom}) => {
+const GameRoom = ({setGameRoom, player, opponent}) => {
     const [currentUserSpell, setCurrentUserSpell] = useState(null)
     const [currentSpells, setCurrentSpells] = useState([])
     const [currentDamageResults, setCurrentDamageResults] = useState([])
     const [calculating, setCalculating] = useState(false)
 
-    const [player, setPlayer] = useState()
-    const [opponent, setOpponent] = useState()
-
     const dispatch = useDispatch()
     const clients = useSelector(state => state.room.gameRoom);
     const connection = useSelector(state => state.room.connection);
     const clientId = store.getState().room.clientId
-
-    useEffect(() => { console.log(currentDamageResults)}, [currentDamageResults])
-
-    //route the players into player and opponent
-    useEffect(() => {
-
-        //if the game room only has a single client set the player to the client
-        if(clients.length === 1){
-            setPlayer(0);
-
-        }else if(clients.length === 2){
-            let clientIndex = null;
-            //iterate through the clients and set the client with the id matching clientId to the player
-            for(let i=0; i<clients.length; i++){
-                if(clients[i].clientId === clientId){
-                    setPlayer(i)
-                    clientIndex = i;
-                }
-            }
-            if(clientIndex === 0){
-                setOpponent(1)
-            }else if(clientIndex === 1){
-                setOpponent(0)
-            }
-        }
-    // eslint-disable-next-line
-    }, [clients])
 
     useEffect(() => { 
 
