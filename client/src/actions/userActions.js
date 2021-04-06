@@ -50,6 +50,21 @@ export const buyPacks = (id) => (dispatch) => {
 
     console.log("buy packs");
 
+    if(store.getState().user.gold >= 1000){
+        //generate a random number from 0-35
+        axios.post('/api/users/buypack/'+id)
+            .then(res => dispatch({
+                type:BUY_PACKS,
+                payload: res.data
+            }))
+    }
+
+
+        
+
+
+
+
 }
 
 

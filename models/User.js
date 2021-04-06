@@ -24,7 +24,12 @@ const UserSchema = new Schema({
     gold:{
         type: Number,
         required: true,
-        default: 1000,
+        default: 0,
+    },
+    role:{
+        type:String,
+        required: true,
+        default:'player'
     },
     register_date: {
         type: Date,

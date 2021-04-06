@@ -9,6 +9,50 @@ const secret = process.env.jwtSecret;
 
 const User = require("../../models/User");
 
+router.post('/buypack' + '/:id', function(req, res) {
+
+    console.log("Buy Pack");
+    console.log("res.data: ", req.body.cards);
+
+    //remove 1000 gold from the user
+    
+
+    let max = 35;
+    let min = 0;
+    
+    let cards = [];
+
+    for(let i=0; i<3; i++){
+        console.log("i: ", i)
+       cards.push(Math.floor(Math.random() * (max - min) + min) );
+    }
+
+    console.log("cards: ", cards);
+        
+    if(req.params.id !== null){
+        User.findOne({_id: req.params.id}).then(user => {
+            if(user){
+                user.gold -= 1000;
+                //for each card in the pack
+                for(let j=0; j<cards.length; j++){
+                    //check if the card is already unlocked for that player
+                    if(user.spells.includes(cards[j])){
+                        //add to the gold the player has
+                        user.gold += 500;
+                    }else{
+                        user.spells.push(cards[j])
+                    }
+                }
+
+                user.save()
+                .then(user => res.json({'gold':user.gold, 'spells':user.spells}))
+
+            }
+        })
+    }
+  
+});
+
 router.post('/gold' + '/:id', function(req, res) {
 
     console.log("Set Gold");
@@ -23,6 +67,8 @@ router.post('/gold' + '/:id', function(req, res) {
                 user.save()
                 .then(user => res.json(user.gold))
 
+            }else{
+                res.status(505).json({'status':'504'})
             }
         })
     }

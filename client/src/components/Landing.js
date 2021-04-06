@@ -48,8 +48,10 @@ const Landing = () => {
 
 
 	useEffect(() => {
+		if(auth.id){
 			dispatch(getSpells(auth.id));
 			dispatch(getGold(auth.id));
+		}	
 	}, [auth])
 	
 	const setContent = () => {

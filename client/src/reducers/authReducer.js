@@ -14,7 +14,8 @@ const initialState = {
     isAuthenticated: null,
     isLoading: false,
     id: '',
-    name: ''
+    name: '',
+    role:''
 };
 
 export default function authReducer(state = initialState, action){
@@ -30,7 +31,8 @@ export default function authReducer(state = initialState, action){
                 isAuthenticated: true,
                 isLoading: false,
                 id: action.payload._id,
-                name: action.payload.name
+                name: action.payload.name,
+                role: action.payload.role
             };
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
