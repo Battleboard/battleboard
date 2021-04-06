@@ -7,10 +7,11 @@ import CreateGame from "./CreateGame";
 import SelectedSpells from "./SelectedSpells";
 import { useSelector, useDispatch } from 'react-redux'
 import GameRoom from "./GameRoom";
-import { getUserInfo } from '../actions/userActions'
+import { getUserInfo, setSpells } from '../actions/userActions'
 import Profile from './Profile'
 import BattleOver from './BattleOver'
 import store from '../store'
+import { spells } from "../json/spells";
 
 const GuestLinks = () => {
   
@@ -50,6 +51,15 @@ const Landing = () => {
 	const auth = useSelector(state => state.auth)
 	const clients = useSelector(state => state.room.gameRoom);
     const clientId = store.getState().room.clientId
+	const user = useSelector(state => state.user)
+
+	window.addEventListener('keydown', e => {
+		if (e.which === 222 && phase === 'select-spells') {
+			for (let i = 0; i < 7; i++){
+				!user.spells.includes(spells[i]) && dispatch(setSpells(spells[i]))
+			}
+		}
+	})
 
 	//route the players into player and opponent
     useEffect(() => {
