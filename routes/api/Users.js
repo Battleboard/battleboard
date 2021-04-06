@@ -9,6 +9,39 @@ const secret = process.env.jwtSecret;
 
 const User = require("../../models/User");
 
+router.post('/gold' + '/:id', function(req, res) {
+
+    console.log("Set Gold");
+    console.log("res.data: ", req.body.amount);
+
+        
+    if(req.params.id !== null){
+        User.findOne({_id: req.params.id}).then(user => {
+            if(user){
+                
+                user.gold += req.body.amount;
+                user.save()
+                .then(user => res.json(user.gold))
+
+            }
+        })
+    }
+    
+
+});
+
+router.get('/gold' + '/:id', function(req, res) {
+
+    if(req.params.id !== null){
+        User.findOne({_id: req.params.id}).then(user => {
+            if(user){
+                console.log("gold", user.gold);
+                res.json(user.gold);
+            }
+        })
+    }
+});
+
 router.get('/unlockedSpells' + '/:id', function(req, res) {
 
     let spells = [];

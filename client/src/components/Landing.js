@@ -8,7 +8,7 @@ import CreateGame from "./CreateGame";
 import SelectedSpells from "./SelectedSpells";
 import { useSelector, useDispatch } from 'react-redux'
 import GameRoom from "./GameRoom";
-import { setPhase, resetGame, getSpells } from '../actions/userActions'
+import { setPhase, resetGame, getSpells, getGold } from '../actions/userActions'
 import { deleteRoom } from '../actions/roomActions'
 
 const GuestLinks = () => {
@@ -48,7 +48,8 @@ const Landing = () => {
 
 
 	useEffect(() => {
-			store.dispatch(getSpells(auth.id));
+			dispatch(getSpells(auth.id));
+			dispatch(getGold(auth.id));
 	}, [auth])
 	
 	const setContent = () => {

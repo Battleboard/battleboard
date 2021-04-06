@@ -18,3 +18,5 @@ export const RESET_GAME = 'RESET_GAME';
 export const GET_ROOMS = 'GET_ROOMS';
 export const REMOVE_SPELL = 'REMOVE_SPELL';
 export const GET_SPELLS = 'GET_SPELLS';
+export const GET_GOLD = 'GET_GOLD';
+export const BUY_PACKS = 'BUY_PACKS';

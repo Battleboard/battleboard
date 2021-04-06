@@ -1,4 +1,4 @@
-import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS} from './types';
+import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS, GET_GOLD, BUY_PACKS} from './types';
 import store from '../store';
 import axios from 'axios';
 
@@ -44,6 +44,34 @@ export const getSpells = (id) => (dispatch) => {
                 payload: res.data
             }))
 
+}
+
+export const buyPacks = (id) => (dispatch) => {
+
+    console.log("buy packs");
+
+}
+
+
+export const setGold = (id, amount) => (dispatch) => {
+
+    console.log("id: ", id);
+    console.log("amount: ", amount);
+    
+    axios.post('/api/users/gold/' + id, {amount})
+        .then(res => dispatch({
+            type:GET_GOLD,
+            payload: res.data
+        }))
+}
+
+export const getGold = (id) => (dispatch) => {
+    axios.get('/api/users/gold/' + id)
+        /*.then(res => console.log("response: ", res.data))*/
+        .then(res => dispatch({
+            type:GET_GOLD,
+            payload: res.data
+        }))
 }
 
 export const addSpells = (id) => (dispatch) => {

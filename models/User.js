@@ -21,6 +21,11 @@ const UserSchema = new Schema({
         required: true,
         default: [0,1,2,3,4,5,6,7]
     },
+    gold:{
+        type: Number,
+        required: true,
+        default: 1000,
+    },
     register_date: {
         type: Date,
         default: Date.now
