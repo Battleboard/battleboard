@@ -26,6 +26,7 @@ const BattleOver = ({ player, opponent }) => {
             dispatch(deleteRoom(clients[0].gameId))
 		    dispatch(setUserInfo(auth.id, declareWinner()))
         }
+    // eslint-disable-next-line
     }, [auth])
 
     return <div style={{display: 'flex', flexDirection: 'column'}}>

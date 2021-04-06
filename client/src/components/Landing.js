@@ -48,7 +48,6 @@ const Landing = () => {
 	const phase = useSelector(state => state.user.phase)
 	const connection = useSelector(state => state.room.connection)
 	const auth = useSelector(state => state.auth)
-	const user = useSelector(state => state.user)
 	const clients = useSelector(state => state.room.gameRoom);
     const clientId = store.getState().room.clientId
 

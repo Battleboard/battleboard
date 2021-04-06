@@ -2,8 +2,8 @@ import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, SET_INFO, GET_INFO} fro
 
 const initialState = {
     spells:[],
-    maxHealth: 3000,
-    startingHealth: 2000,
+    maxHealth: 2500,
+    startingHealth:2500,
     phase: "select-spells",
     maxShield: 3000,
     startingShield: 0,
