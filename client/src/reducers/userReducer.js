@@ -25,7 +25,6 @@ export default function userReducer(state = initialState, action, payload){
         case SET_INFO:
             switch(action.payload){
                 case 'wins':
-                    console.log(action.payload)
                     return {
                         ...state,
                         wins: state.wins + 1

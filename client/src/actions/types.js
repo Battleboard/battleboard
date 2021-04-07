@@ -19,3 +19,4 @@ export const GET_ROOMS = 'GET_ROOMS';
 export const REMOVE_SPELL = 'REMOVE_SPELL';
 export const GET_INFO = 'GET_INFO';
 export const SET_INFO = 'SET_INFO';
+export const CLEAR_ROOMS = 'CLEAR_ROOMS';

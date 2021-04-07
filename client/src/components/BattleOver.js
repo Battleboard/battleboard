@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteRoom } from '../actions/roomActions'
+import { deleteRoom, clearRooms } from '../actions/roomActions'
 import { setUserInfo, resetGame } from '../actions/userActions'
 import Button from './styled/Button'
 
@@ -49,6 +49,7 @@ const BattleOver = ({ player, opponent }) => {
         {displayResults()}
         <Button style={{margin: '0 auto'}} onClick={() => {
             dispatch(resetGame())
+            dispatch(clearRooms())
         }}>Back to Gameroom</Button>
     </div>
 }
