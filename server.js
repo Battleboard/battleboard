@@ -252,10 +252,12 @@ webSocketServer.on("connection", (webSocket, request) => {
 
 });
 
+//generate a random number from 0 - 99
+let max = 101;
+let min = 0;
+
 const setCriticalShield = (player) => {
-    //generate a random number from 0 - 99
-    let max = 101;
-    let min = 0;
+
     let random = Math.floor(Math.random() * (max - min) + min);
     //if the random number is less than the critical chance
     if(random < player.selectedSpell.criticalShieldChance){
@@ -266,9 +268,6 @@ const setCriticalShield = (player) => {
 }
 
 const setCriticalHeal = (player) => {
-    //generate a random number from 0 - 99
-    let max = 101;
-    let min = 0;
     let random = Math.floor(Math.random() * (max - min) + min);
     //if the random number is less than the critical chance
     if(random < player.selectedSpell.criticalHealChance){
@@ -279,9 +278,6 @@ const setCriticalHeal = (player) => {
 }
 
 const setCriticalDamage = (player) => {
-    //generate a random number from 0 - 99
-    let max = 101;
-    let min = 0;
     let random = Math.floor(Math.random() * (max - min) + min);
     //if the random number is less than the critical chance
     if(random < player.selectedSpell.criticalDamageChance){
@@ -398,6 +394,7 @@ const getDebuffs = (player, opponent) => {
     
     return player
 }
+
 const setDebuffs = (player, opponent) => {
     if(player.selectedSpell.damageOverTime !== 0){
         opponent.debuffs.push({
