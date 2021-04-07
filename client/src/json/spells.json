@@ -1,6 +1,25 @@
 {
     "spells": [
         {
+            "name": "Precarious Potion",
+            "source": "/images/spells/precariouspotion.svg",
+            "damage": 50,
+            "heal": 50,
+            "shield": 0,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 25,
+            "criticalHealIncrease":150,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
+        },
+        {
             "name": "Fortify",
             "source": "/images/spells/fortify.svg",
             "damage": 10000,
@@ -11,7 +30,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 5,
-            "shieldOverTimeDuration": 5
+            "shieldOverTimeDuration": 5,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Shield",
@@ -24,7 +49,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Shurikens",
@@ -37,7 +68,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Fireball",
@@ -50,7 +87,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Meditate",
@@ -63,7 +106,13 @@
             "healOverTime": 25,
             "healOverTimeDuration": 12,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Shield Prism",
@@ -76,7 +125,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 35,
-            "shieldOverTimeDuration": 4
+            "shieldOverTimeDuration": 4,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Flame Pillar",
@@ -89,8 +144,35 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
+
+        {
+            "name": "Fire Blast",
+            "source": "/images/spells/fireblast.svg",
+            "damage": 150,
+            "heal": 0,
+            "shield":0,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime":0,
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 50,
+            "criticalDamageIncrease": 150,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
+        },
+
         {
             "name": "Holy Reaper",
             "source": "/images/spells/holyreaper.svg",
@@ -102,7 +184,13 @@
             "healOverTime": 10,
             "healOverTimeDuration": 3,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Fire Punch",
@@ -114,7 +202,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Sacrifice",
@@ -127,7 +221,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Power Strike",
@@ -140,7 +240,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
 		{
             "name": "Drain Essence",
@@ -152,7 +258,13 @@
             "healOverTime": 25,
             "healOverTimeDuration": 4,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Searing Toxin",
@@ -165,7 +277,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Consolidate",
@@ -178,7 +296,13 @@
             "healOverTime": 50,
             "healOverTimeDuration": 4,
             "shieldOverTime": 50,
-            "shieldOverTimeDuration": 4
+            "shieldOverTimeDuration": 4,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Lightning Storm",
@@ -191,7 +315,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
 		{
             "name": "Blitz Heal",
@@ -203,7 +333,13 @@
             "healOverTime": 95,
             "healOverTimeDuration": 1,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Heavy Slam",
@@ -216,7 +352,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Power Drip",
@@ -229,7 +371,13 @@
             "healOverTime": 45,
             "healOverTimeDuration": 8,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Side Slash",
@@ -242,7 +390,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Slow Kill",
@@ -255,7 +409,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
 		{
             "name":"Rejuvination Potion",
@@ -268,7 +428,13 @@
             "healOverTime": 75,
             "healOverTimeDuration": 2,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name":"Nothing",
@@ -281,7 +447,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name":"Pummel",
@@ -294,7 +466,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name":"Vishnu Beam",
@@ -307,7 +485,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Penance",
@@ -320,7 +504,13 @@
             "healOverTime": 50,
             "healOverTimeDuration": 1,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name":"Slice",
@@ -333,7 +523,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name":"Jesus Beam",
@@ -346,7 +542,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name":"Holy Prayer",
@@ -359,7 +561,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "True Shot",
@@ -372,7 +580,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Back Stab",
@@ -385,7 +599,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Fire Storm",
@@ -398,7 +618,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Radiance",
@@ -411,7 +637,13 @@
             "healOverTime": 20,
             "healOverTimeDuration": 4,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Mend Wounds",
@@ -424,7 +656,13 @@
             "healOverTime": 40,
             "healOverTimeDuration": 6,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Fountain of Life",
@@ -436,7 +674,13 @@
             "healOverTime": 25,
             "healOverTimeDuration": 9,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Siphon Life",
@@ -449,7 +693,13 @@
             "healOverTime": 25,
             "healOverTimeDuration": 3,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Singe",
@@ -462,7 +712,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
-            "shieldOverTimeDuration":0
+            "shieldOverTimeDuration":0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Neural Connect",
@@ -475,7 +731,13 @@
             "healOverTime": 40,
             "healOverTimeDuration": 4,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Fissure",
@@ -488,7 +750,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Bullseye",
@@ -501,7 +769,13 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
         },
         {
             "name": "Eruption",
@@ -514,7 +788,32 @@
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 0,
-            "shieldOverTimeDuration": 0
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
+        },
+        {
+            "name": "Stone Wall",
+            "source": "/images/spells/stonewall.svg",
+            "damage": 0,
+            "heal": 50,
+            "shield": 50,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":50,
+            "criticalShieldIncrease":100
         }
     ]
 }
