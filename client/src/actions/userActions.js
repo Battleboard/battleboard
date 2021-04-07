@@ -1,6 +1,26 @@
-import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS, GET_GOLD, BUY_PACKS} from './types';
+import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS, SET_INFO, GET_INFO, GET_GOLD, BUY_PACKS} from './types';
+import axios from 'axios'
 import store from '../store';
-import axios from 'axios';
+
+//GET USER INFO
+export const getUserInfo = (id) => (dispatch) => {
+    axios.get('/api/users/userdata/' + id)
+        .then(res => dispatch({
+            type: GET_INFO,
+            payload: res.data
+        }))
+        .catch(err => console.error(err))
+}
+
+//SET USER INFO
+export const setUserInfo = (id, data) => dispatch => {
+    axios.post('/api/users/setuserdata/' + id, {data: data})
+        .then(() => dispatch({
+            type: SET_INFO,
+            payload: data
+        }))
+        .catch(err => console.error(err))
+}
 
 //RESET GAME
 export const resetGame = () => (dispatch) => {

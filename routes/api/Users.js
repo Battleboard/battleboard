@@ -102,6 +102,36 @@ router.get('/unlockedSpells' + '/:id', function(req, res) {
         })
     }
 });
+//INCREMENT WIN LOSS OR DRAW
+router.post('/setuserdata' + '/:id', (req, res) => {
+    console.log(req.body.data)
+    if(req.params.id !== null && req.body.data !== null){
+        User.findOne({_id: req.params.id})
+            .then(user => {
+                if(user){
+                    user[req.body.data] += 1
+                    user.save()
+                        .then(user => res.json(user))
+                }
+            })
+    }
+})
+
+//GET WIN LOSS DRAW FROM DATABASE
+router.get('/userdata' + '/:id', (req, res) => {
+    if(req.params.id !== null){
+        User.findOne({_id: req.params.id})
+            .then(user => {
+                if(user){
+                    res.json({
+                        'wins': user.wins,
+                        'losses': user.losses,
+                        'draws': user.draws
+                    })
+                }
+            })
+    }
+})
 
 //@route POST api/users
 //@desc Register new user

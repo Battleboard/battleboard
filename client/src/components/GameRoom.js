@@ -12,46 +12,19 @@ const status_bar_styles = {width: '85%', background: '#7E7E7E', display: 'flex',
 const player_stats_container_styles = {width: '75%', background: '#7E7E7E', display: 'flex', flexDirection:"column", margin: "15px auto"}
 const damage_result_styles = {color: 'red', fontSize: 28, marginTop: '110px', marginLeft: 30, fontWeight: 'bold'}
 
-const GameRoom = ({setGameRoom}) => {
+const GameRoom = ({setGameRoom, player, opponent}) => {
     const [currentUserSpell, setCurrentUserSpell] = useState(null)
     const [currentSpells, setCurrentSpells] = useState([])
     const [currentDamageResults, setCurrentDamageResults] = useState([])
     const [calculating, setCalculating] = useState(false)
 
-    const [player, setPlayer] = useState()
-    const [opponent, setOpponent] = useState()
+    const [playerDebuffs, setPlayerDebuffs] = useState([])
+    const [opponentDebuffs, setOpponentDebuffs] = useState([])
 
     const dispatch = useDispatch()
     const clients = useSelector(state => state.room.gameRoom);
     const connection = useSelector(state => state.room.connection);
     const clientId = store.getState().room.clientId
-
-    useEffect(() => { console.log(currentDamageResults)}, [currentDamageResults])
-
-    //route the players into player and opponent
-    useEffect(() => {
-
-        //if the game room only has a single client set the player to the client
-        if(clients.length === 1){
-            setPlayer(0);
-
-        }else if(clients.length === 2){
-            let clientIndex = null;
-            //iterate through the clients and set the client with the id matching clientId to the player
-            for(let i=0; i<clients.length; i++){
-                if(clients[i].clientId === clientId){
-                    setPlayer(i)
-                    clientIndex = i;
-                }
-            }
-            if(clientIndex === 0){
-                setOpponent(1)
-            }else if(clientIndex === 1){
-                setOpponent(0)
-            }
-        }
-    // eslint-disable-next-line
-    }, [clients])
 
     useEffect(() => { 
 
@@ -81,6 +54,9 @@ const GameRoom = ({setGameRoom}) => {
                     //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
                     setCurrentSpells([response.game.clients[player].previousSpell, response.game.clients[opponent].previousSpell]);
                     setCurrentDamageResults([response.game.clients[player].damageResult, response.game.clients[opponent].damageResult])
+                    console.log("player debuffs: ", response.game.clients[player].debuffs);
+                    setPlayerDebuffs(response.game.clients[player].debuffs)
+                    setOpponentDebuffs(response.game.clients[opponent].debuffs)
                     setTimeout(() => {
                         setCurrentSpells([])
                         setCurrentUserSpell(null)
@@ -135,7 +111,7 @@ const GameRoom = ({setGameRoom}) => {
 
             {/* Opponent Status Bar*/}
             <div style={status_bar_styles}>
-                {clients[opponent] && clients[opponent].debuffs.map((debuff, index) => {
+                {opponentDebuffs && opponentDebuffs.map((debuff, index) => {
                     return <div key={index} style={{width: 70, height: 80}}>
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                         <div style={{display: 'flex'}}>
@@ -184,7 +160,7 @@ const GameRoom = ({setGameRoom}) => {
 
             {/** Player 1 Status Bar */}
             <div style={status_bar_styles}>
-                {clients[player] && clients[player].debuffs.map((debuff, index) => {
+                {playerDebuffs && playerDebuffs.map((debuff, index) => {
                     return <div key={index} style={{width: 70, height: 80}}>
                         <img src={debuff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
                         <div style={{display: 'flex'}}>

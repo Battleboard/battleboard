@@ -205,8 +205,6 @@ webSocketServer.on("connection", (webSocket, request) => {
                     game.clients[0].debuffs = player1.debuffs;
                     game.clients[1].debuffs = player2.debuffs;
 
-
-
                     //construct the payload to send back to both clients
                     const payLoad = {
                         "method":"evaluate",
@@ -220,8 +218,6 @@ webSocketServer.on("connection", (webSocket, request) => {
                 }
             }
         }
-
-
     })
 
 });
@@ -279,6 +275,9 @@ const cappedHealReduction = (currentHealth, heal, maxHealth) => {
 
 const getDebuffs = (player, opponent) => {
     if(player.debuffs.length > 0){
+
+        let debuffsToDelete = [];
+
         for(let i=0; i < player.debuffs.length; i++){
 
             let type = player.debuffs[i].type;
@@ -286,9 +285,9 @@ const getDebuffs = (player, opponent) => {
             if(type === 'damage'){
                 opponent.damage += player.debuffs[i].damage;
                 //decrement the debuff duration / remove the debuff from the list
-                if(player.debuffs[i].duration === 1){
+                if(player.debuffs[i].duration == 1){
                     //remove the debuff
-                    player.debuffs.splice(i,1);
+                    debuffsToDelete.push(i);
                 }else{
                     //decrement the debuff
                     player.debuffs[i].duration -= 1;
@@ -299,9 +298,9 @@ const getDebuffs = (player, opponent) => {
             if(type === 'heal'){
                 player.heal += player.debuffs[i].heal;
                 //decrement the debuff duration / remove the debuff from the list
-                if(player.debuffs[i].duration === 1){
+                if(player.debuffs[i].duration == 1){
                     //remove the debuff
-                    player.debuffs.splice(i,1);
+                    debuffsToDelete.push(i);
                 }else{
                     //decrement the debuff
                     player.debuffs[i].duration -= 1;
@@ -311,9 +310,9 @@ const getDebuffs = (player, opponent) => {
             if(type === 'shield'){
                 player.shield += player.debuffs[i].shield;
                 //decrement the debuff duration / remove the debuff from the list
-                if(player.debuffs[i].duration === 1){
+                if(player.debuffs[i].duration == 1){
                     //remove the debuff
-                    player.debuffs.splice(i,1);
+                    debuffsToDelete.push(i);
                 }else{
                     //decrement the debuff
                     player.debuffs[i].duration -= 1;
@@ -322,7 +321,12 @@ const getDebuffs = (player, opponent) => {
 
 
         }
+            //delete all the debuffs that are going to zero
+            for(let j=0; j<debuffsToDelete.length; j++){
+                player.debuffs.splice(j,1);
+            }
     }
+    
     return player
 }
 const setDebuffs = (player, opponent) => {
