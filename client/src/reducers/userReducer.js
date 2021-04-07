@@ -62,8 +62,8 @@ export default function userReducer(state = initialState, action, payload){
         case RESET_GAME:
             return {
                 ...state,
-                maxHealth: 3000,
-                startingHealth: 1500,
+                maxHealth: 2500,
+                startingHealth: 2500,
                 phase: "gameroom",
                 maxShield: 3000,
                 startingShield: 0

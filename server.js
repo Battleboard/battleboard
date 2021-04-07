@@ -109,7 +109,8 @@ webSocketServer.on("connection", (webSocket, request) => {
                 "previousSpell": null,
                 "gameId": result.gameId,
                 "username": result.username,
-                "damageResult": 0,
+                "damageResult":0,
+                "shieldResult":0,
                 "shield": result.shield,
                 "maxShield": result.maxShield
             })
@@ -170,6 +171,32 @@ webSocketServer.on("connection", (webSocket, request) => {
                     {/*Combat Sequence*/}
                     //players deal damage
 
+                    //check if the players spell has critical
+
+                    if(player1.selectedSpell.criticalDamageChance !== 0){
+                        player1 = setCriticalDamage(player1);
+                    }
+
+                    if(player2.selectedSpell.criticalDamageChance !== 0){
+                        player2 = setCriticalDamage(player2);
+                    }
+
+                    if(player1.selectedSpell.criticalHealChance !== 0){
+                        player1 = setCriticalHeal(player1);
+                    }
+
+                    if(player2.selectedSpell.criticalHealChance !== 0){
+                        player2 = setCriticalHeal(player2);
+                    }
+
+                    if(player1.selectedSpell.criticalShieldChance !==0){
+                        player1 = setCriticalShield(player1);
+                    }
+
+                    if(player2.selectedSpell.criticalShieldChance !==0){
+                        player2 = setCriticalShield(player2);
+                    }
+
                     //check if each player has damage over time attached to them
                     player1 = getDebuffs(player1, player2);
                     player2 = getDebuffs(player2, player1);
@@ -186,6 +213,9 @@ webSocketServer.on("connection", (webSocket, request) => {
 
                     game.clients[0].damageResult = game.clients[0].health - player1.health;
                     game.clients[1].damageResult = game.clients[1].health - player2.health;
+
+                    game.clients[0].shieldResult = game.clients[0].shield - player1.shield;
+                    game.clients[1].shieldResult = game.clients[1].shield- player2.shield;
 
                     //update the game object to send back as a payload to the front end
                     game.clients[0].health = player1.health;
@@ -220,6 +250,41 @@ webSocketServer.on("connection", (webSocket, request) => {
     })
 
 });
+
+//generate a random number from 0 - 99
+let max = 101;
+let min = 0;
+
+const setCriticalShield = (player) => {
+
+    let random = Math.floor(Math.random() * (max - min) + min);
+    //if the random number is less than the critical chance
+    if(random < player.selectedSpell.criticalShieldChance){
+        //add the critical damage to the players damage
+        player.shield +=  player.selectedSpell.criticalShieldIncrease;
+    }
+    return player
+}
+
+const setCriticalHeal = (player) => {
+    let random = Math.floor(Math.random() * (max - min) + min);
+    //if the random number is less than the critical chance
+    if(random < player.selectedSpell.criticalHealChance){
+        //add the critical damage to the players damage
+        player.heal +=  player.selectedSpell.criticalHealIncrease;
+    }
+    return player
+}
+
+const setCriticalDamage = (player) => {
+    let random = Math.floor(Math.random() * (max - min) + min);
+    //if the random number is less than the critical chance
+    if(random < player.selectedSpell.criticalDamageChance){
+        //add the critical damage to the players damage
+        player.damage +=  player.selectedSpell.criticalDamageIncrease;
+    }
+    return player
+}
 
 //takes a player and opponent and returns a player with modified shield and health
 const setShield = (player, opponent) => {
@@ -328,6 +393,7 @@ const getDebuffs = (player, opponent) => {
     
     return player
 }
+
 const setDebuffs = (player, opponent) => {
     if(player.selectedSpell.damageOverTime !== 0){
         opponent.debuffs.push({
