@@ -1,4 +1,4 @@
-import {SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_CONNECTION, GET_ROOMS} from './types';
+import {SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_CONNECTION, CLEAR_ROOMS, GET_ROOMS} from './types';
 import axios from 'axios';
 
 export const setClient = (clientId) => (dispatch) => {
@@ -14,8 +14,10 @@ export const setGame = (gameId) => (dispatch) => {
         type: SET_GAME_ID,
         payload: gameId
     })
+}
 
-
+export const clearRooms = () => dispatch => {
+    dispatch({ type: CLEAR_ROOMS })
 }
 
 export const setGameRoom = (game) => (dispatch) => {

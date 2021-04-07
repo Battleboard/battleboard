@@ -3,7 +3,7 @@
         {
             "name": "Fortify",
             "source": "/images/spells/fortify.svg",
-            "damage": 100,
+            "damage": 10000,
             "heal": 0,
             "shield": 70,
             "damageOverTime": 0, 
