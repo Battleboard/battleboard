@@ -10,21 +10,14 @@ const secret = process.env.jwtSecret;
 const User = require("../../models/User");
 
 router.post('/buypack' + '/:id', function(req, res) {
-
-    console.log("Buy Pack");
-    console.log("res.data: ", req.body.cards);
-
-    let max = 35;
+    let max = req.body.spells.length;
     let min = 0;
     
     let cards = [];
 
     for(let i=0; i < 3; i++){
-        console.log("i: ", i)
        cards.push(Math.floor(Math.random() * (max - min) + min) );
     }
-
-    console.log("cards: ", cards);
         
     if(req.params.id !== null){
         User.findOne({_id: req.params.id}).then(user => {
@@ -35,7 +28,7 @@ router.post('/buypack' + '/:id', function(req, res) {
                     //check if the card is already unlocked for that player
                     if(user.spells.includes(cards[j])){
                         //add to the gold the player has
-                        user.gold += 500;
+                        user.gold += 300;
                     }else{
                         user.spells.push(cards[j])
                     }
@@ -51,10 +44,6 @@ router.post('/buypack' + '/:id', function(req, res) {
 });
 
 router.post('/gold' + '/:id', function(req, res) {
-
-    console.log("Set Gold");
-    console.log("res.data: ", req.body.amount);
-
     if(req.params.id !== null){
         User.findOne({_id: req.params.id}).then(user => {
             if(user){
@@ -75,7 +64,6 @@ router.get('/gold' + '/:id', function(req, res) {
     if(req.params.id !== null){
         User.findOne({_id: req.params.id}).then(user => {
             if(user){
-                console.log("gold", user.gold);
                 res.json(user.gold);
             }
         })
@@ -87,7 +75,6 @@ router.get('/unlockedSpells' + '/:id', function(req, res) {
     let spells = [];
 
     if(req.params.id !== null){
-        console.log("null", req.params.id);
         User.findOne({_id: req.params.id}).then(user => {
             if(user){
                 spells = user.spells;
@@ -99,7 +86,6 @@ router.get('/unlockedSpells' + '/:id', function(req, res) {
 
 //INCREMENT WIN LOSS OR DRAW
 router.post('/setuserdata' + '/:id', (req, res) => {
-    console.log(req.body.data)
     if(req.params.id !== null && req.body.data !== null){
         User.findOne({_id: req.params.id})
             .then(user => {
