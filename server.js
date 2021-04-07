@@ -171,6 +171,32 @@ webSocketServer.on("connection", (webSocket, request) => {
                     {/*Combat Sequence*/}
                     //players deal damage
 
+                    //check if the players spell has critical
+
+                    if(player1.selectedSpell.criticalDamageChance !== 0){
+                        player1 = setCriticalDamage(player1);
+                    }
+
+                    if(player2.selectedSpell.criticalDamageChance !== 0){
+                        player2 = setCriticalDamage(player2);
+                    }
+
+                    if(player1.selectedSpell.criticalHealChance !== 0){
+                        player1 = setCriticalHeal(player1);
+                    }
+
+                    if(player2.selectedSpell.criticalHealChance !== 0){
+                        player2 = setCriticalHeal(player2);
+                    }
+
+                    if(player1.selectedSpell.criticalShieldChance !==0){
+                        player1 = setCriticalShield(player1);
+                    }
+
+                    if(player2.selectedSpell.criticalShieldChance !==0){
+                        player2 = setCriticalShield(player2);
+                    }
+
                     //check if each player has damage over time attached to them
                     player1 = getDebuffs(player1, player2);
                     player2 = getDebuffs(player2, player1);
@@ -221,6 +247,45 @@ webSocketServer.on("connection", (webSocket, request) => {
     })
 
 });
+
+const setCriticalShield = (player) => {
+    //generate a random number from 0 - 99
+    let max = 99;
+    let min = 0;
+    let random = Math.floor(Math.random() * (max - min) + min);
+    //if the random number is less than the critical chance
+    if(random < player.selectedSpell.criticalShieldChance){
+        //add the critical damage to the players damage
+        player.shield +=  player.selectedSpell.criticalShieldIncrease;
+    }
+    return player
+}
+
+const setCriticalHeal = (player) => {
+    //generate a random number from 0 - 99
+    let max = 99;
+    let min = 0;
+    let random = Math.floor(Math.random() * (max - min) + min);
+    //if the random number is less than the critical chance
+    if(random < player.selectedSpell.criticalHealChance){
+        //add the critical damage to the players damage
+        player.heal +=  player.selectedSpell.criticalHealIncrease;
+    }
+    return player
+}
+
+const setCriticalDamage = (player) => {
+    //generate a random number from 0 - 99
+    let max = 99;
+    let min = 0;
+    let random = Math.floor(Math.random() * (max - min) + min);
+    //if the random number is less than the critical chance
+    if(random < player.selectedSpell.criticalDamageChance){
+        //add the critical damage to the players damage
+        player.damage +=  player.selectedSpell.criticalDamageIncrease;
+    }
+    return player
+}
 
 //takes a player and opponent and returns a player with modified shield and health
 const setShield = (player, opponent) => {
