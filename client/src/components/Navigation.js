@@ -1,6 +1,6 @@
 import Button from './styled/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { setPhase, setGold, buyPacks } from '../actions/userActions'
+import { setPhase, buyPacks } from '../actions/userActions'
 import { logout } from '../actions/authActions'
 
 const button_styles = { border: '1px solid #FFF', color: '#FFF', margin: 8 }
