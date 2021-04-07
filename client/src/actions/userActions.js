@@ -78,15 +78,7 @@ export const buyPacks = (id) => (dispatch) => {
                 payload: res.data
             }))
     }
-
-
-        
-
-
-
-
 }
-
 
 export const setGold = (id, amount) => (dispatch) => {
 
