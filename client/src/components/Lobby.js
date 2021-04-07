@@ -92,7 +92,7 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
     }
 
 	return <div style={{background: 'lightblue', display: 'flex', height: '100%'}}>
-        <div style={{flexGrow: 4, background: '#212121'}}>     
+        <div style={{flexGrow: 4, background: '#212121'}}>
 
                 {/* Map the game list */}
                 {games && games.map((game, index) => {
