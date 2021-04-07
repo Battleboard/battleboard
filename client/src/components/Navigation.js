@@ -1,7 +1,9 @@
 import Button from './styled/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { setPhase, setGold, buyPacks } from '../actions/userActions'
-import Logout from './Logout';
+import { setPhase, buyPacks } from '../actions/userActions'
+import { logout } from '../actions/authActions'
+
+const button_styles = { border: '1px solid #FFF', color: '#FFF', margin: 8 }
 
 const numberOfSpells = 6
 
@@ -40,37 +42,11 @@ const Navigation = () => {
             onClick={toBattle}
         >Battle</Button>}
 
-        {
-            auth.isAuthenticated && <Logout/>
-        }
-
-        {
-            auth.isAuthenticated && <Button onClick={() => dispatch(setGold(auth.id, 1000))}
-                style={{
-                    marginRight: 20, 
-                    border: spells.length === numberOfSpells ? '3px solid lightgreen' : '1px solid #FFF', 
-                    color: spells.length === numberOfSpells ? 'lightgreen' : '#FFF', 
-                    padding: 0, 
-                    marginTop: 10, 
-                    height: 60,
-                    fontWeight: spells.length === numberOfSpells ? 'bold' : 'normal'
-                }}
-            >Gold</Button>
-        }
-
-{
-            auth.isAuthenticated && <Button onClick={() => dispatch(buyPacks(auth.id))}
-                style={{
-                    marginRight: 20, 
-                    border: spells.length === numberOfSpells ? '3px solid lightgreen' : '1px solid #FFF', 
-                    color: spells.length === numberOfSpells ? 'lightgreen' : '#FFF', 
-                    padding: 0, 
-                    marginTop: 10, 
-                    height: 60,
-                    fontWeight: spells.length === numberOfSpells ? 'bold' : 'normal'
-                }}
-            >Buy Pack</Button>
-        }
+        {auth.isAuthenticated && <div>
+            {phase === 'profile' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Gameroom</Button>}
+            <Button onClick={() => dispatch(buyPacks(auth.id))} style={button_styles}>Buy Pack</Button>
+            <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button>
+        </div>}
 
     </div>
 }

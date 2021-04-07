@@ -10,8 +10,8 @@ const container_styles = {
 	color: '#333'
 }
 
-const Card = ({ spell, action}) => {
-	return <div style={container_styles} onClick={action}>
+const Card = ({ spell, action, style }) => {
+	return <div style={{...container_styles, ...style}} onClick={action}>
 		<div style={{margin: 10, display: 'flex'}}>
 			<h4 style={{margin: 0, padding: '20 0 0 20', flexGrow: 2}}>{spell.name}</h4>
 			<img alt="" src={spell.source} style={{height: 30, width: 30}}/>

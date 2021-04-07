@@ -34,6 +34,18 @@ const UserSchema = new Schema({
     register_date: {
         type: Date,
         default: Date.now
+    },
+    wins: {
+        type: Number,
+        default: 0
+    },
+    losses: {
+        type: Number,
+        default: 0
+    },
+    draws: {
+        type: Number,
+        default: 0
     }
 });
 

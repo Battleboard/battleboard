@@ -20,3 +20,6 @@ export const REMOVE_SPELL = 'REMOVE_SPELL';
 export const GET_SPELLS = 'GET_SPELLS';
 export const GET_GOLD = 'GET_GOLD';
 export const BUY_PACKS = 'BUY_PACKS';
+export const GET_INFO = 'GET_INFO';
+export const SET_INFO = 'SET_INFO';
+export const CLEAR_ROOMS = 'CLEAR_ROOMS';

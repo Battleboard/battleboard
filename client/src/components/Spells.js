@@ -10,11 +10,10 @@ const Spells = ({auth, setSpells}) => {
         {spells.map((spell, index) => {
             if(auth.role === 'admin'){
                 return <Card key={index} spell={spell} action={() => !user.spells.includes(spell) ? setSpells(spell) : null}/>
-            }else{
-                if(unlockedSpells.includes(index) && auth.role === 'player'){
-                    return <Card key={index} spell={spell} action={() => !user.spells.includes(spell) ? setSpells(spell) : null}/>
-                }
+            }else if(unlockedSpells.includes(index) && auth.role === 'player'){
+                return <Card key={index} spell={spell} action={() => !user.spells.includes(spell) ? setSpells(spell) : null}/>
             }
+            return <Card key={index} style={{opacity: '50%', cursor: 'default'}} spell={spell} />
         })}
     </div>
 };
