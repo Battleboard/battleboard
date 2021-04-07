@@ -812,8 +812,8 @@
             "criticalDamageIncrease": 0,
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
-            "criticalShieldChance":50,
-            "criticalShieldIncrease":100
+            "criticalShieldChance": 50,
+            "criticalShieldIncrease": 100
         },
         {
             "name": "Twin Blades",
@@ -827,12 +827,12 @@
             "healOverTimeDuration": 0,
             "shieldOverTime": 0,
             "shieldOverTimeDuration": 0,
-            "criticalDamageChance": 10,
+            "criticalDamageChance": 25,
             "criticalDamageIncrease": 150,
             "criticalHealChance": 0,
-            "criticalHealIncrease":0,
-            "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalHealIncrease": 0,
+            "criticalShieldChance": 0,
+            "criticalShieldIncrease": 0
         },
         {
             "name": "Crashing Wave",
@@ -849,9 +849,9 @@
             "criticalDamageChance": 0,
             "criticalDamageIncrease": 0,
             "criticalHealChance": 25,
-            "criticalHealIncrease":90,
-            "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalHealIncrease": 90,
+            "criticalShieldChance": 0,
+            "criticalShieldIncrease": 0
         },
         {
             "name": "Dubloon Toss",
