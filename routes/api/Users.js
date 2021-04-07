@@ -14,15 +14,12 @@ router.post('/buypack' + '/:id', function(req, res) {
     console.log("Buy Pack");
     console.log("res.data: ", req.body.cards);
 
-    //remove 1000 gold from the user
-    
-
     let max = 35;
     let min = 0;
     
     let cards = [];
 
-    for(let i=0; i<3; i++){
+    for(let i=0; i < 3; i++){
         console.log("i: ", i)
        cards.push(Math.floor(Math.random() * (max - min) + min) );
     }
@@ -58,7 +55,6 @@ router.post('/gold' + '/:id', function(req, res) {
     console.log("Set Gold");
     console.log("res.data: ", req.body.amount);
 
-        
     if(req.params.id !== null){
         User.findOne({_id: req.params.id}).then(user => {
             if(user){
@@ -72,9 +68,7 @@ router.post('/gold' + '/:id', function(req, res) {
             }
         })
     }
-    
-
-});
+})
 
 router.get('/gold' + '/:id', function(req, res) {
 
@@ -102,6 +96,7 @@ router.get('/unlockedSpells' + '/:id', function(req, res) {
         })
     }
 });
+
 //INCREMENT WIN LOSS OR DRAW
 router.post('/setuserdata' + '/:id', (req, res) => {
     console.log(req.body.data)
