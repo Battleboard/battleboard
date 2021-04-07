@@ -15,14 +15,14 @@
             "criticalDamageChance": 0,
             "criticalDamageIncrease": 0,
             "criticalHealChance": 25,
-            "criticalHealIncrease":150,
-            "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalHealIncrease": 150,
+            "criticalShieldChance": 0,
+            "criticalShieldIncrease": 0
         },
         {
             "name": "Fortify",
             "source": "/images/spells/fortify.svg",
-            "damage": 10000,
+            "damage": 100,
             "heal": 0,
             "shield": 70,
             "damageOverTime": 0, 

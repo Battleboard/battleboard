@@ -254,7 +254,7 @@ webSocketServer.on("connection", (webSocket, request) => {
 
 const setCriticalShield = (player) => {
     //generate a random number from 0 - 99
-    let max = 99;
+    let max = 101;
     let min = 0;
     let random = Math.floor(Math.random() * (max - min) + min);
     //if the random number is less than the critical chance
@@ -267,7 +267,7 @@ const setCriticalShield = (player) => {
 
 const setCriticalHeal = (player) => {
     //generate a random number from 0 - 99
-    let max = 99;
+    let max = 101;
     let min = 0;
     let random = Math.floor(Math.random() * (max - min) + min);
     //if the random number is less than the critical chance
@@ -280,7 +280,7 @@ const setCriticalHeal = (player) => {
 
 const setCriticalDamage = (player) => {
     //generate a random number from 0 - 99
-    let max = 99;
+    let max = 101;
     let min = 0;
     let random = Math.floor(Math.random() * (max - min) + min);
     //if the random number is less than the critical chance

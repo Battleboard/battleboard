@@ -11,11 +11,11 @@ const BattleOver = ({ player, opponent }) => {
 
     const declareWinner = () => {
         switch(true){
-            case clients[player].health > 0 && clients[opponent].health > 0:
+            case clients[player].health >= 0 && clients[opponent].health >= 0:
                 return 'draws'
-            case clients[player].health > 0 && clients[player].health > clients[opponent].health:
+            case clients[player].health >= 0 && clients[player].health > clients[opponent].health:
                 return 'wins'
-            case clients[opponent].health > 0 && clients[opponent].health > clients[player].health:
+            case clients[opponent].health >= 0 && clients[opponent].health > clients[player].health:
                 return 'losses'
             default:
                 return 'draws'
