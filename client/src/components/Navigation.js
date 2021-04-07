@@ -44,7 +44,6 @@ const Navigation = () => {
 
         {auth.isAuthenticated && <div>
             {phase === 'profile' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Gameroom</Button>}
-            <Button onClick={() => dispatch(setGold(auth.id, 1000))} style={button_styles}>Gold</Button>
             <Button onClick={() => dispatch(buyPacks(auth.id))} style={button_styles}>Buy Pack</Button>
             <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button>
         </div>}
