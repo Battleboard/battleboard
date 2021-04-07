@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from './styled/Button'
 import Logo from './styled/Logo'
 import Spells from "./Spells";
-import CreateGame from "./CreateGame";
+import Lobby from "./Lobby";
 import SelectedSpells from "./SelectedSpells";
 import { useSelector, useDispatch } from 'react-redux'
 import GameRoom from "./GameRoom";
@@ -99,7 +99,7 @@ const Landing = () => {
 					<SelectedSpells />
 				</>
 			case 'gameroom':
-				return <CreateGame />
+				return <Lobby />
 			case 'battle':
 				return <GameRoom connection={connection} player={player} opponent={opponent} />
 			case 'battle-over':

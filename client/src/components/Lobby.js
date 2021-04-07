@@ -5,7 +5,7 @@ import {setPhase} from '../actions/userActions';
 import {setClient, setGameRoom, setConnection, getRooms} from '../actions/roomActions';
 import Button from './styled/Button'
 
-const CreateGame = ({setClient, setGameRoom, setConnection}) => {
+const Lobby = ({setClient, setGameRoom, setConnection}) => {
     const dispatch = useDispatch()
     const gameId = useSelector(state => state.room.gameId);
     const games = useSelector(state => state.room.games)
@@ -65,10 +65,7 @@ const CreateGame = ({setClient, setGameRoom, setConnection}) => {
     }
 
     const joinGameRoom = (id) => {
-
             dispatch(setPhase("battle"))
-
-            console.log("starting shield: ", store.getState().user.startingShield);
 
             const payLoad = {
                 "method":"join",
@@ -115,4 +112,4 @@ const CreateGame = ({setClient, setGameRoom, setConnection}) => {
     </div>
 };
 
-export default connect(null, {setClient, setGameRoom, setConnection})(CreateGame);
+export default connect(null, {setClient, setGameRoom, setConnection})(Lobby);
