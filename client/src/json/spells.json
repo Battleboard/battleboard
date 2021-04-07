@@ -947,6 +947,44 @@
             "criticalHealIncrease": 0,
             "criticalShieldChance": 50,
             "criticalShieldIncrease": 250
+        },
+        {
+            "name": "Long Toss",
+            "source": "/images/spells/longtoss.svg",
+            "damage": 50,
+            "heal": 0,
+            "shield": 0,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 5,
+            "criticalDamageIncrease": 1300,
+            "criticalHealChance": 0,
+            "criticalHealIncrease":0,
+            "criticalShieldChance":0,
+            "criticalShieldIncrease":0
+        },
+        {
+            "name": "Revive",
+            "source": "/images/spells/revive.svg",
+            "damage": 0,
+            "heal": 100,
+            "shield": 0,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 10,
+            "criticalHealIncrease": 1011,
+            "criticalShieldChance": 0,
+            "criticalShieldIncrease": 0
         }
     ]
 }
