@@ -103,10 +103,10 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
         </div>
         <div style={{flexGrow: 1, background: '#FFF'}}>
             <div style={{display: 'flex', flexDirection: 'column', width: '50%', margin: '20px auto'}}>
-                <Button style={{margin: '20px auto'}} onClick={() => dispatch(getRooms())}>Refresh</Button>
-                <Button style={{margin: '20px auto'}} onClick={createGameRoom}>Create Room</Button>
-                <Button style={{margin: '20px auto'}} onClick={() => dispatch(setPhase('profile'))}>Profile</Button>
-                <Button style={{margin: '20px auto'}} onClick={() => dispatch(setPhase('select-spells'))}>Change Spells</Button>
+                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={() => dispatch(getRooms())}>Refresh</Button>
+                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={createGameRoom}>Create Room</Button>
+                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={() => dispatch(setPhase('profile'))}>Profile</Button>
+                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={() => dispatch(setPhase('select-spells'))}>Change Spells</Button>
             </div>
         </div>
     </div>
