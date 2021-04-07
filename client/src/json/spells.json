@@ -3,7 +3,7 @@
         {
             "name": "Fortify",
             "source": "/images/spells/fortify.svg",
-            "damage": 100,
+            "damage": 10000,
             "heal": 0,
             "shield": 70,
             "damageOverTime": 0, 
@@ -422,7 +422,7 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 40,
-            "healOverTimeDuration": 5,
+            "healOverTimeDuration": 6,
             "shieldOverTime":0,
             "shieldOverTimeDuration":0
         },
@@ -434,7 +434,7 @@
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
             "healOverTime": 25,
-            "healOverTimeDuration": 8,
+            "healOverTimeDuration": 9,
             "shieldOverTime": 0,
             "shieldOverTimeDuration": 0
         },
@@ -455,8 +455,8 @@
             "name": "Singe",
             "source": "/images/spells/mutilate.svg",
             "damage": 100,
-            "heal": -400,
-            "shield":0,
+            "heal": -300,
+            "shield": 0,
             "damageOverTime": 100, 
             "damageOverTimeDuration": 5,
             "healOverTime": 0,
@@ -478,6 +478,19 @@
             "shieldOverTimeDuration": 0
         },
         {
+            "name": "Fissure",
+            "source": "/images/spells/fissure.svg",
+            "damage": 100,
+            "heal": -400,
+            "shield": 0,
+            "damageOverTime": 120, 
+            "damageOverTimeDuration": 5,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
+        },
+        {
             "name": "Bullseye",
             "source":"/images/spells/bullseye.svg",
             "damage": 190,
@@ -485,6 +498,19 @@
             "shield": 0,
             "damageOverTime": 10, 
             "damageOverTimeDuration": 3,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
+        },
+        {
+            "name": "Eruption",
+            "source": "/images/spells/eruption.svg",
+            "damage": 100,
+            "heal": -400,
+            "shield": 0,
+            "damageOverTime": 100, 
+            "damageOverTimeDuration": 6,
             "healOverTime": 0,
             "healOverTimeDuration": 0,
             "shieldOverTime": 0,

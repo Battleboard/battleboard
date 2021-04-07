@@ -1,7 +1,7 @@
 import Button from './styled/Button'
 import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../actions/authActions';
 import { setPhase } from '../actions/userActions'
-import Logout from './Logout';
 
 const numberOfSpells = 6
 
@@ -33,13 +33,10 @@ const Navigation = () => {
             onClick={toBattle}
         >Battle</Button>}
 
-        {
-            auth.isAuthenticated && <Logout/>
-        }
-
-        {
-            auth.isAuthenticated && <Button></Button>
-        }
+        {auth.isAuthenticated && <div>
+            {phase === 'profile' && <Button style={{border: '1px solid white', color: '#FFF', margin: 8}} onClick={() => {dispatch(setPhase('gameroom'))}}>Gameroom</Button>}
+            <Button style={{ border: '1px solid #FFF', color: '#FFF', margin: 8 }} onClick={() => dispatch(logout())}>Logout</Button>
+        </div>}
 
     </div>
 }
