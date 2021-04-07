@@ -1,7 +1,9 @@
 import Button from './styled/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { setPhase, buyPacks } from '../actions/userActions'
+import { useState, useEffect } from 'react'
+import { setPhase, buyPacks, clearPack } from '../actions/userActions'
 import { logout } from '../actions/authActions'
+import BuyPackModal from './BuyPackModal';
 
 const button_styles = { border: '1px solid #FFF', color: '#FFF', margin: 8 }
 
@@ -13,6 +15,26 @@ const Navigation = () => {
     const dispatch = useDispatch()
     const auth = useSelector(state => state.auth)
     const user = useSelector(state => state.user)
+    const packSpells = useSelector(state => state.user.packSpells)
+
+    const [modal, setModal] = useState(false)
+    const [modalSpells, setModalSpells] = useState({})
+
+    
+    useEffect(() => {
+        if(packSpells.length !== 0){
+            toggleModal(packSpells)
+            dispatch(clearPack())
+        }
+    // eslint-disable-next-line
+    }, [packSpells])
+    
+
+    const toggleModal = (spells) => {
+
+        setModalSpells(spells)
+        setModal(!modal)
+    }
 
     const toBattle = () => {
         if (spells.length === numberOfSpells) {
@@ -44,8 +66,14 @@ const Navigation = () => {
 
         {auth.isAuthenticated && <div>
             {phase === 'profile' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Gameroom</Button>}
-            <Button onClick={() => dispatch(buyPacks(auth.id))} style={button_styles}>Buy Pack</Button>
+
+            
+            <Button style={button_styles} onClick={() => dispatch(buyPacks())}>Buy Pack</Button>
+            
             <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button>
+
+            <BuyPackModal show={modal} packSpells={modalSpells} toggleShow={setModal}/>
+
         </div>}
 
     </div>

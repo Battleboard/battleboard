@@ -23,3 +23,5 @@ export const BUY_PACKS = 'BUY_PACKS';
 export const GET_INFO = 'GET_INFO';
 export const SET_INFO = 'SET_INFO';
 export const CLEAR_ROOMS = 'CLEAR_ROOMS';
+export const BUY_SPELL = 'BUY_SPELL';
+export const CLEAR_PACK = 'CLEAR_PACK';

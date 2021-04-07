@@ -1,4 +1,4 @@
-import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS, SET_INFO, GET_INFO, GET_GOLD, BUY_PACKS} from './types';
+import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS, SET_INFO, GET_INFO, GET_GOLD, BUY_PACKS, BUY_SPELL, CLEAR_PACK} from './types';
 import axios from 'axios'
 import store from '../store';
 import spells from '../json/spells.json'
@@ -65,15 +65,26 @@ export const getSpells = (id) => (dispatch) => {
 
 }
 
-export const buyPacks = (id) => (dispatch) => {
+export const buyPacks = () => (dispatch) => {
     if(store.getState().user.gold >= 1000){
         //generate a random number from 0-35
-        axios.post('/api/users/buypack/' + id, {'spells': spells.spells})
+        axios.post('/api/users/buypack/' + store.getState().auth.id, {'spells': spells.spells})
             .then(res => dispatch({
                 type:BUY_PACKS,
                 payload: res.data
             }))
     }
+}
+
+export const buySpell = (spell) => (dispatch) => {
+
+        axios.post('/api/users/buyspell/' + store.getState().auth.id, {'spell': spell})
+            .then(res => dispatch({
+                type:BUY_SPELL,
+                payload: res.data
+            }))
+
+
 }
 
 export const setGold = (id, amount) => (dispatch) => {
@@ -92,6 +103,8 @@ export const getGold = (id) => (dispatch) => {
         }))
 }
 
-export const addSpells = (id) => (dispatch) => {
-    
+export const clearPack = () => (dispatch) => {
+    dispatch({
+        type:CLEAR_PACK
+    })
 }

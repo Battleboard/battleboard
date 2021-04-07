@@ -9,6 +9,20 @@ const secret = process.env.jwtSecret;
 
 const User = require("../../models/User");
 
+router.post('/buyspell' + '/:id', function(req,res){
+    
+    User.findOne({_id: req.params.id}).then(user => {
+        if(user){
+            user.gold -= 500;
+            user.spells.push(req.body.spell.index)
+
+            user.save()
+            .then(user => res.json({'gold':user.gold, 'spells':user.spells}))
+        }
+    })
+    
+});
+
 router.post('/buypack' + '/:id', function(req, res) {
     let max = req.body.spells.length;
     let min = 0;
@@ -35,7 +49,7 @@ router.post('/buypack' + '/:id', function(req, res) {
                 }
 
                 user.save()
-                .then(user => res.json({'gold':user.gold, 'spells':user.spells}))
+                .then(user => res.json({'gold':user.gold, 'spells':user.spells, 'pack':cards}))
 
             }
         })

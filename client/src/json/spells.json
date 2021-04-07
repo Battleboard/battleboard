@@ -17,7 +17,8 @@
             "criticalHealChance": 25,
             "criticalHealIncrease": 150,
             "criticalShieldChance": 0,
-            "criticalShieldIncrease": 0
+            "criticalShieldIncrease": 0,
+            "index":0
         },
         {
             "name": "Fortify",
@@ -36,7 +37,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":1
         },
         {
             "name": "Shield",
@@ -55,7 +57,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":2
         },
         {
             "name": "Shurikens",
@@ -74,7 +77,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":3
         },
         {
             "name": "Fireball",
@@ -93,7 +97,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":4
         },
         {
             "name": "Meditate",
@@ -112,7 +117,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":5
         },
         {
             "name": "Shield Prism",
@@ -131,7 +137,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":6
         },
         {
             "name": "Flame Pillar",
@@ -150,7 +157,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":7
         },
 
         {
@@ -170,7 +178,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":8
         },
 
         {
@@ -190,7 +199,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":9
         },
         {
             "name": "Fire Punch",
@@ -208,7 +218,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":10
         },
         {
             "name": "Sacrifice",
@@ -227,7 +238,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":11
         },
         {
             "name": "Power Strike",
@@ -246,7 +258,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":12
         },
 		{
             "name": "Drain Essence",
@@ -264,7 +277,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":13
         },
         {
             "name": "Searing Toxin",
@@ -283,7 +297,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":14
         },
         {
             "name": "Consolidate",
@@ -302,7 +317,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":15
         },
         {
             "name": "Lightning Storm",
@@ -321,7 +337,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":16
         },
 		{
             "name": "Blitz Heal",
@@ -339,7 +356,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":17
         },
         {
             "name": "Heavy Slam",
@@ -358,7 +376,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":18
         },
         {
             "name": "Power Drip",
@@ -377,7 +396,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":19
         },
         {
             "name": "Side Slash",
@@ -396,7 +416,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":20
         },
         {
             "name": "Slow Kill",
@@ -415,7 +436,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":21
         },
 		{
             "name":"Rejuvination Potion",
@@ -434,7 +456,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":22
         },
         {
             "name":"Nothing",
@@ -453,7 +476,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":23
         },
         {
             "name":"Pummel",
@@ -472,7 +496,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":24
         },
         {
             "name":"Vishnu Beam",
@@ -491,7 +516,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":25
         },
         {
             "name": "Penance",
@@ -510,7 +536,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":26
         },
         {
             "name":"Slice",
@@ -529,7 +556,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":27
         },
         {
             "name":"Jesus Beam",
@@ -548,7 +576,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":28
         },
         {
             "name":"Holy Prayer",
@@ -567,7 +596,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":29
         },
         {
             "name": "True Shot",
@@ -586,7 +616,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":30
         },
         {
             "name": "Back Stab",
@@ -605,7 +636,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":31
         },
         {
             "name": "Fire Storm",
@@ -624,7 +656,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":32
         },
         {
             "name": "Radiance",
@@ -643,7 +676,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":33
         },
         {
             "name": "Mend Wounds",
@@ -662,7 +696,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":34
         },
         {
             "name": "Fountain of Life",
@@ -680,7 +715,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":35
         },
         {
             "name": "Siphon Life",
@@ -699,7 +735,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":36
         },
         {
             "name": "Singe",
@@ -718,7 +755,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":37
         },
         {
             "name": "Neural Connect",
@@ -737,7 +775,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":38
         },
         {
             "name": "Fissure",
@@ -756,7 +795,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":39
         },
         {
             "name": "Bullseye",
@@ -775,7 +815,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":40
         },
         {
             "name": "Eruption",
@@ -794,7 +835,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":41
         },
         {
             "name": "Stone Wall",
@@ -813,7 +855,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance": 50,
-            "criticalShieldIncrease": 100
+            "criticalShieldIncrease": 100,
+            "index":42
         },
         {
             "name": "Twin Blades",
@@ -832,7 +875,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease": 0,
             "criticalShieldChance": 0,
-            "criticalShieldIncrease": 0
+            "criticalShieldIncrease": 0,
+            "index":43
         },
         {
             "name": "Crashing Wave",
@@ -851,7 +895,8 @@
             "criticalHealChance": 25,
             "criticalHealIncrease": 90,
             "criticalShieldChance": 0,
-            "criticalShieldIncrease": 0
+            "criticalShieldIncrease": 0,
+            "index":44
         },
         {
             "name": "Dubloon Toss",
@@ -870,7 +915,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease": 0,
             "criticalShieldChance": 0,
-            "criticalShieldIncrease": 0
+            "criticalShieldIncrease": 0,
+            "index":45
         },
         {
             "name": "Steady Strike",
@@ -889,7 +935,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease": 0,
             "criticalShieldChance": 0,
-            "criticalShieldIncrease": 0
+            "criticalShieldIncrease": 0,
+            "index":46
         },
         {
             "name": "Lucky Shot",
@@ -908,7 +955,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease": 0,
             "criticalShieldChance": 0,
-            "criticalShieldIncrease": 0
+            "criticalShieldIncrease": 0,
+            "index":47
         },
         {
             "name": "Heavenly Blast",
@@ -927,7 +975,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease": 0,
             "criticalShieldChance": 0,
-            "criticalShieldIncrease": 0
+            "criticalShieldIncrease": 0,
+            "index":48
         },
         {
             "name": "Water Shield",
@@ -946,7 +995,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease": 0,
             "criticalShieldChance": 50,
-            "criticalShieldIncrease": 250
+            "criticalShieldIncrease": 250,
+            "index":49
         },
         {
             "name": "Long Toss",
@@ -965,7 +1015,8 @@
             "criticalHealChance": 0,
             "criticalHealIncrease":0,
             "criticalShieldChance":0,
-            "criticalShieldIncrease":0
+            "criticalShieldIncrease":0,
+            "index":50
         },
         {
             "name": "Revive",
@@ -984,7 +1035,8 @@
             "criticalHealChance": 10,
             "criticalHealIncrease": 1011,
             "criticalShieldChance": 0,
-            "criticalShieldIncrease": 0
+            "criticalShieldIncrease": 0,
+            "index":51
         }
     ]
 }

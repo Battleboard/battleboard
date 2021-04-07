@@ -24,7 +24,7 @@ const UserSchema = new Schema({
     gold:{
         type: Number,
         required: true,
-        default: 0,
+        default: 10000,
     },
     role:{
         type:String,
