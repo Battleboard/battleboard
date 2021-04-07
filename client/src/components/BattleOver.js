@@ -14,8 +14,10 @@ const BattleOver = ({ player, opponent }) => {
             case clients[player].health >= 0 && clients[opponent].health >= 0:
                 return 'draws'
             case clients[player].health >= 0 && clients[player].health > clients[opponent].health:
+                dispatch(setGold(auth.id, 100))
                 return 'wins'
             case clients[opponent].health >= 0 && clients[opponent].health > clients[player].health:
+                dispatch(setGold(auth.id, 25))
                 return 'losses'
             default:
                 return 'draws'
