@@ -111,6 +111,7 @@ webSocketServer.on("connection", (webSocket, request) => {
                 "gameId": result.gameId,
                 "username": result.username,
                 "damageResult":0,
+                "shieldResult":0,
                 "shield": result.shield,
                 "maxShield": result.maxShield
             })
@@ -213,6 +214,9 @@ webSocketServer.on("connection", (webSocket, request) => {
 
                     game.clients[0].damageResult = game.clients[0].health - player1.health;
                     game.clients[1].damageResult = game.clients[1].health - player2.health;
+
+                    game.clients[0].shieldResult = game.clients[0].shield - player1.shield;
+                    game.clients[1].shieldResult = game.clients[1].shield- player2.shield;
 
                     //update the game object to send back as a payload to the front end
                     game.clients[0].health = player1.health;
