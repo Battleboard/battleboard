@@ -463,6 +463,32 @@
             "healOverTimeDuration": 0,
             "shieldOverTime":0,
             "shieldOverTimeDuration":0
+        },
+        {
+            "name": "Neural Connect",
+            "source":"/images/spells/neuralconnect.svg",
+            "damage": 20,
+            "heal": 20,
+            "shield": 0,
+            "damageOverTime": 40, 
+            "damageOverTimeDuration": 4,
+            "healOverTime": 40,
+            "healOverTimeDuration": 4,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
+        },
+        {
+            "name": "Bullseye",
+            "source":"/images/spells/bullseye.svg",
+            "damage": 190,
+            "heal": 0,
+            "shield": 0,
+            "damageOverTime": 10, 
+            "damageOverTimeDuration": 3,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0
         }
     ]
 }
