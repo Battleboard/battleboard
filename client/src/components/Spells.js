@@ -13,7 +13,7 @@ const Spells = ({auth, setSpells}) => {
             }else if(unlockedSpells.includes(index) && auth.role === 'player'){
                 return <Card key={index} spell={spell} action={() => !user.spells.includes(spell) ? setSpells(spell) : null}/>
             }
-            return null
+            return <Card key={index} style={{opacity: '50%', cursor: 'default'}} spell={spell} />
         })}
     </div>
 };
