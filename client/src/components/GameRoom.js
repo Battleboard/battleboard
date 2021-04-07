@@ -51,8 +51,6 @@ const GameRoom = ({setGameRoom, player, opponent}) => {
             connection.onmessage = message => {
                 const response = JSON.parse(message.data);
 
-                console.log("Shield: ", response.game.clients[player].shieldResult);
-
                 if(response.method === 'evaluate'){
                     //display the previous moves and their effects for 3 seconds while locking them out of picking new moves in the meantime
                     setCurrentSpells([response.game.clients[player].previousSpell, response.game.clients[opponent].previousSpell]);
