@@ -389,7 +389,7 @@ const getBuffs = (player, opponent) => {
         buffsToDelete.sort((a, b) => b - a)
 
         //delete all the debuffs that are going to zero
-        for(let j=buffsToDelete.length - 1; j>=0; j--){
+        for(let j=0; j<buffsToDelete.length; j++){
             player.buffs.splice(buffsToDelete[j],1);
         }
         
@@ -421,11 +421,12 @@ const getDebuffs = (player, opponent) => {
             }
 
         }
+
         //sort the list of buffs to remove in descending order
         debuffsToDelete.sort((a, b) => b - a)
 
         //delete all the debuffs that are going to zero
-        for(let j=debuffsToDelete.length - 1; j>=0; j--){
+        for(let j=0; j<debuffsToDelete.length; j++){
             player.debuffs.splice(debuffsToDelete[j],1);
         }
     }
