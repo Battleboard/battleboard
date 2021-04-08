@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import store from '../store';
-import Card from './Card';
-import { setPhase } from '../actions/userActions';
-import { setGameRoom } from '../actions/roomActions';
+import store from '../../store';
+import Card from '../Card';
+import { setPhase } from '../../actions/userActions';
+import { setGameRoom } from '../../actions/roomActions';
 import { connect } from 'react-redux';
-import ProgressBar from "./styled/ProgressBar";
+import ProgressBar from "../styled/ProgressBar";
 
 const title_text_styles = {margin: 0, fontSize: 24, textAlign: 'center', width: '100%', fontFamily: 'sans-serif', paddingTop: 5, color: '#000'}
 const status_bar_styles = {width: '85%', background: '#7E7E7E', display: 'flex', height: 70, margin: "0px auto 10px auto"}

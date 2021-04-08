@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import {connect, useSelector, useDispatch} from 'react-redux';
-import store from '../store';
-import {setPhase} from '../actions/userActions';
-import {setClient, setGameRoom, setConnection, getRooms} from '../actions/roomActions';
-import Button from './styled/Button'
+import store from '../../store';
+import {setPhase} from '../../actions/userActions';
+import {setClient, setGameRoom, setConnection, getRooms} from '../../actions/roomActions';
+import Button from '../styled/Button'
 
 const Lobby = ({setClient, setGameRoom, setConnection}) => {
     const dispatch = useDispatch()

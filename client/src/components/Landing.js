@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import Button from './styled/Button'
 import Logo from './styled/Logo'
 import Spells from "./Spells";
-import Lobby from "./Lobby";
+import Lobby from "./menus/Lobby";
 import SelectedSpells from "./SelectedSpells";
 import { useSelector, useDispatch } from 'react-redux'
-import GameRoom from "./GameRoom";
+import GameRoom from "./menus/GameRoom";
 import { getSpells, getGold, getUserInfo, setSpells } from '../actions/userActions'
-import Profile from './Profile'
-import BattleOver from './BattleOver'
+import Profile from './menus/Profile'
+import BattleOver from './menus/BattleOver'
 import { spells } from "../json/spells";
-import Menu from "./Menu";
+import Menu from "./menus/Menu";
 
 const GuestLinks = () => {
   

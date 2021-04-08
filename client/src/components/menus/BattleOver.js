@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteRoom, clearRooms } from '../actions/roomActions'
-import { setUserInfo, resetGame, setGold } from '../actions/userActions'
-import Button from './styled/Button'
+import { deleteRoom, clearRooms } from '../../actions/roomActions'
+import { setUserInfo, resetGame, setGold } from '../../actions/userActions'
+import Button from '../styled/Button'
 
 const BattleOver = ({ player, opponent }) => {
     const dispatch = useDispatch()
