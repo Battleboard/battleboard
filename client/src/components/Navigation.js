@@ -41,40 +41,23 @@ const Navigation = () => {
         }
     }
 
-    return <div style={{width: '100%', height: 80, background: '#000', margin: 0, display: 'flex', justifyContent: 'space-between'}}>
+    return <div style={{width: '100%', height: 80, background: '#000', margin: 0, display: 'flex'}}>
         {/* Title */}
         <h1 style={{margin: 0, padding: '10px 0 0 10px', fontSize: 48, fontFamily: 'sans-serif', color: '#F3F3F3', userSelect: 'none'}}>Battleboard</h1>
+        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: '100%'}}>
+            {auth.isAuthenticated && <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                {phase === 'profile' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Gameroom</Button>}
+                {/* <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button> */}
 
-        {
-            user && <p style={{color:"gold"}}>Gold: {user.gold}</p>
-        }
+                {modal && <BuyPackModal show={modal} packSpells={modalSpells} toggleShow={setModal} />}
 
+            </div>}
 
-        {phase === 'select-spells' && auth.isAuthenticated &&  <Button 
-            style={{
-                marginRight: 20, 
-                border: spells.length === numberOfSpells ? '3px solid lightgreen' : '1px solid #FFF', 
-                color: spells.length === numberOfSpells ? 'lightgreen' : '#FFF', 
-                padding: 0, 
-                marginTop: 10, 
-                height: 60,
-                fontWeight: spells.length === numberOfSpells ? 'bold' : 'normal'
-            }} 
-            onClick={toBattle}
-        >Battle</Button>}
-
-        {auth.isAuthenticated && <div>
-            {phase === 'profile' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Gameroom</Button>}
-
-            
-            <Button style={button_styles} onClick={() => dispatch(buyPacks())}>Buy Pack</Button>
-            
-            <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button>
-
-            {modal && <BuyPackModal show={modal} packSpells={modalSpells} toggleShow={setModal} />}
-
-        </div>}
-
+            {user && <div style={{textAlign: 'center', fontSize: 24, display: 'flex', margin: 'auto 10px', justifyContent: 'center'}}>
+                <div style={{color: '#FFD949', marginRight: 5, marginTop: 1, userSelect: 'none'}}>{user.gold}</div>
+                <img src="/images/spells/dubloontoss.svg" alt="" style={{height: 30, width: 30}} />
+            </div>}
+        </div>
     </div>
 }
 

@@ -12,7 +12,7 @@ const initialState = {
     wins: 0,
     losses: 0,
     draws: 0,
-    packSpells:[]
+    packSpells: []
 }
 
 export default function userReducer(state = initialState, action, payload){

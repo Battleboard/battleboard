@@ -12,7 +12,7 @@ const Lobby = () => {
             <div style={{display: 'flex', flexDirection: 'column', width: '50%', margin: '20px auto'}}>
                 <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} >Battle</Button>
                 <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={() => dispatch(setPhase('spells'))}>Spells</Button>
-                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} >Shop</Button>
+                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={() => dispatch(setPhase('shop'))}>Shop</Button>
                 <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} >Profile</Button>
             </div>
         </div>
