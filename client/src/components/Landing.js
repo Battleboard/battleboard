@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
-import store from '../store';
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from "react-router-dom"
+import { getSpells, getGold, getUserInfo, setSpells } from '../actions/userActions'
+import { spells } from "../json/spells"
+
+import store from '../store'
 import Button from './styled/Button'
 import Logo from './styled/Logo'
-import Spells from "./Spells";
-import Lobby from "./menus/Lobby";
-import SelectedSpells from "./SelectedSpells";
-import { useSelector, useDispatch } from 'react-redux'
-import GameRoom from "./menus/GameRoom";
-import { getSpells, getGold, getUserInfo, setSpells } from '../actions/userActions'
+import Spells from "./Spells"
+import SelectedSpells from "./SelectedSpells"
+
+import Lobby from "./menus/Lobby"
+import GameRoom from "./menus/GameRoom"
 import Profile from './menus/Profile'
 import BattleOver from './menus/BattleOver'
-import { spells } from "../json/spells";
-import Menu from "./menus/Menu";
+import Menu from "./menus/Menu"
 
 const GuestLinks = () => {
   
