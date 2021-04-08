@@ -13,6 +13,7 @@ import Profile from './Profile'
 import BattleOver from './BattleOver'
 import { spells } from "../json/spells";
 import Menu from "./Menu";
+import SpellBook from "./SpellBook";
 
 const GuestLinks = () => {
   
@@ -119,6 +120,8 @@ const Landing = () => {
 				return <BattleOver player={player} opponent={opponent} />
 			case 'profile':
 				return <Profile />
+			case "spells" :
+				return <SpellBook/>
 			default:
 				return 'AuthLinks Switch Broken (Error 42069)'
 		}
