@@ -22,6 +22,9 @@ const GameRoom = ({setGameRoom, player, opponent}) => {
     const [playerDebuffs, setPlayerDebuffs] = useState([])
     const [opponentDebuffs, setOpponentDebuffs] = useState([])
 
+    const [playerBuffs, setPlayerBuffs] = useState([])
+    const [opponentBuffs, setOpponentBuffs] = useState([])
+
     const dispatch = useDispatch()
     const clients = useSelector(state => state.room.gameRoom);
     const connection = useSelector(state => state.room.connection);
@@ -60,6 +63,8 @@ const GameRoom = ({setGameRoom, player, opponent}) => {
                     setCurrentShieldResults([response.game.clients[player].shieldResult, response.game.clients[opponent].shieldResult])
                     setPlayerDebuffs(response.game.clients[player].debuffs)
                     setOpponentDebuffs(response.game.clients[opponent].debuffs)
+                    setPlayerBuffs(response.game.clients[player].buffs)
+                    setOpponentBuffs(response.game.clients[opponent].buffs)
                     setTimeout(() => {
                         setCurrentSpells([])
                         setCurrentUserSpell(null)
@@ -111,8 +116,27 @@ const GameRoom = ({setGameRoom, player, opponent}) => {
                 <div style={{borderBottom: '3px solid #333'}}/>
                 {clients[opponent] && <ProgressBar width={(((clients[opponent].health - 0) * (100 - 0)) / (clients[opponent].maxHealth - 0)) + 0} color="green"/>}
             </div>
+            
+            {/* Opponent Buff Status Bar*/}
+            <div style={status_bar_styles}>
+                {opponentBuffs && opponentBuffs.map((buff, index) => {
+                    return <div key={index} style={{width: 70, height: 80}}>
+                        <img src={buff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
+                        <div style={{display: 'flex'}}>
+                            <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                {damageIcon(buff)}
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{damageType(buff)}</div>
+                            </div>
+                            <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{buff.duration}</div>
+                            </div>
+                        </div>
+                    </div>
+                })}
+            </div>
 
-            {/* Opponent Status Bar*/}
+            {/* Opponent Debuff Status Bar*/}
             <div style={status_bar_styles}>
                 {opponentDebuffs && opponentDebuffs.map((debuff, index) => {
                     return <div key={index} style={{width: 70, height: 80}}>
@@ -130,6 +154,7 @@ const GameRoom = ({setGameRoom, player, opponent}) => {
                     </div>
                 })}
             </div>
+
         </div>
 
         {/** Card Reveal Area */}
@@ -164,7 +189,26 @@ const GameRoom = ({setGameRoom, player, opponent}) => {
                 {clients[player] && <ProgressBar width={(((clients[player].health - 0) * (100 - 0)) / (clients[player].maxHealth - 0)) + 0} color="green"/>}
             </div>
 
-            {/** Player 1 Status Bar */}
+            {/** Player 1 Buff Status Bar */}
+            <div style={status_bar_styles}>
+                {playerBuffs && playerBuffs.map((buff, index) => {
+                    return <div key={index} style={{width: 70, height: 80}}>
+                        <img src={buff.icon} style={{width: 40, height: 40, margin: '5px 15px 0'}} alt="" />
+                        <div style={{display: 'flex'}}>
+                            <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                {damageIcon(buff)}
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{damageType(buff)}</div>
+                            </div>
+                            <div style={{display: 'flex', height: 30, width: '50%'}}>
+                                <img src="/images/icons/timer.svg" alt="" style={{width: 15, height: 15}} />
+                                <div style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: 14, width: 10, height: 10}}>{buff.duration}</div>
+                            </div>
+                        </div>
+                    </div>
+                })}
+            </div>
+
+            {/** Player 1 Debuff Status Bar */}
             <div style={status_bar_styles}>
                 {playerDebuffs && playerDebuffs.map((debuff, index) => {
                     return <div key={index} style={{width: 70, height: 80}}>
