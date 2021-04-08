@@ -106,6 +106,7 @@ webSocketServer.on("connection", (webSocket, request) => {
                 "health": result.health,
                 "maxHealth": result.maxHealth,
                 "debuffs": [],
+                "buffs":[],
                 "previousSpell": null,
                 "gameId": result.gameId,
                 "username": result.username,
@@ -154,6 +155,7 @@ webSocketServer.on("connection", (webSocket, request) => {
                         maxHealth: game.clients[0].maxHealth,
                         maxShield: game.clients[0].maxShield,
                         debuffs: game.clients[0].debuffs,
+                        buffs: game.clients[0].buffs,
                         selectedSpell: game.clients[0].selectedSpell,
                     }
 
@@ -165,6 +167,7 @@ webSocketServer.on("connection", (webSocket, request) => {
                         maxHealth: game.clients[1].maxHealth,
                         maxShield: game.clients[1].maxShield,
                         debuffs: game.clients[1].debuffs,
+                        buffs: game.clients[1].buffs,
                         selectedSpell: game.clients[1].selectedSpell,
                     }
 
@@ -201,9 +204,15 @@ webSocketServer.on("connection", (webSocket, request) => {
                     player1 = getDebuffs(player1, player2);
                     player2 = getDebuffs(player2, player1);
 
+                    player1 = getBuffs(player1, player2);
+                    player2 = getBuffs(player2, player1);
+
                     //if a players spell contains damage over time add it to the opponents debuff list
                     player1 = setDebuffs(player1, player2);
                     player2 = setDebuffs(player2, player1);
+
+                    player1 = setBuffs(player1, player2);
+                    player2 = setBuffs(player2, player1);
 
                     player1.shield += player1.selectedSpell.shield;
                     player2.shield += player2.selectedSpell.shield;
@@ -337,6 +346,53 @@ const cappedHealReduction = (currentHealth, heal, maxHealth) => {
     }
 }
 
+
+const getBuffs = (player, opponent) => {
+
+    if(player.buffs.length > 0){
+
+        let buffsToDelete = [];
+
+        for(let i=0; i < player.buffs.length; i++){
+
+            let type = player.buffs[i].type;
+            
+            if(type === 'heal'){
+                player.heal += player.buffs[i].heal;
+                //decrement the debuff duration / remove the debuff from the list
+                if(player.buffs[i].duration == 1){
+                    //remove the debuff
+                    buffsToDelete.push(i);
+                }else{
+                    //decrement the debuff
+                    player.buffs[i].duration -= 1;
+                }
+            }
+
+            if(type === 'shield'){
+                player.shield += player.buffs[i].shield;
+                //decrement the debuff duration / remove the debuff from the list
+                if(player.buffs[i].duration == 1){
+                    //remove the debuff
+                    buffsToDelete.push(i);
+                }else{
+                    //decrement the debuff
+                    player.buffs[i].duration -= 1;
+                }
+            }
+
+
+        }
+            //delete all the debuffs that are going to zero
+            for(let j=0; j<buffsToDelete.length; j++){
+                player.buffs.splice(j,1);
+            }
+    }
+    
+    return player
+
+}
+
 const getDebuffs = (player, opponent) => {
     if(player.debuffs.length > 0){
 
@@ -356,33 +412,7 @@ const getDebuffs = (player, opponent) => {
                     //decrement the debuff
                     player.debuffs[i].duration -= 1;
                 }
-
             }
-            
-            if(type === 'heal'){
-                player.heal += player.debuffs[i].heal;
-                //decrement the debuff duration / remove the debuff from the list
-                if(player.debuffs[i].duration == 1){
-                    //remove the debuff
-                    debuffsToDelete.push(i);
-                }else{
-                    //decrement the debuff
-                    player.debuffs[i].duration -= 1;
-                }
-            }
-
-            if(type === 'shield'){
-                player.shield += player.debuffs[i].shield;
-                //decrement the debuff duration / remove the debuff from the list
-                if(player.debuffs[i].duration == 1){
-                    //remove the debuff
-                    debuffsToDelete.push(i);
-                }else{
-                    //decrement the debuff
-                    player.debuffs[i].duration -= 1;
-                }
-            }
-
 
         }
             //delete all the debuffs that are going to zero
@@ -404,8 +434,13 @@ const setDebuffs = (player, opponent) => {
             type: "damage"
         })
     }
+    return player
+}
+
+const setBuffs = (player, opponent) => {
+
     if(player.selectedSpell.healOverTime !== 0){
-        player.debuffs.push({
+        player.buffs.push({
             name: player.selectedSpell.name, 
             icon: player.selectedSpell.source,
             heal: player.selectedSpell.healOverTime, 
@@ -415,7 +450,7 @@ const setDebuffs = (player, opponent) => {
     }
 
     if(player.selectedSpell.shieldOverTime !== 0){
-        player.debuffs.push({
+        player.buffs.push({
             name: player.selectedSpell.name, 
             icon: player.selectedSpell.source,
             shield: player.selectedSpell.shieldOverTime, 
