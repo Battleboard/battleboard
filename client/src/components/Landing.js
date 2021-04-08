@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from "react-router-dom"
@@ -16,6 +15,7 @@ import GameRoom from "./menus/GameRoom"
 import Profile from './menus/Profile'
 import BattleOver from './menus/BattleOver'
 import Menu from "./menus/Menu"
+import Shop from './menus/Shop'
 
 const GuestLinks = () => {
   
@@ -107,6 +107,8 @@ const Landing = () => {
 	const setContent = () => {
 
 		switch(phase){
+			case 'shop':
+				return <Shop />
 			case 'menu':
 				return <Menu/>
 			case 'select-spells':
