@@ -31,7 +31,6 @@ const Navigation = () => {
     
 
     const toggleModal = (spells) => {
-
         setModalSpells(spells)
         setModal(!modal)
     }
@@ -72,7 +71,7 @@ const Navigation = () => {
             
             <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button>
 
-            <BuyPackModal show={modal} packSpells={modalSpells} toggleShow={setModal}/>
+            {modal && <BuyPackModal show={modal} packSpells={modalSpells} toggleShow={setModal} />}
 
         </div>}
 
