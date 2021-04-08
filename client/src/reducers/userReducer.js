@@ -4,7 +4,7 @@ const initialState = {
     spells: [],
     maxHealth: 2500,
     startingHealth: 2500,
-    phase: "select-spells",
+    phase: "menu",
     maxShield: 3000,
     startingShield: 0,
     unlockedSpells: [],

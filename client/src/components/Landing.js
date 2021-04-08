@@ -12,6 +12,7 @@ import { getSpells, getGold, getUserInfo, setSpells } from '../actions/userActio
 import Profile from './Profile'
 import BattleOver from './BattleOver'
 import { spells } from "../json/spells";
+import Menu from "./Menu";
 
 const GuestLinks = () => {
   
@@ -103,6 +104,8 @@ const Landing = () => {
 	const setContent = () => {
 
 		switch(phase){
+			case 'menu':
+				return <Menu/>
 			case 'select-spells':
 				return <>
 					<Spells />
