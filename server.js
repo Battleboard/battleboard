@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const users = require('./routes/api/Users');
 const auth = require('./routes/api/Auth');
-const rooms = require('./routes/api/Rooms'); 
+const rooms = require('./routes/api/Rooms');
 
 const port = process.env.PORT || 5000;
 
@@ -201,6 +201,17 @@ webSocketServer.on("connection", (webSocket, request) => {
                         player2 = setCriticalShield(player2);
                     }
 
+                    //check if debuff removal exists
+                    if(player1.selectedSpell.clearDebuffType === 'damage'){
+                        //clear the players debuffs
+                        player1 = clearDebuffs(player1,player2);
+                    }
+
+                    if(player2.selectedSpell.clearDebuffType === 'damage'){
+                        //clear the players debuffs
+                        player2 = clearDebuffs(player2,player1);
+                    }
+
                     //check if each player has damage over time attached to them
                     player1 = getDebuffs(player1, player2);
                     player2 = getDebuffs(player2, player1);
@@ -264,6 +275,137 @@ webSocketServer.on("connection", (webSocket, request) => {
 //generate a random number from 0 - 99
 let max = 101;
 let min = 0;
+
+const clearDebuffs = (player, opponent) => {
+
+    //the # of debuffs to remove from the player
+    //let clearDebuffDuration = player.selectedSpell.clearDebuffDuration;
+    //let clearDebuffDurationCondition = player.selectedSpell.clearDebuffDurationCondition;
+    //let clearDebuffAmount = player.selectedSpell.clearDebuffAmount;
+    //let clearDebuffAmountCondition = player.selectedSpell.clearDebuffAmountCondition;
+
+    let debuffsToRemove = [];
+
+    if(player.debuffs.length > 0){
+
+
+        //get the clear buff amount and condition
+        let clearDebuffAmount = player.selectedSpell.clearDebuffAmount;
+        let clearDebuffAmountCondition = player.selectedSpell.clearDebuffAmountCondition;
+
+        //get the clear debuff duration and condition
+        let clearDebuffDuration = player.selectedSpell.clearDebuffDuration;
+        let clearDebuffDurationCondition = player.selectedSpell.clearDebuffDurationCondition;
+
+        let clearDebuffQuantity = player.selectedSpell.clearDebuffQuantity;
+
+        console.log("debuff amount: ", clearDebuffAmount);
+        console.log("debuff amount condition: ", clearDebuffAmountCondition);
+        console.log("clear debuff duration: ", clearDebuffDuration);
+        console.log("clear debuff duration condition: ", clearDebuffDurationCondition);
+        console.log("clear debuff quantity: ", clearDebuffQuantity);
+
+
+        for(let i=0; i<player.debuffs.length; i++){
+
+            if(debuffsToRemove.length <= clearDebuffQuantity){
+                //both duration and amount
+                if(clearDebuffDuration !== 0 && clearDebuffAmount !== 0){
+                    //duration + / amount -
+                    if(clearDebuffDurationCondition === '+' && clearDebuffAmountCondition === '-'){
+                        if(player.debuffs[i].duration >= clearDebuffDuration){
+                            debuffsToRemove.push(i);
+                        }
+                        if(player.debuffs[i].amount <= clearDebuffAmount){
+                            debuffsToRemove.push(i);
+                        }
+                    }
+                    //duration - / amount +
+                    if(clearDebuffDurationCondition === '-' && clearDebuffAmountCondition === '+'){
+                        if(player.debuffs[i].duration <= clearDebuffDuration){
+                            debuffsToRemove.push(i);
+                        }
+                        if(player.debuffs[i].amount >= clearDebuffAmount){
+                            debuffsToRemove.push(i);
+                        }
+                    }
+
+                    //duration + / amount +
+                    if(clearDebuffDurationCondition === '+' && clearDebuffAmountCondition === '+'){
+                        if(player.debuffs[i].duration >= clearDebuffDuration){
+                            debuffsToRemove.push(i);
+                        }
+                        if(player.debuffs[i].amount >= clearDebuffAmount){
+                            debuffsToRemove.push(i);
+                        }
+                    }
+
+                    //duration - / amount-
+                    if(clearDebuffDurationCondition === '-' && clearDebuffAmountCondition === '-'){
+                        console.log("here");
+                        if(player.debuffs[i].duration <= clearDebuffDuration){
+                            debuffsToRemove.push(i);
+                        }
+                        if(player.debuffs[i].amount <= clearDebuffAmount){
+                            debuffsToRemove.push(i);
+                        }
+                    }
+                
+                //only one set
+                }else{
+
+                    //duration
+                    if(clearDebuffDuration !== 0){
+                        //duration +
+                        if(clearDebuffDurationCondition === '+'){
+                            if(player.debuffs[i].duration >= clearDebuffDuration){
+                                debuffsToRemove.push(i);
+                            }
+                        //duration -
+                        }else if(clearDebuffDurationCondition === '-'){
+                            if(player.debuffs[i].duration <= clearDebuffDuration){
+                                debuffsToRemove.push(i);
+                            }
+                        }
+                        
+                    //amount
+                    }else if(clearDebuffAmount !== 0){
+
+                        //amount +
+                        if(clearDebuffAmountCondition === '+'){
+                            if(player.debuffs[i].amount >= clearDebuffAmount){
+                                debuffsToRemove.push(i);
+                            }
+                        //amount -
+                        }else if(clearDebuffAmountCondition === '-'){
+                            if(player.debuffs[i].amount >= clearDebuffAmount){
+                                debuffsToRemove.push(i);
+                            }
+                        }
+                    }
+                }   
+            }
+        }
+
+
+
+
+
+
+        //remove all the debuffs
+        //sort the list of buffs to remove in descending order
+        debuffsToRemove.sort((a, b) => b - a)
+
+        console.log("debuffs to remove: ", debuffsToRemove);
+
+        //delete all the debuffs that are going to zero
+        for(let j=0; j<debuffsToRemove.length; j++){
+            player.debuffs.splice(debuffsToRemove[j],1);
+        }
+    }
+
+    return player
+}
 
 const setCriticalShield = (player) => {
 
