@@ -19,11 +19,7 @@
             "criticalShieldChance": 0,
             "criticalShieldIncrease": 0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Fortify",
@@ -44,11 +40,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Shield",
@@ -69,11 +61,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Shurikens",
@@ -94,11 +82,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Fireball",
@@ -119,6 +103,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
+            "clearBuffType":"",
 			"clearDebuffAmount":"",
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
@@ -144,11 +129,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Shield Prism",
@@ -169,11 +150,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Flame Pillar",
@@ -194,11 +171,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
 
         {
@@ -220,11 +193,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
 
         {
@@ -246,11 +215,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Fire Punch",
@@ -270,11 +235,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Sacrifice",
@@ -295,11 +256,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Power Strike",
@@ -320,11 +277,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
 		{
             "name": "Drain Essence",
@@ -344,11 +297,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Searing Toxin",
@@ -369,11 +318,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Consolidate",
@@ -394,11 +339,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Lightning Storm",
@@ -419,11 +360,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
 		{
             "name": "Blitz Heal",
@@ -443,11 +380,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Heavy Slam",
@@ -468,11 +401,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Power Drip",
@@ -493,11 +422,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Side Slash",
@@ -518,11 +443,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Slow Kill",
@@ -543,11 +464,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
 		{
             "name":"Rejuvination Potion",
@@ -568,11 +485,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name":"Nothing",
@@ -593,11 +506,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name":"Pummel",
@@ -618,11 +527,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name":"Vishnu Beam",
@@ -643,11 +548,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Penance",
@@ -668,11 +569,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name":"Slice",
@@ -693,11 +590,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name":"Jesus Beam",
@@ -718,11 +611,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name":"Holy Prayer",
@@ -743,11 +632,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "True Shot",
@@ -768,11 +653,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Back Stab",
@@ -793,11 +674,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Fire Storm",
@@ -818,11 +695,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Radiance",
@@ -843,11 +716,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Mend Wounds",
@@ -868,11 +737,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Fountain of Life",
@@ -892,11 +757,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Siphon Life",
@@ -917,11 +778,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Singe",
@@ -942,11 +799,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Neural Connect",
@@ -967,11 +820,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Fissure",
@@ -992,11 +841,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Bullseye",
@@ -1017,11 +862,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Eruption",
@@ -1042,11 +883,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Stone Wall",
@@ -1067,11 +904,7 @@
             "criticalShieldChance": 50,
             "criticalShieldIncrease": 100,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Twin Blades",
@@ -1092,11 +925,7 @@
             "criticalShieldChance": 0,
             "criticalShieldIncrease": 0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Crashing Wave",
@@ -1117,11 +946,7 @@
             "criticalShieldChance": 0,
             "criticalShieldIncrease": 0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Dubloon Toss",
@@ -1142,11 +967,7 @@
             "criticalShieldChance": 0,
             "criticalShieldIncrease": 0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Steady Strike",
@@ -1167,11 +988,7 @@
             "criticalShieldChance": 0,
             "criticalShieldIncrease": 0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Lucky Shot",
@@ -1192,11 +1009,7 @@
             "criticalShieldChance": 0,
             "criticalShieldIncrease": 0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Heavenly Blast",
@@ -1217,11 +1030,7 @@
             "criticalShieldChance": 0,
             "criticalShieldIncrease": 0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Water Shield",
@@ -1242,11 +1051,7 @@
             "criticalShieldChance": 50,
             "criticalShieldIncrease": 250,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Long Toss",
@@ -1267,11 +1072,7 @@
             "criticalShieldChance":0,
             "criticalShieldIncrease":0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Revive",
@@ -1292,17 +1093,13 @@
             "criticalShieldChance": 0,
             "criticalShieldIncrease": 0,
 			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearBuffType":""
         },
         {
             "name": "Cleanse",
             "source": "/images/spells/cleanse.svg",
             "damage": 0,
-            "heal": 100,
+            "heal": 50,
             "shield": 0,
             "damageOverTime": 0, 
             "damageOverTimeDuration": 0,
@@ -1318,10 +1115,11 @@
             "criticalShieldIncrease": 0,
 			"clearDebuffType":"damage",
 			"clearDebuffAmount":50,
-			"clearDebuffDurationCondition":"-",
-			"clearDebuffDuration":5,
+			"clearDebuffDurationCondition":"+",
+			"clearDebuffDuration":10,
 			"clearDebuffAmountCondition":"-",
-            "clearDebuffQuantity":5
+            "clearDebuffQuantity":5,
+            "clearBuffType":""
         },
         {
             "name": "Purification",
@@ -1346,7 +1144,86 @@
 			"clearDebuffDurationCondition":"-",
 			"clearDebuffDuration":5,
 			"clearDebuffAmountCondition":"+",
-            "clearDebuffQuantity":5
-        }
+            "clearDebuffQuantity":5,
+            "clearBuffType":""
+        },
+        {
+            "name": "Remedy",
+            "source": "/images/spells/remedy.svg",
+            "damage": 0,
+            "heal": 0,
+            "shield": 0,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease": 0,
+            "criticalShieldChance": 0,
+            "criticalShieldIncrease": 0,
+			"clearDebuffType":"damage",
+			"clearDebuffAmount":30,
+			"clearDebuffDurationCondition":"-",
+			"clearDebuffDuration":15,
+			"clearDebuffAmountCondition":"-",
+            "clearDebuffQuantity":5,
+            "clearBuffType":""
+        },
+        {
+            "name": "Purge",
+            "source": "/images/spells/purge.svg",
+            "damage": 0,
+            "heal": 0,
+            "shield": 0,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease": 0,
+            "criticalShieldChance": 0,
+            "criticalShieldIncrease": 0,
+			"clearDebuffType":"",
+            "clearBuffType": "heal",
+            "clearBuffDuration":10,
+            "clearBuffDurationCondition":"-",
+            "clearBuffAmount":25,
+            "clearBuffAmountCondition":"-",
+            "clearBuffQuantity":5
+        },
+        {
+            "name": "Debilitate",
+            "source": "/images/spells/debilitate.svg",
+            "damage": 0,
+            "heal": 0,
+            "shield": 0,
+            "damageOverTime": 0, 
+            "damageOverTimeDuration": 0,
+            "healOverTime": 0,
+            "healOverTimeDuration": 0,
+            "shieldOverTime": 0,
+            "shieldOverTimeDuration": 0,
+            "criticalDamageChance": 0,
+            "criticalDamageIncrease": 0,
+            "criticalHealChance": 0,
+            "criticalHealIncrease": 0,
+            "criticalShieldChance": 0,
+            "criticalShieldIncrease": 0,
+			"clearDebuffType":"",
+            "clearBuffType": "shield",
+            "clearBuffDuration":10,
+            "clearBuffDurationCondition":"-",
+            "clearBuffAmount":50,
+            "clearBuffAmountCondition":"-",
+            "clearBuffQuantity":2
+        }       
     ]
 }
