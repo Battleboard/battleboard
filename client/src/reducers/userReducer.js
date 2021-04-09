@@ -1,4 +1,18 @@
-import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS, SET_INFO, GET_INFO, GET_GOLD, BUY_PACKS, BUY_SPELL, CLEAR_PACK} from '../actions/types';
+import {
+    SET_SPELLS, 
+    SET_PHASE, 
+    RESET_GAME, 
+    REMOVE_SPELL, 
+    GET_SPELLS, 
+    SET_INFO, 
+    GET_INFO, 
+    GET_GOLD, 
+    OPEN_PACK, 
+    BUY_SPELL, 
+    CLEAR_PACK,
+    GET_PACKS,
+    BUY_PACK
+    } from '../actions/types';
 
 const initialState = {
     spells: [],
@@ -12,6 +26,7 @@ const initialState = {
     wins: 0,
     losses: 0,
     draws: 0,
+    packs: 0,
     packSpells: []
 }
 
@@ -85,7 +100,7 @@ export default function userReducer(state = initialState, action, payload){
                 gold: action.payload.gold,
                 unlockedSpells: [...action.payload.spells]
             }
-        case BUY_PACKS:
+        case OPEN_PACK:
             return{
                 ...state,
                 gold: action.payload.gold,
@@ -96,6 +111,17 @@ export default function userReducer(state = initialState, action, payload){
             return{
                 ...state,
                 packSpells:[]
+            }
+        case BUY_PACK:
+            return {
+                ...state,
+                gold: action.payload.gold,
+                packs: action.payload.packs
+            }
+        case GET_PACKS:
+            return {
+                ...state,
+                packs: action.payload
             }
         default:
             return state;

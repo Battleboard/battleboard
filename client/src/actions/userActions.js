@@ -1,4 +1,18 @@
-import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS, SET_INFO, GET_INFO, GET_GOLD, BUY_PACKS, BUY_SPELL, CLEAR_PACK} from './types';
+import {
+    SET_SPELLS, 
+    SET_PHASE, 
+    RESET_GAME, 
+    REMOVE_SPELL, 
+    GET_SPELLS, 
+    SET_INFO, 
+    GET_INFO, 
+    GET_GOLD, 
+    OPEN_PACK,
+    BUY_PACK, 
+    BUY_SPELL, 
+    CLEAR_PACK,
+    GET_PACKS
+    } from './types';
 import axios from 'axios'
 import store from '../store';
 import spells from '../json/spells.json'
@@ -65,26 +79,22 @@ export const getSpells = (id) => (dispatch) => {
 
 }
 
-export const buyPacks = () => (dispatch) => {
+export const openPacks = (amount) => (dispatch) => {
     if(store.getState().user.gold >= 1000){
-        //generate a random number from 0-35
-        axios.post('/api/users/buypack/' + store.getState().auth.id, {'spells': spells.spells})
+        axios.post('/api/users/openpack/' + store.getState().auth.id, { 'spells': spells.spells, amount })
             .then(res => dispatch({
-                type:BUY_PACKS,
+                type: OPEN_PACK,
                 payload: res.data
             }))
     }
 }
 
 export const buySpell = (spell) => (dispatch) => {
-
         axios.post('/api/users/buyspell/' + store.getState().auth.id, {'spell': spell})
             .then(res => dispatch({
-                type:BUY_SPELL,
+                type: BUY_SPELL,
                 payload: res.data
             }))
-
-
 }
 
 export const setGold = (id, amount) => (dispatch) => {
@@ -107,4 +117,21 @@ export const clearPack = () => (dispatch) => {
     dispatch({
         type:CLEAR_PACK
     })
+}
+
+export const buyPack = item => dispatch => {
+    console.log(item)
+    axios.post('/api/packs/buypacks/' + store.getState().auth.id, {item})
+        .then(res => dispatch({
+            type: BUY_PACK,
+            payload: res.data
+        }))
+}
+
+export const getPacks = () => dispatch => {
+    axios.get('/api/packs/getpacks/' + store.getState().auth.id)
+        .then(res => dispatch({
+            type: GET_PACKS,
+            payload: res.data
+        }))
 }

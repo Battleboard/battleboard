@@ -23,7 +23,7 @@ router.post('/buyspell' + '/:id', function(req,res){
     
 });
 
-router.post('/buypack' + '/:id', function(req, res) {
+router.post('/openpack' + '/:id', function(req, res) {
     let max = req.body.spells.length;
     let min = 0;
     

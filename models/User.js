@@ -26,6 +26,11 @@ const UserSchema = new Schema({
         required: true,
         default: 10000,
     },
+    packs:{
+        type: Number,
+        required: true,
+        default: 0
+    },
     role:{
         type:String,
         required: true,

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from "react-router-dom"
-import { getSpells, getGold, getUserInfo, setSpells } from '../actions/userActions'
+import { getSpells, getGold, getUserInfo, setSpells, getPacks } from '../actions/userActions'
 import { spells } from "../json/spells"
 
 import store from '../store'
@@ -70,6 +70,7 @@ const Landing = () => {
 		if(auth.id){
 			dispatch(getSpells(auth.id));
 			dispatch(getGold(auth.id));
+			dispatch(getPacks(auth.id));
 		}
 	// eslint-disable-next-line	
 	}, [auth])
