@@ -212,6 +212,14 @@ webSocketServer.on("connection", (webSocket, request) => {
                         player2 = clearDebuffs(player2,player1);
                     }
 
+                    if(player1.selectedSpell.clearBuffType === 'heal' || player1.selectedSpell.clearBuffType === 'shield'){
+                        player1 = clearBuffs(player1,player2);
+                    }
+
+                    if(player2.selectedSpell.clearBuffType === 'heal' || player2.selectedSpell.clearBuffType === 'shield'){
+                        player2 = clearBuffs(player2,player1);
+                    }
+
                     //check if each player has damage over time attached to them
                     player1 = getDebuffs(player1, player2);
                     player2 = getDebuffs(player2, player1);
@@ -276,84 +284,204 @@ webSocketServer.on("connection", (webSocket, request) => {
 let max = 101;
 let min = 0;
 
+const clearBuffs = (player, opponent) => {
+    let buffsToRemove = [];
+    //if the players debuffs contain debuffs
+    if(opponent.buffs.length > 0){
+		let clearBuffType = player.selectedSpell.clearBuffType;
+        //get the clear buff amount and condition
+        let clearBuffAmount = player.selectedSpell.clearBuffAmount;
+        let clearBuffAmountCondition = player.selectedSpell.clearBuffAmountCondition;
+        //get the clear debuff duration and condition
+        let clearBuffDuration = player.selectedSpell.clearBuffDuration;
+        let clearBuffDurationCondition = player.selectedSpell.clearBuffDurationCondition;
+        //get the maximum quantity to clear
+        let clearBuffQuantity = player.selectedSpell.clearBuffQuantity;
+        //iterate through the players debuffs
+        for(let i=0; i<opponent.buffs.length; i++){
+			if(opponent.buffs[i].type === 'heal'){
+
+                if(buffsToRemove.length < clearBuffQuantity){
+					//both duration and amount
+					if(clearBuffDuration !== 0 && clearBuffAmount !== 0){
+						//duration + / amount -
+						if(clearBuffDurationCondition === '+' && clearBuffAmountCondition === '-'){
+							if(opponent.buffs[i].duration >= clearBuffDuration && opponent.buffs[i].heal <= clearBuffAmount){
+								buffsToRemove.push(i);
+							}
+						}
+						//duration - / amount +
+						if(clearBuffDurationCondition === '-' && clearBuffAmountCondition === '+'){
+						   
+							if(opponent.buffs[i].duration <= clearBuffDuration && opponent.buffs[i].heal >= clearBuffAmount){
+								
+								buffsToRemove.push(i);
+							}
+						}
+						//duration + / amount +
+						if(clearBuffDurationCondition === '+' && clearBuffAmountCondition === '+'){
+							if(opponent.buffs[i].duration >= clearBuffDuration && opponent.buffs[i].heal>= clearBuffAmount){
+								buffsToRemove.push(i);
+							}
+						}
+						//duration - / amount-
+						if(clearBuffDurationCondition === '-' && clearBuffAmountCondition === '-'){
+							if(opponent.buffs[i].duration <= clearBuffDuration && opponent.buffs[i].heal <= clearBuffAmount){
+								buffsToRemove.push(i);
+							}
+						}
+					//only one set
+					}else{
+						//duration
+						if(clearBuffDuration !== 0){
+							//duration +
+							if(clearBuffDurationCondition === '+'){
+								if(opponent.buffs[i].duration >= clearBuffDuration){
+									buffsToRemove.push(i);
+								}
+							//duration -
+							}else if(clearBuffDurationCondition === '-'){
+								if(opponent.buffs[i].duration <= clearBuffDuration){
+									buffsToRemove.push(i);
+								}
+							}
+						//amount
+						}else if(clearBuffAmount !== 0){
+							//amount +
+							if(clearBuffAmountCondition === '+'){
+								if(opponent.buffs[i].heal >= clearBuffAmount){
+									buffsToRemove.push(i);
+								}
+							//amount -
+							}else if(clearBuffAmountCondition === '-'){
+								if(opponent.buffs[i].heal >= clearBuffAmount){
+									buffsToRemove.push(i);
+								}
+							}
+						}
+					}   
+				}
+
+		    }else if(opponent.buffs[i].type === 'shield'){
+				if(buffsToRemove.length <= clearBuffQuantity){
+					//both duration and amount
+					if(clearBuffDuration !== 0 && clearBuffAmount !== 0){
+						//duration + / amount -
+						if(clearBuffDurationCondition === '+' && clearBuffAmountCondition === '-'){
+							if(opponent.buffs[i].duration >= clearBuffDuration && opponent.buffs[i].shield <= clearBuffAmount){
+								buffsToRemove.push(i);
+							}
+						}
+						//duration - / amount +
+						if(clearBuffDurationCondition === '-' && clearBuffAmountCondition === '+'){
+						   
+							if(opponent.buffs[i].duration <= clearBuffDuration && opponent.buffs[i].shield >= clearBuffAmount){
+								
+								buffsToRemove.push(i);
+							}
+						}
+						//duration + / amount +
+						if(clearBuffDurationCondition === '+' && clearBuffAmountCondition === '+'){
+							if(opponent.buffs[i].duration >= clearBuffDuration && opponent.buffs[i].shield>= clearBuffAmount){
+								buffsToRemove.push(i);
+							}
+						}
+						//duration - / amount-
+						if(clearBuffDurationCondition === '-' && clearBuffAmountCondition === '-'){
+							if(opponent.buffs[i].duration <= clearBuffDuration && opponent.buffs[i].shield <= clearBuffAmount){
+								buffsToRemove.push(i);
+							}
+						}
+					//only one set
+					}else{
+						//duration
+						if(clearBuffDuration !== 0){
+							//duration +
+							if(clearBuffDurationCondition === '+'){
+								if(opponent.buffs[i].duration >= clearBuffDuration){
+									buffsToRemove.push(i);
+								}
+							//duration -
+							}else if(clearBuffDurationCondition === '-'){
+								if(opponent.buffs[i].duration <= clearBuffDuration){
+									buffsToRemove.push(i);
+								}
+							}
+						//amount
+						}else if(clearBuffAmount !== 0){
+							//amount +
+							if(clearBuffAmountCondition === '+'){
+								if(opponent.buffs[i].shield >= clearBuffAmount){
+									buffsToRemove.push(i);
+								}
+							//amount -
+							}else if(clearBuffAmountCondition === '-'){
+								if(opponent.buffs[i].shield >= clearBuffAmount){
+									buffsToRemove.push(i);
+								}
+							}
+						}
+					}   
+				}
+            }
+			
+        }
+        //remove all the debuffs
+        //sort the list of buffs to remove in descending order
+        buffsToRemove.sort((a, b) => b - a)
+        //delete all the debuffs that are going to zero
+        for(let j=0; j<buffsToRemove.length; j++){
+            opponent.buffs.splice(buffsToRemove[j],1);
+        }
+    }
+    return player
+}
+
 const clearDebuffs = (player, opponent) => {
-
-    //the # of debuffs to remove from the player
-    //let clearDebuffDuration = player.selectedSpell.clearDebuffDuration;
-    //let clearDebuffDurationCondition = player.selectedSpell.clearDebuffDurationCondition;
-    //let clearDebuffAmount = player.selectedSpell.clearDebuffAmount;
-    //let clearDebuffAmountCondition = player.selectedSpell.clearDebuffAmountCondition;
-
     let debuffsToRemove = [];
-
+    //if the players debuffs contain debuffs
     if(player.debuffs.length > 0){
-
-
         //get the clear buff amount and condition
         let clearDebuffAmount = player.selectedSpell.clearDebuffAmount;
         let clearDebuffAmountCondition = player.selectedSpell.clearDebuffAmountCondition;
-
         //get the clear debuff duration and condition
         let clearDebuffDuration = player.selectedSpell.clearDebuffDuration;
         let clearDebuffDurationCondition = player.selectedSpell.clearDebuffDurationCondition;
-
+        //get the maximum quantity to clear
         let clearDebuffQuantity = player.selectedSpell.clearDebuffQuantity;
-
-        console.log("debuff amount: ", clearDebuffAmount);
-        console.log("debuff amount condition: ", clearDebuffAmountCondition);
-        console.log("clear debuff duration: ", clearDebuffDuration);
-        console.log("clear debuff duration condition: ", clearDebuffDurationCondition);
-        console.log("clear debuff quantity: ", clearDebuffQuantity);
-
-
+        //iterate through the players debuffs
         for(let i=0; i<player.debuffs.length; i++){
-
             if(debuffsToRemove.length <= clearDebuffQuantity){
                 //both duration and amount
                 if(clearDebuffDuration !== 0 && clearDebuffAmount !== 0){
                     //duration + / amount -
                     if(clearDebuffDurationCondition === '+' && clearDebuffAmountCondition === '-'){
-                        if(player.debuffs[i].duration >= clearDebuffDuration){
-                            debuffsToRemove.push(i);
-                        }
-                        if(player.debuffs[i].amount <= clearDebuffAmount){
+                        if(player.debuffs[i].duration >= clearDebuffDuration && player.debuffs[i].damage <= clearDebuffAmount){
                             debuffsToRemove.push(i);
                         }
                     }
                     //duration - / amount +
                     if(clearDebuffDurationCondition === '-' && clearDebuffAmountCondition === '+'){
-                        if(player.debuffs[i].duration <= clearDebuffDuration){
-                            debuffsToRemove.push(i);
-                        }
-                        if(player.debuffs[i].amount >= clearDebuffAmount){
+                       
+                        if(player.debuffs[i].duration <= clearDebuffDuration && player.debuffs[i].damage >= clearDebuffAmount){
+                            
                             debuffsToRemove.push(i);
                         }
                     }
-
                     //duration + / amount +
                     if(clearDebuffDurationCondition === '+' && clearDebuffAmountCondition === '+'){
-                        if(player.debuffs[i].duration >= clearDebuffDuration){
-                            debuffsToRemove.push(i);
-                        }
-                        if(player.debuffs[i].amount >= clearDebuffAmount){
+                        if(player.debuffs[i].duration >= clearDebuffDuration && player.debuffs[i].damage>= clearDebuffAmount){
                             debuffsToRemove.push(i);
                         }
                     }
-
                     //duration - / amount-
                     if(clearDebuffDurationCondition === '-' && clearDebuffAmountCondition === '-'){
-                        console.log("here");
-                        if(player.debuffs[i].duration <= clearDebuffDuration){
-                            debuffsToRemove.push(i);
-                        }
-                        if(player.debuffs[i].amount <= clearDebuffAmount){
+                        if(player.debuffs[i].duration <= clearDebuffDuration && player.debuffs[i].damage <= clearDebuffAmount){
                             debuffsToRemove.push(i);
                         }
                     }
-                
                 //only one set
                 }else{
-
                     //duration
                     if(clearDebuffDuration !== 0){
                         //duration +
@@ -367,18 +495,16 @@ const clearDebuffs = (player, opponent) => {
                                 debuffsToRemove.push(i);
                             }
                         }
-                        
                     //amount
                     }else if(clearDebuffAmount !== 0){
-
                         //amount +
                         if(clearDebuffAmountCondition === '+'){
-                            if(player.debuffs[i].amount >= clearDebuffAmount){
+                            if(player.debuffs[i].damage >= clearDebuffAmount){
                                 debuffsToRemove.push(i);
                             }
                         //amount -
                         }else if(clearDebuffAmountCondition === '-'){
-                            if(player.debuffs[i].amount >= clearDebuffAmount){
+                            if(player.debuffs[i].damage >= clearDebuffAmount){
                                 debuffsToRemove.push(i);
                             }
                         }
@@ -386,29 +512,18 @@ const clearDebuffs = (player, opponent) => {
                 }   
             }
         }
-
-
-
-
-
-
         //remove all the debuffs
         //sort the list of buffs to remove in descending order
         debuffsToRemove.sort((a, b) => b - a)
-
-        console.log("debuffs to remove: ", debuffsToRemove);
-
         //delete all the debuffs that are going to zero
         for(let j=0; j<debuffsToRemove.length; j++){
             player.debuffs.splice(debuffsToRemove[j],1);
         }
     }
-
     return player
 }
 
 const setCriticalShield = (player) => {
-
     let random = Math.floor(Math.random() * (max - min) + min);
     //if the random number is less than the critical chance
     if(random < player.selectedSpell.criticalShieldChance){
@@ -442,37 +557,26 @@ const setCriticalDamage = (player) => {
 const setShield = (player, opponent) => {
     //if the player has a shield PLAYER 1
     if(player.shield > 0){
-
         //check if the damage would come through the shield
         let difference = player.shield - opponent.damage;
-
         //if the difference is - add difference to health and set shield to 0
         if(difference < 0){
-
             player.shield = 0;
             player.health += difference;
             p0CappedHealReduction = cappedHealReduction(player.health, player.heal, player.maxHealth);
             player.health += player.heal + p0CappedHealReduction;
-
-            
         //if the difference is + subtract damage from shield
         }else{
             player.shield = player.shield - opponent.damage;
             p0CappedHealReduction = cappedHealReduction(player.health, player.heal, player.maxHealth);
             player.health += player.heal + p0CappedHealReduction;                          
-
-
         }
-
     //if the player does not have a shield
     }else{
-
         player.health -= opponent.damage;
         p0CappedHealReduction = cappedHealReduction(player.health, player.heal, player.maxHealth);
         player.health += player.heal + p0CappedHealReduction;
-
     }
-
     return player;
 }
 
@@ -489,17 +593,11 @@ const cappedHealReduction = (currentHealth, heal, maxHealth) => {
     }
 }
 
-
 const getBuffs = (player, opponent) => {
-
     if(player.buffs.length > 0){
-
         let buffsToDelete = [];
-
         for(let i=0; i < player.buffs.length; i++){
-
             let type = player.buffs[i].type;
-            
             if(type === 'heal'){
                 player.heal += player.buffs[i].heal;
                 //decrement the debuff duration / remove the debuff from the list
@@ -511,7 +609,6 @@ const getBuffs = (player, opponent) => {
                     player.buffs[i].duration -= 1;
                 }
             }
-
             if(type === 'shield'){
                 player.shield += player.buffs[i].shield;
                 //decrement the debuff duration / remove the debuff from the list
@@ -523,33 +620,22 @@ const getBuffs = (player, opponent) => {
                     player.buffs[i].duration -= 1;
                 }
             }
-
-
         }
-
         //sort the list of buffs to remove in descending order
         buffsToDelete.sort((a, b) => b - a)
-
         //delete all the debuffs that are going to zero
         for(let j=0; j<buffsToDelete.length; j++){
             player.buffs.splice(buffsToDelete[j],1);
         }
-        
     }
-    
     return player
-
 }
 
 const getDebuffs = (player, opponent) => {
     if(player.debuffs.length > 0){
-
         let debuffsToDelete = [];
-
         for(let i=0; i < player.debuffs.length; i++){
-
             let type = player.debuffs[i].type;
-            
             if(type === 'damage'){
                 opponent.damage += player.debuffs[i].damage;
                 //decrement the debuff duration / remove the debuff from the list
@@ -561,18 +647,14 @@ const getDebuffs = (player, opponent) => {
                     player.debuffs[i].duration -= 1;
                 }
             }
-
         }
-
         //sort the list of buffs to remove in descending order
         debuffsToDelete.sort((a, b) => b - a)
-
         //delete all the debuffs that are going to zero
         for(let j=0; j<debuffsToDelete.length; j++){
             player.debuffs.splice(debuffsToDelete[j],1);
         }
     }
-    
     return player
 }
 
@@ -590,7 +672,6 @@ const setDebuffs = (player, opponent) => {
 }
 
 const setBuffs = (player, opponent) => {
-
     if(player.selectedSpell.healOverTime !== 0){
         player.buffs.push({
             name: player.selectedSpell.name, 
@@ -600,7 +681,6 @@ const setBuffs = (player, opponent) => {
             type: "heal"
         })       
     }
-
     if(player.selectedSpell.shieldOverTime !== 0){
         player.buffs.push({
             name: player.selectedSpell.name, 
@@ -610,6 +690,5 @@ const setBuffs = (player, opponent) => {
             type: "shield"
         })       
     }
-
     return player
 }
