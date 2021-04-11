@@ -23,40 +23,6 @@ router.post('/buyspell' + '/:id', function(req,res){
     
 });
 
-router.post('/openpack' + '/:id', function(req, res) {
-    let max = req.body.spells.length;
-    let min = 0;
-    
-    let cards = [];
-
-    for(let i=0; i < 3; i++){
-       cards.push(Math.floor(Math.random() * (max - min) + min) );
-    }
-        
-    if(req.params.id !== null){
-        User.findOne({_id: req.params.id}).then(user => {
-            if(user){
-                user.gold -= 1000;
-                //for each card in the pack
-                for(let j=0; j<cards.length; j++){
-                    //check if the card is already unlocked for that player
-                    if(user.spells.includes(cards[j])){
-                        //add to the gold the player has
-                        user.gold += 300;
-                    }else{
-                        user.spells.push(cards[j])
-                    }
-                }
-
-                user.save()
-                .then(user => res.json({'gold':user.gold, 'spells':user.spells, 'pack':cards}))
-
-            }
-        })
-    }
-  
-});
-
 router.post('/gold' + '/:id', function(req, res) {
     if(req.params.id !== null){
         User.findOne({_id: req.params.id}).then(user => {
