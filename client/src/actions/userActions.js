@@ -1,4 +1,4 @@
-import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS, SET_INFO, GET_INFO, GET_GOLD, BUY_PACKS, BUY_SPELL, CLEAR_PACK} from './types';
+import {SET_SPELLS, SET_PHASE, RESET_GAME, REMOVE_SPELL, GET_SPELLS, SET_INFO, GET_INFO, GET_GOLD, BUY_PACKS, BUY_SPELL, CLEAR_PACK, SET_LOADOUTS} from './types';
 import axios from 'axios'
 import store from '../store';
 import spells from '../json/spells.json'
@@ -108,3 +108,12 @@ export const clearPack = () => (dispatch) => {
         type:CLEAR_PACK
     })
 }
+
+export const setLoadouts = (loadouts) => (dispatch) => {
+    dispatch({
+        type:SET_LOADOUTS,
+        payload: loadouts
+    })
+    }
+
+
