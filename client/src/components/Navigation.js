@@ -2,6 +2,7 @@ import Button from './styled/Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/authActions';
 import { setPhase } from '../actions/userActions'
+import {deleteRoom} from '../actions/roomActions';
 
 const numberOfSpells = 6
 
@@ -23,7 +24,7 @@ const Navigation = () => {
         {phase === 'select-spells' && auth.isAuthenticated &&  <Button 
             style={{
                 marginRight: 20, 
-                border: spells.length === numberOfSpells ? '3px solid lightgreen' : '1px solid #FFF', 
+                border: spells.length === numberOfSpells ? '3px solid lightgreen' : '1px solid #FFF',
                 color: spells.length === numberOfSpells ? 'lightgreen' : '#FFF', 
                 padding: 0, 
                 marginTop: 10, 
@@ -37,6 +38,15 @@ const Navigation = () => {
             {phase === 'profile' && <Button style={{border: '1px solid white', color: '#FFF', margin: 8}} onClick={() => {dispatch(setPhase('gameroom'))}}>Gameroom</Button>}
             <Button style={{ border: '1px solid #FFF', color: '#FFF', margin: 8 }} onClick={() => dispatch(logout())}>Logout</Button>
         </div>}
+
+        {auth.isAuthenticated && <div>
+            {phase === 'battle' &&
+                <Button style={{ border: '1px solid #FFF', color: '#FFF', margin: 8 }} onClick={() => {
+                    dispatch(deleteRoom());
+                    dispatch(setPhase('gameroom'));
+                }}>Leave Room</Button>
+            }
+            </div>}
 
     </div>
 }
