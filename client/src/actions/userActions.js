@@ -79,9 +79,9 @@ export const getSpells = (id) => (dispatch) => {
 
 }
 
-export const openPacks = (amount) => (dispatch) => {
-    if(store.getState().user.gold >= 1000){
-        axios.post('/api/users/openpack/' + store.getState().auth.id, { 'spells': spells.spells, amount })
+export const openPack = () => (dispatch) => {
+    if(store.getState().user.packs >= 1){
+        axios.post('/api/packs/openpack/' + store.getState().auth.id, { 'spells': spells.spells })
             .then(res => dispatch({
                 type: OPEN_PACK,
                 payload: res.data
@@ -120,7 +120,6 @@ export const clearPack = () => (dispatch) => {
 }
 
 export const buyPack = item => dispatch => {
-    console.log(item)
     axios.post('/api/packs/buypacks/' + store.getState().auth.id, {item})
         .then(res => dispatch({
             type: BUY_PACK,

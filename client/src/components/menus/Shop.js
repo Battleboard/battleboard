@@ -1,6 +1,6 @@
 import { shopItems } from '../../json/shopItems.json'
 import { useDispatch, useSelector } from 'react-redux'
-import { buyPack } from '../../actions/userActions'
+import { buyPack, openPack } from '../../actions/userActions'
 import Button from '../styled/Button';
 
 const card_styles = {
@@ -45,7 +45,7 @@ const Shop = () => {
             <div style={{textAlign: 'center', fontSize: 24, margin: 'auto 0'}}>You have {user.packs} Packs</div>
             <div style={card_styles} />
             <div style={{display: 'flex', justifyContent: 'center', margin: 'auto 0'}}>
-                <Button style={{color: '#FFF', border: '1px solid #FFF', height: 60}}>Open Pack</Button>
+                <Button style={{color: '#FFF', border: '1px solid #FFF', height: 60}} onClick={() => dispatch(openPack())}>Open Pack</Button>
             </div>
         </div>
     </div>

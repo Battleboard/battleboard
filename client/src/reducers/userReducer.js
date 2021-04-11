@@ -105,7 +105,8 @@ export default function userReducer(state = initialState, action, payload){
                 ...state,
                 gold: action.payload.gold,
                 unlockedSpells: [...action.payload.spells],
-                packSpells: [...action.payload.pack]
+                packSpells: [...action.payload.pack],
+                packs: action.payload.packs
             }
         case CLEAR_PACK:
             return{
