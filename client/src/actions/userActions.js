@@ -115,7 +115,7 @@ export const getGold = (id) => (dispatch) => {
 
 export const clearPack = () => (dispatch) => {
     dispatch({
-        type:CLEAR_PACK
+        type: CLEAR_PACK
     })
 }
 

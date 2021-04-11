@@ -1,7 +1,10 @@
+import { useState, useEffect } from 'react'
 import { shopItems } from '../../json/shopItems.json'
 import { useDispatch, useSelector } from 'react-redux'
 import { buyPack, openPack } from '../../actions/userActions'
 import Button from '../styled/Button';
+import { spells } from "../../json/spells";
+import Card from '../Card';
 
 const card_styles = {
 	border: '1px solid #7D7D7D',
@@ -18,7 +21,18 @@ const card_styles = {
 const Shop = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user);
+    const packSpells = useSelector(state => state.user.packSpells)
 
+    const [packDisplay, setPackDisplay] = useState(false)
+    const [modalSpells, setModalSpells] = useState({})
+
+    useEffect(() => {
+        if(packSpells !== modalSpells){
+            setModalSpells(packSpells)
+        }
+    // eslint-disable-next-line
+    }, [packSpells, dispatch])
+    
     return <div style={{display: 'flex', flexDirection: 'column', height: '100%', userSelect: 'none'}}>
         <div style={{background: '#212121',  height: '50%', display: 'flex', justifyContent: 'space-evenly'}}>
 
@@ -41,11 +55,24 @@ const Shop = () => {
             })}
         </div>
 
+        {/* Display Cards from Pack */}
         <div style={{background: '#212121', height: '50%', borderTop: '3px solid white', color: '#FFF', display: 'flex', flexDirection: 'column'}}>
             <div style={{textAlign: 'center', fontSize: 24, margin: 'auto 0'}}>You have {user.packs} Packs</div>
-            <div style={card_styles} />
+            {packDisplay ? <div style={{display: 'flex', justifyContent: 'center'}}>
+                {spells.map((spell, index) => {
+                    if(modalSpells.includes(index)){
+                        return <Card key={index} spell={spell}/>
+                    }else{
+                        return null
+                    }
+                })}
+            </div>
+            : <div style={card_styles} />}
             <div style={{display: 'flex', justifyContent: 'center', margin: 'auto 0'}}>
-                <Button style={{color: '#FFF', border: '1px solid #FFF', height: 60}} onClick={() => dispatch(openPack())}>Open Pack</Button>
+                <Button style={{color: '#FFF', border: '1px solid #FFF', height: 60}} onClick={() => {
+                    if (!packDisplay) setPackDisplay(true);
+                    dispatch(openPack())
+                }}>Open Pack</Button>
             </div>
         </div>
     </div>
