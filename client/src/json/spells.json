@@ -177,32 +177,6 @@
         },
 
         {
-            "name": "Fire Blast",
-            "source": "/images/spells/fireblast.svg",
-            "damage": 150,
-            "heal": 0,
-            "shield":0,
-            "damageOverTime": 0, 
-            "damageOverTimeDuration": 0,
-            "healOverTime": 0,
-            "healOverTimeDuration": 0,
-            "shieldOverTime":0,
-            "shieldOverTimeDuration":0,
-            "criticalDamageChance": 50,
-            "criticalDamageIncrease": 150,
-            "criticalHealChance": 0,
-            "criticalHealIncrease":0,
-            "criticalShieldChance":0,
-            "criticalShieldIncrease":0,
-			"clearDebuffType":"",
-			"clearDebuffAmount":"",
-			"clearDebuffDurationCondition":"",
-			"clearDebuffDuration":"",
-			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
-        },
-
-        {
             "name": "Holy Reaper",
             "source": "/images/spells/holyreaper.svg",
             "damage": 120,
