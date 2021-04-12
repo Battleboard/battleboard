@@ -27,3 +27,5 @@ export const BUY_SPELL = 'BUY_SPELL';
 export const CLEAR_PACK = 'CLEAR_PACK';
 export const BUY_PACK = 'BUY_PACK';
 export const GET_PACKS = 'GET_PACKS';
+export const SET_LOADOUTS = "SET_LOADOUTS";
+

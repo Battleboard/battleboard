@@ -11,7 +11,8 @@ import {
     BUY_PACK, 
     BUY_SPELL, 
     CLEAR_PACK,
-    GET_PACKS
+    GET_PACKS,
+    SET_LOADOUTS
     } from './types';
 import axios from 'axios'
 import store from '../store';
@@ -134,3 +135,11 @@ export const getPacks = () => dispatch => {
             payload: res.data
         }))
 }
+export const setLoadouts = (loadouts) => (dispatch) => {
+    dispatch({
+        type:SET_LOADOUTS,
+        payload: loadouts
+    })
+    }
+
+

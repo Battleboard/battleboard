@@ -23,7 +23,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "strength"
         },
         {
             "name": "Shield",
@@ -48,7 +49,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "strength"
         },
         {
             "name": "Shurikens",
@@ -73,7 +75,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "strength"
         },
         {
             "name": "Fireball",
@@ -98,7 +101,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 		    "clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "strength"
         },
         {
             "name": "Meditate",
@@ -123,7 +127,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "strength"
         },
         {
             "name": "Shield Prism",
@@ -148,7 +153,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "strength"
         },
         {
             "name": "Flame Pillar",
@@ -173,7 +179,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "strength"
         },
 
         {
@@ -199,7 +206,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "strength"
         },
 		{
             "name":"Tree of Life",
@@ -224,7 +232,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "strength"
         },
         {
             "name": "Fire Punch",
@@ -248,7 +257,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "strength"
         },
         {
             "name": "Sacrifice",
@@ -273,7 +283,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "strength"
         },
         {
             "name": "Power Strike",
@@ -298,7 +309,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "strength"
         },
 		{
             "name": "Natural Medicine",
@@ -323,7 +335,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "strength"
         },
 		{
             "name": "Drain Essence",
@@ -347,7 +360,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "strength"
         },
 		{
             "name": "Self Repair",
@@ -372,7 +386,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "strength"
         },
         {
             "name": "Searing Toxin",
@@ -397,7 +412,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity": 0,
+            "attribute": "agility"
         },
         {
             "name": "Consolidate",
@@ -422,7 +438,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
 		{
             "name":"Energize",
@@ -447,7 +464,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "agility"
         },
         {
             "name": "Lightning Storm",
@@ -472,7 +490,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
 		{
             "name": "Blitz Heal",
@@ -496,7 +515,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
         {
             "name": "Heavy Slam",
@@ -521,7 +541,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "agility"
         },
         {
             "name": "Power Drip",
@@ -546,7 +567,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "agility"
         },
         {
             "name": "Side Slash",
@@ -571,7 +593,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "agility"
           },
         {
             "name": "Slow Kill",
@@ -596,7 +619,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
 		{
             "name":"Rejuvination Potion",
@@ -621,7 +645,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
         {
             "name":"Nothing",
@@ -646,7 +671,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
 		{
             "name": "Channel",
@@ -671,7 +697,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "agility"
         },
         {
             "name":"Pummel",
@@ -696,7 +723,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
         {
             "name":"Vishnu Beam",
@@ -721,7 +749,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
         {
             "name": "Penance",
@@ -746,7 +775,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
         {
             "name":"Slice",
@@ -771,7 +801,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
         {
             "name":"Jesus Beam",
@@ -796,7 +827,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "agility"
         },
         {
             "name":"Holy Prayer",
@@ -821,7 +853,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "magic"
         },
         {
             "name": "True Shot",
@@ -846,7 +879,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "magic"
         },
         {
             "name": "Back Stab",
@@ -871,7 +905,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "magic"
         },
         {
             "name": "Fire Storm",
@@ -896,7 +931,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "magic"
         },
         {
             "name": "Radiance",
@@ -921,7 +957,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "magic"
         },
         {
             "name": "Mend Wounds",
@@ -946,7 +983,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "magic"
         },
         {
             "name": "Fountain of Life",
@@ -970,7 +1008,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "magic"
         },
         {
             "name": "Raining Arrows",
@@ -994,7 +1033,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "magic"
         },
         {
             "name": "Siphon Life",
@@ -1019,7 +1059,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "magic"
         },
         {
             "name": "Rapid Attack",
@@ -1044,7 +1085,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "magic"
         },
         {
             "name": "Singe",
@@ -1069,7 +1111,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "magic"
         },
         {
             "name": "Fan of Knives",
@@ -1094,7 +1137,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "holy"
         },
         {
             "name": "Neural Connect",
@@ -1119,7 +1163,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "holy"
         },
         {
             "name": "Fissure",
@@ -1144,7 +1189,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "holy"
         },
         {
             "name": "Bullseye",
@@ -1169,7 +1215,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "holy"
         },
         {
             "name": "Eruption",
@@ -1194,7 +1241,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "holy"
         },
         {
             "name": "Steady Strike",
@@ -1219,7 +1267,8 @@
 			"clearDebuffDurationCondition":"",
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
-            "clearDebuffQuantity":0
+            "clearDebuffQuantity":0,
+            "attribute": "holy"
         },
         {
             "name": "Water Shield",
@@ -1244,7 +1293,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "holy"
         },
         {
             "name": "Revive",
@@ -1269,7 +1319,8 @@
 			"clearDebuffDurationCondition": "",
 			"clearDebuffDuration": "",
 			"clearDebuffAmountCondition": "",
-            "clearDebuffQuantity": 0
+            "clearDebuffQuantity": 0,
+            "attribute": "holy"
         },
         {
             "name": "Cleanse",
@@ -1294,7 +1345,8 @@
             "clearDebuffAmountCondition": "-",
             "clearDebuffDuration": 3,
 			"clearDebuffDurationCondition": "-",
-            "clearDebuffQuantity": 2
+            "clearDebuffQuantity": 2,
+            "attribute": "holy"
         },
         {
             "name": "Purification",
@@ -1319,7 +1371,8 @@
             "clearDebuffAmountCondition": "+",
 			"clearDebuffDuration": 5,
             "clearDebuffDurationCondition": "-",
-            "clearDebuffQuantity": 3
+            "clearDebuffQuantity": 3,
+            "attribute": "holy"
         },
         {
             "name": "Purge Strike",
@@ -1344,7 +1397,8 @@
             "clearDebuffAmountCondition": "+",
 			"clearDebuffDuration": 0,
 			"clearDebuffDurationCondition": "+",
-            "clearDebuffQuantity": 1
+            "clearDebuffQuantity": 1,
+            "attribute": "holy"
         }
         
     ]

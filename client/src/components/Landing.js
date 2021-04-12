@@ -9,13 +9,13 @@ import Button from './styled/Button'
 import Logo from './styled/Logo'
 import Spells from "./Spells"
 import SelectedSpells from "./SelectedSpells"
-
 import Lobby from "./menus/Lobby"
 import GameRoom from "./menus/GameRoom"
+import Shop from './menus/Shop'
 import Profile from './menus/Profile'
 import BattleOver from './menus/BattleOver'
-import Menu from "./menus/Menu"
-import Shop from './menus/Shop'
+import Menu from "./menus/Menu";
+import SpellBook from "./SpellBook";
 
 const GuestLinks = () => {
   
@@ -125,6 +125,8 @@ const Landing = () => {
 				return <BattleOver player={player} opponent={opponent} />
 			case 'profile':
 				return <Profile />
+			case "spells" :
+				return <SpellBook/>
 			default:
 				return 'AuthLinks Switch Broken (Error 42069)'
 		}
