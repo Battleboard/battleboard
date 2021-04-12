@@ -1,5 +1,6 @@
 import {SET_CLIENT_ID, SET_GAME_ID, SET_GAME_ROOM, SET_CONNECTION, CLEAR_ROOMS, GET_ROOMS} from './types';
 import axios from 'axios';
+import store from '../store';
 
 export const setClient = (clientId) => (dispatch) => {
     dispatch({
@@ -42,8 +43,9 @@ export const getRooms = () => (dispatch) => {
         }))
 }
 
-export const deleteRoom = (room) => () => {
+export const deleteRoom = () => (dispatch) => {
 
-    axios.delete('/api/rooms/room/' + room)
+    axios.delete('/api/rooms/room/' + store.getState().room.gameRoom[0].gameId)
+    .then(res => console.log("delete room res: ", res))
 
 }

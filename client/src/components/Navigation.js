@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPhase } from '../actions/userActions'
 import { logout } from '../actions/authActions'
 // import BuyPackModal from './BuyPackModal';
+import {deleteRoom} from '../actions/roomActions';
 
 const button_styles = { border: '1px solid #FFF', color: '#FFF', margin: 8 }
 
@@ -40,6 +41,10 @@ const Navigation = () => {
                 <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button>
 
                 {phase !== 'menu' && <Button style={button_styles} onClick={() => {dispatch(setPhase('menu'))}}>Main Menu</Button>}
+                {phase === 'battle' && <Button style={{ border: '1px solid #FFF', color: '#FFF', margin: 8 }} onClick={() => {
+                    dispatch(deleteRoom());
+                    dispatch(setPhase('gameroom'));
+                }}>Leave Room</Button>}
             </div>}
 
             {auth.isAuthenticated && user && <div style={{textAlign: 'center', fontSize: 24, display: 'flex', margin: 'auto 10px', justifyContent: 'center'}}>
@@ -47,6 +52,12 @@ const Navigation = () => {
                 <img src="/images/spells/dubloontoss.svg" alt="" style={{height: 30, width: 30, userSelect: 'none'}} />
             </div>}
         </div>
+
+
+        {auth.isAuthenticated && <div>
+            
+            </div>}
+
     </div>
 }
 

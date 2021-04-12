@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
   });
 
   router.delete('/room' + '/:id', function(req,res){
+
     let roomToDelete = req.params.id;
     for(key in req.rooms.games){
       if(req.rooms.games[key].clients[0].gameId === roomToDelete){
