@@ -2,6 +2,7 @@ import Button from './styled/Button'
 import { useDispatch, useSelector } from 'react-redux'
 // import { useState, useEffect } from 'react'
 import { setPhase } from '../actions/userActions'
+import { logout } from '../actions/authActions'
 // import BuyPackModal from './BuyPackModal';
 
 const button_styles = { border: '1px solid #FFF', color: '#FFF', margin: 8 }
@@ -36,16 +37,14 @@ const Navigation = () => {
         <h1 style={{margin: 0, padding: '10px 0 0 10px', fontSize: 48, fontFamily: 'sans-serif', color: '#F3F3F3', userSelect: 'none', cursor: 'pointer'}} onClick={() => {dispatch(setPhase('menu'))}}>Battleboard</h1>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: '100%'}}>
             {auth.isAuthenticated && <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                {phase === 'profile' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Gameroom</Button>}
-                {/* <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button> */}
+                <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button>
 
-                {/* {modal && <BuyPackModal show={modal} packSpells={modalSpells} toggleShow={setModal} />} */}
-
+                {phase !== 'menu' && <Button style={button_styles} onClick={() => {dispatch(setPhase('menu'))}}>Main Menu</Button>}
             </div>}
 
             {auth.isAuthenticated && user && <div style={{textAlign: 'center', fontSize: 24, display: 'flex', margin: 'auto 10px', justifyContent: 'center'}}>
                 <div style={{color: '#FFD949', marginRight: 5, marginTop: 1, userSelect: 'none'}}>{user.gold}</div>
-                <img src="/images/spells/dubloontoss.svg" alt="" style={{height: 30, width: 30}} />
+                <img src="/images/spells/dubloontoss.svg" alt="" style={{height: 30, width: 30, userSelect: 'none'}} />
             </div>}
         </div>
     </div>
