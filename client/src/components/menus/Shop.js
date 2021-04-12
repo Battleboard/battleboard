@@ -25,6 +25,7 @@ const Shop = () => {
 
     const [packDisplay, setPackDisplay] = useState(false)
     const [modalSpells, setModalSpells] = useState({})
+    const [oldSpellList, setOldSpellList] = useState([])
 
     useEffect(() => {
         if(packSpells !== modalSpells){
@@ -61,7 +62,7 @@ const Shop = () => {
             {packDisplay ? <div style={{display: 'flex', justifyContent: 'center'}}>
                 {spells.map((spell, index) => {
                     if(modalSpells.includes(index)){
-                        return <Card key={index} spell={spell}/>
+                        return <Card key={index} spell={spell} owned={Object.values(oldSpellList).includes(spells.indexOf(spell)) ? true : false} />
                     }else{
                         return null
                     }
@@ -71,7 +72,8 @@ const Shop = () => {
             <div style={{display: 'flex', justifyContent: 'center', margin: 'auto 0'}}>
                 <Button style={{color: '#FFF', border: '1px solid #FFF', height: 60}} onClick={() => {
                     if (!packDisplay) setPackDisplay(true);
-                    dispatch(openPack())
+                    setOldSpellList(user.unlockedSpells)
+                    dispatch(openPack())  
                 }}>Open Pack</Button>
             </div>
         </div>
