@@ -23,7 +23,7 @@ const spell_column_styles = {
 
 const button_styles = { border: '1px solid white', height: 60, margin: 'auto 20px', color: '#FFF'}
 
-const SpellBook = () => {
+const SpellBook = ({ type }) => {
     const dispatch = useDispatch()
     const loadouts = useSelector(state => state.user.loadouts)
     const [selectedLoadOut, setSelectedLoadOut] = useState(0)
@@ -59,7 +59,7 @@ const SpellBook = () => {
             <Button style={button_styles} onClick = {() => SelectedLoadOut(2)}>Loadout 3</Button>
             <Button style={button_styles} onClick = {() => SelectedLoadOut(3)}>Loadout 4</Button>
             <Button style={button_styles} onClick = {() => SelectedLoadOut(4)}>Loadout 5</Button>
-            <Button style={{...button_styles}} onClick = {() => dispatch(saveLoadouts())}>Save</Button>
+            {type === 'loadouts' ? <Button onClick = {() => dispatch(saveLoadouts())} style={{...button_styles}} >Save</Button> : <Button style={{...button_styles}} >Fight</Button>}
         </div> 
 
         {/* Spell Columns */}
