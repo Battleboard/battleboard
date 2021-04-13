@@ -15,5 +15,7 @@ const infoImage = () => {
             return <img src ="/images/icons/sword.svg" style={{width: 15, height: 15}} />
         case "shield":
             return <img src ="/images/icons/sword.svg" style={{width: 15, height: 15}} />
+        case "damageOverTime":
+            return <img src ="/images/icons/sword.svg" style={{width: 15, height: 15}} />
     }
 }
