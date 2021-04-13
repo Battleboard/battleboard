@@ -13,9 +13,9 @@ const container_styles = {
 
 const Card = ({ spell, action, style, owned }) => {
 	return <div style={{...container_styles, ...style}} onClick={action}>
-		<div style={{margin: 10, display: 'flex'}}>
+		<div style={{margin: 10, display: 'flex',flexDirection: "column"}}>
 			<h4 style={{margin: 0, padding: '20 0 0 20', flexGrow: 2}}>{spell.name}</h4>
-			<img alt="" src={spell.source} style={{height: 30, width: 30}}/>
+			<img alt="" src={spell.source} style={{height: 30, width: 30, margin: "auto"}}/>
 		</div>
 
 		<div style={{display: 'flex'}}>
