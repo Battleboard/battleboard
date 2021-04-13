@@ -16,7 +16,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    spells:{
+    unlockedSpells:{
         type: Array,
         required: true,
         default: [0,1,2,3,4,5,6,7]
@@ -51,6 +51,10 @@ const UserSchema = new Schema({
     draws: {
         type: Number,
         default: 0
+    },
+    loadouts: {
+        type: Array,
+        default:[]
     }
 });
 

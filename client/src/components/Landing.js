@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from "react-router-dom"
-import { getSpells, getGold, getUserInfo, setSpells, getPacks } from '../actions/userActions'
+import { getSpells, getGold, getUserInfo, setSpells, getPacks, getUser } from '../actions/userActions'
 import { spells } from "../json/spells"
 
 import store from '../store'
@@ -65,15 +65,14 @@ const Landing = () => {
 			}
 		}
 	})
-
+	
 	useEffect(() => {
 		if(auth.id){
-			dispatch(getSpells(auth.id));
-			dispatch(getGold(auth.id));
-			dispatch(getPacks(auth.id));
+			dispatch(getUser(auth.id))
 		}
 	// eslint-disable-next-line	
 	}, [auth])
+	
 
 	//route the players into player and opponent
     useEffect(() => {
@@ -98,12 +97,6 @@ const Landing = () => {
         }
     // eslint-disable-next-line
     }, [clients])
-
-	useEffect(() => {
-		if (auth.id) {
-			dispatch(getUserInfo(auth.id))
-		}
-	}, [auth, dispatch])
 	
 	const setContent = () => {
 

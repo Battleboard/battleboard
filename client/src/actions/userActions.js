@@ -12,11 +12,25 @@ import {
     BUY_SPELL, 
     CLEAR_PACK,
     GET_PACKS,
-    SET_LOADOUTS
+    SET_LOADOUTS,
+    SAVE_LOADOUTS,
+    GET_USER
     } from './types';
 import axios from 'axios'
 import store from '../store';
 import spells from '../json/spells.json'
+
+export const getUser = () => (dispatch) => {
+    console.log("ss")
+    axios.get('/api/users/user/' + store.getState().auth.id)
+    
+        .then(res => dispatch({
+            type: GET_USER,
+            payload: res.data.user
+        }))
+        .catch(err => console.error(err))
+        
+}
 
 //GET USER INFO
 export const getUserInfo = (id) => (dispatch) => {
@@ -135,11 +149,21 @@ export const getPacks = () => dispatch => {
             payload: res.data
         }))
 }
+
 export const setLoadouts = (loadouts) => (dispatch) => {
     dispatch({
         type:SET_LOADOUTS,
         payload: loadouts
     })
-    }
+}
+
+export const saveLoadouts = () => (dispatch) => {
+    axios.post('/api/users/saveloadouts/' + store.getState().auth.id, {"loadouts": store.getState().user.loadouts})
+    .then(res => dispatch({
+        type: SAVE_LOADOUTS,
+        payload: res.data.loadouts
+    })) 
+
+}
 
 

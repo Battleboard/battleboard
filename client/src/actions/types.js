@@ -28,4 +28,6 @@ export const CLEAR_PACK = 'CLEAR_PACK';
 export const BUY_PACK = 'BUY_PACK';
 export const GET_PACKS = 'GET_PACKS';
 export const SET_LOADOUTS = "SET_LOADOUTS";
+export const SAVE_LOADOUTS = 'SAVE_LOADOUTS';
+export const GET_USER = 'GET_USER';
 

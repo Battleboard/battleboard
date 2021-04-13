@@ -1,7 +1,7 @@
 
 import { spells } from "../json/spells";
 import { useSelector, useDispatch } from 'react-redux';
-import {setLoadouts } from '../actions/userActions';
+import {setLoadouts, saveLoadouts, setSpells } from '../actions/userActions';
 import Button from './styled/Button'
 import SpellCircleImage from "./SpellCircleImage";
 import { useState } from 'react';
@@ -30,13 +30,12 @@ const SpellBook = () => {
    
     const SelectedLoadOut = (button) => {
         setSelectedLoadOut(button)
+        //set the spells to the spells of the selected load out
     }
     
     const RemoveSpell = (spell) => {
         let copy = [...loadouts]
         copy[selectedLoadOut] = copy[selectedLoadOut].filter(s => s.name !== spell.name)
-       // console.log("copy",copy)
-       dispatch(setLoadouts(copy))
     }
 
     const AddSpell = (spell) => {
@@ -60,7 +59,7 @@ const SpellBook = () => {
             <Button style={button_styles} onClick = {() => SelectedLoadOut(2)}>Loadout 3</Button>
             <Button style={button_styles} onClick = {() => SelectedLoadOut(3)}>Loadout 4</Button>
             <Button style={button_styles} onClick = {() => SelectedLoadOut(4)}>Loadout 5</Button>
-            <Button style={{...button_styles}} >Save</Button>
+            <Button style={{...button_styles}} onClick = {() => dispatch(saveLoadouts())}>Save</Button>
         </div> 
 
         {/* Spell Columns */}

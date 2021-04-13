@@ -9,6 +9,27 @@ const secret = process.env.jwtSecret;
 
 const User = require("../../models/User");
 
+router.get('/user' + '/:id', function(req,res){
+    User.findOne({_id: req.params.id}).then(user => {
+        if(user){
+            res.json({'user': user})
+        }
+    })
+})
+
+router.post('/saveloadouts' + '/:id', function(req,res){
+
+    User.findOne({_id: req.params.id}).then(user => {
+        if(user){
+            
+            user.loadouts = req.body.loadouts;
+            user.save()
+            .then(user => res.json({'loadouts': user.loadouts}))
+        }
+    })
+
+})
+
 router.post('/buyspell' + '/:id', function(req,res){
     
     User.findOne({_id: req.params.id}).then(user => {
