@@ -36,6 +36,7 @@ const SpellBook = ({ type }) => {
     const RemoveSpell = (spell) => {
         let copy = [...loadouts]
         copy[selectedLoadOut] = copy[selectedLoadOut].filter(s => s.name !== spell.name)
+        dispatch(setLoadouts(copy))
     }
 
     const AddSpell = (spell) => {
