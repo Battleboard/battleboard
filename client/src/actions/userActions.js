@@ -12,7 +12,8 @@ import {
     BUY_SPELL, 
     CLEAR_PACK,
     GET_PACKS,
-    SET_LOADOUTS
+    SET_LOADOUTS,
+    SET_SELECTED_GAME
     } from './types';
 import axios from 'axios'
 import store from '../store';
@@ -142,4 +143,9 @@ export const setLoadouts = (loadouts) => (dispatch) => {
     })
     }
 
-
+export const setSelectedGame = (id) => dispatch => {
+    dispatch({
+        type: SET_SELECTED_GAME,
+        payload: id
+    })
+}

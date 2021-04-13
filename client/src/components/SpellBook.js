@@ -1,11 +1,13 @@
 
 import { spells } from "../json/spells";
 import { useSelector, useDispatch } from 'react-redux';
-import {setLoadouts } from '../actions/userActions';
+import { setLoadouts, setPhase } from '../actions/userActions';
 import Button from './styled/Button'
+import { setGameRoom } from '../actions/roomActions';
 import SpellCircleImage from "./SpellCircleImage";
 import { useState } from 'react';
 import Card from "./Card";
+import store from '../store';
 
 const spell_column_styles = { 
     // display: "flex", 
@@ -26,6 +28,8 @@ const button_styles = { border: '1px solid white', height: 60, margin: 'auto 20p
 const SpellBook = ({ type }) => {
     const dispatch = useDispatch()
     const loadouts = useSelector(state => state.user.loadouts)
+    const selectedGame = useSelector(state => state.user.selectedGame)
+    const connection = useSelector(state => state.room.connection)
     const [selectedLoadOut, setSelectedLoadOut] = useState(0)
    
     const SelectedLoadOut = (button) => {
@@ -44,10 +48,35 @@ const SpellBook = ({ type }) => {
             let copy = [...loadouts]
             copy[selectedLoadOut].push(spell)
             dispatch(setLoadouts(copy))
+        }
+    }
+    
+    const joinGameRoom = () => {
+        dispatch(setPhase("battle"))
+
+        const payLoad = {
+            "method":"join",
+            "clientId":store.getState().room.clientId,
+            "gameId": selectedGame,
+            "spells": store.getState().user.spells,
+            "health": store.getState().user.startingHealth,
+            "maxHealth": store.getState().user.maxHealth,
+            "username": store.getState().auth.name,
+            "maxShield": store.getState().user.maxShield,
+            "shield": store.getState().user.startingShield
+        }
+
+        connection.send(JSON.stringify(payLoad));
+        
+
+        connection.onmessage = message => {
+            const response = JSON.parse(message.data);
+            if(response.method === 'join'){
+                //save the game room information to store
+                setGameRoom(response.game)
             }
         }
-    
-    
+    }
 
     //console.log(loadouts[selectedLoadOut])
     
@@ -60,7 +89,7 @@ const SpellBook = ({ type }) => {
             <Button style={button_styles} onClick = {() => SelectedLoadOut(2)}>Loadout 3</Button>
             <Button style={button_styles} onClick = {() => SelectedLoadOut(3)}>Loadout 4</Button>
             <Button style={button_styles} onClick = {() => SelectedLoadOut(4)}>Loadout 5</Button>
-            {type === 'loadouts' ? <Button style={{...button_styles}} >Save</Button> : <Button style={{...button_styles}} >Fight</Button>}
+            {type === 'loadouts' ? <Button style={{...button_styles}} >Save</Button> : <Button style={{...button_styles}} onClick={joinGameRoom}>Fight</Button>}
         </div> 
 
         {/* Spell Columns */}
