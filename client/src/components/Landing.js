@@ -111,7 +111,7 @@ const Landing = () => {
 			case 'shop':
 				return <Shop />
 			case 'menu':
-				return <Menu/>
+				return <Menu />
 			case 'select-spells':
 				return <>
 					<Spells />
@@ -119,6 +119,8 @@ const Landing = () => {
 				</>
 			case 'gameroom':
 				return <Lobby />
+			case 'pre-battle':
+				return <SpellBook type={'battle'}/>
 			case 'battle':
 				return <GameRoom connection={connection} player={player} opponent={opponent} />
 			case 'battle-over':
@@ -126,7 +128,7 @@ const Landing = () => {
 			case 'profile':
 				return <Profile />
 			case "spells" :
-				return <SpellBook/>
+				return <SpellBook type={'loadouts'}/>
 			default:
 				return 'AuthLinks Switch Broken (Error 42069)'
 		}

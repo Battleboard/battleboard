@@ -19,7 +19,7 @@ const initialState = {
     spells: [],
     maxHealth: 2500,
     startingHealth: 2500,
-    phase: "menu",
+    phase: "gameroom",
     maxShield: 3000,
     startingShield: 0,
     unlockedSpells: [],
@@ -29,7 +29,7 @@ const initialState = {
     draws: 0,
     packs: 0,
     packSpells: [],
-    loadouts:[[],[],[],[],[]],
+    loadouts: [[], [], [], [], []],
     selectedLoadout: 0
 }
 

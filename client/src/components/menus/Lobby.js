@@ -92,8 +92,8 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
     }
 
 	return <div style={{background: 'lightblue', display: 'flex', height: '100%'}}>
-        <div style={{flexGrow: 4, background: '#212121'}}>
-
+    
+        <div style={{flexGrow: 6, background: '#212121'}}>
                 {/* Map the game list */}
                 {games && games.map((game, index) => {
                     return <div key={index} onClick={() => joinGameRoom(game.id)} style={{width: '80%', background: '#C5C5C5', margin: '20px auto', height: 80, color: '#FFF'}}>
@@ -101,12 +101,17 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
                     </div>
                 })}
         </div>
-        <div style={{flexGrow: 1, background: '#FFF'}}>
+
+        <div style={{flexGrow: 1, background: '#DBE4EE'}}>
             <div style={{display: 'flex', flexDirection: 'column', width: '50%', margin: '20px auto'}}>
-                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={() => dispatch(getRooms())}>Refresh</Button>
-                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={createGameRoom}>Create Room</Button>
-                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={() => dispatch(setPhase('profile'))}>Profile</Button>
-                <Button style={{margin: '20px auto', borderRadius: 8,borderWidth: 5}} onClick={() => dispatch(setPhase('select-spells'))}>Change Spells</Button>
+                <Button style={{margin: '20px auto', borderRadius: 8, borderWidth: 5}} onClick={() => dispatch(getRooms())}>Refresh</Button>
+                <Button style={{margin: '20px auto', borderRadius: 8, borderWidth: 5}} onClick={createGameRoom}>Create Room</Button>
+
+                <div style={{ borderBottom: '5px solid black'}} />
+
+                <Button style={{margin: '20px auto', borderRadius: 8, borderWidth: 5}} onClick={() => dispatch(setPhase('spells'))}>Spells</Button>
+                <Button style={{margin: '20px auto', borderRadius: 8, borderWidth: 5}} onClick={() => dispatch(setPhase('profile'))}>Profile</Button>
+                <Button style={{margin: '20px auto', borderRadius: 8, borderWidth: 5}} onClick={() => dispatch(setPhase('shop'))}>Shop</Button>
             </div>
         </div>
     </div>

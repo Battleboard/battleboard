@@ -18,7 +18,7 @@ const Navigation = () => {
     // const [modal, setModal] = useState(false)
     // const [modalSpells, setModalSpells] = useState({})
 
-    
+
     // useEffect(() => {
     //     if(packSpells.length !== 0){
     //         toggleModal(packSpells)
@@ -26,7 +26,7 @@ const Navigation = () => {
     //     }
     // // eslint-disable-next-line
     // }, [packSpells])
-    
+
 
     // const toggleModal = (spells) => {
     //     setModalSpells(spells)
@@ -35,12 +35,12 @@ const Navigation = () => {
 
     return <div style={{width: '100%', height: 80, background: '#000', margin: 0, display: 'flex'}}>
         {/* Title */}
-        <h1 style={{margin: 0, padding: '10px 0 0 10px', fontSize: 48, fontFamily: 'sans-serif', color: '#F3F3F3', userSelect: 'none', cursor: 'pointer'}} onClick={() => {dispatch(setPhase('menu'))}}>Battleboard</h1>
+        <h1 style={{margin: 0, padding: '10px 0 0 10px', fontSize: 48, fontFamily: 'sans-serif', color: '#F3F3F3', userSelect: 'none', cursor: 'pointer'}} onClick={() => {dispatch(setPhase('gameroom'))}}>Battleboard</h1>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: '100%'}}>
             {auth.isAuthenticated && <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                 <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button>
 
-                {phase !== 'menu' && <Button style={button_styles} onClick={() => {dispatch(setPhase('menu'))}}>Main Menu</Button>}
+                {phase !== 'menu' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Lobby</Button>}
                 {phase === 'battle' && <Button style={{ border: '1px solid #FFF', color: '#FFF', margin: 8 }} onClick={() => {
                     dispatch(deleteRoom());
                     dispatch(setPhase('gameroom'));
@@ -52,12 +52,6 @@ const Navigation = () => {
                 <img src="/images/spells/dubloontoss.svg" alt="" style={{height: 30, width: 30, userSelect: 'none'}} />
             </div>}
         </div>
-
-
-        {auth.isAuthenticated && <div>
-            
-            </div>}
-
     </div>
 }
 
