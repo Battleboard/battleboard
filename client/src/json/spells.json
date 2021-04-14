@@ -750,7 +750,7 @@
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
             "clearDebuffQuantity":0,
-            "attribute": "agility"
+            "attribute": "magic"
         },
         {
             "name": "Penance",
@@ -828,7 +828,7 @@
 			"clearDebuffDuration":"",
 			"clearDebuffAmountCondition":"",
             "clearDebuffQuantity":0,
-            "attribute": "agility"
+            "attribute": "holy"
         },
         {
             "name":"Holy Prayer",
