@@ -34,7 +34,7 @@ const SpellBook = ({ type }) => {
    
     useEffect(() => {
         dispatch(setSpells(loadouts[selectedLoadOut]))
-    }, [])
+    }, [dispatch, loadouts, selectedLoadOut])
 
     const SelectedLoadOut = (button) => {
         setSelectedLoadOut(button)

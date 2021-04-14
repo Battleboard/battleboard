@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from "react-router-dom"
-import { getSpells, getGold, getUserInfo, setSpells, getPacks, getUser } from '../actions/userActions'
+import { setSpells, getUser } from '../actions/userActions'
 import { spells } from "../json/spells"
 
 import store from '../store'
