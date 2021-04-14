@@ -54,7 +54,7 @@ const UserSchema = new Schema({
     },
     loadouts: {
         type: Array,
-        default:[]
+        default: [[], [], [], [], []]
     }
 });
 
