@@ -44,8 +44,6 @@ export const getRooms = () => (dispatch) => {
 }
 
 export const deleteRoom = () => (dispatch) => {
-
     axios.delete('/api/rooms/room/' + store.getState().room.gameRoom[0].gameId)
-    .then(res => console.log("delete room res: ", res))
-
+        .then(res => console.log("delete room res: ", res))
 }

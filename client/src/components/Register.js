@@ -40,7 +40,6 @@ const Register = ({ isAuthenticated, error, register, clearErrors}) => {
         register(user);
       };
 
-      
       useEffect(() => {
         clearErrors();
         //eslint-disable-next-line 

@@ -14,7 +14,9 @@ import {
     BUY_PACK,
     SET_LOADOUTS, 
     SAVE_LOADOUTS,
-    GET_USER
+    GET_USER,
+	SET_SELECTED_GAME,
+    CLEAR_SPELLS
     } from '../actions/types';
 
 const initialState = {
@@ -32,7 +34,8 @@ const initialState = {
     packs: 0,
     packSpells: [],
     loadouts: [[], [], [], [], []],
-    selectedLoadout: 0
+    selectedLoadout: 0,
+	selectedGame: ''
 }
 
 export default function userReducer(state = initialState, action, payload){
@@ -149,6 +152,16 @@ export default function userReducer(state = initialState, action, payload){
                 draws: action.payload.draws,
                 packs: action.payload.packs,
                 loadouts: action.payload.loadouts
+            }
+		case SET_SELECTED_GAME:
+			return{
+				...state,
+				selectedGame: action.payload
+			}
+        case CLEAR_SPELLS:
+            return{
+                ...state,
+                spells: []
             }
         default:
             return state;

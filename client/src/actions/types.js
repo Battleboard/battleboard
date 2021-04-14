@@ -30,4 +30,6 @@ export const GET_PACKS = 'GET_PACKS';
 export const SET_LOADOUTS = "SET_LOADOUTS";
 export const SAVE_LOADOUTS = 'SAVE_LOADOUTS';
 export const GET_USER = 'GET_USER';
+export const SET_SELECTED_GAME = "SET_SELECTED_GAME";
+export const CLEAR_SPELLS = "CLEAR_SPELLS";
 

@@ -87,7 +87,9 @@ webSocketServer.on("connection", (webSocket, request) => {
             games[gameId] = {
                 "id": gameId,
                 "clients": [],
-                "host": host
+                "host": host,
+                "roomname": result.roomname,
+                "password": result.password
             };
             const payLoad = {
                 "method": "create",
