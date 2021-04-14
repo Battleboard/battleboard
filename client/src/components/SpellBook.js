@@ -1,4 +1,4 @@
-
+import { useEffect } from 'react'
 import { spells } from "../json/spells";
 import { useSelector, useDispatch } from 'react-redux';
 import { setLoadouts, setPhase, saveLoadouts, setSpells, clearSpells, removeSpell } from '../actions/userActions';
@@ -32,6 +32,10 @@ const SpellBook = ({ type }) => {
     const connection = useSelector(state => state.room.connection)
     const [selectedLoadOut, setSelectedLoadOut] = useState(0)
    
+    useEffect(() => {
+        dispatch(setSpells(loadouts[selectedLoadOut]))
+    }, [])
+
     const SelectedLoadOut = (button) => {
         setSelectedLoadOut(button)
         dispatch(clearSpells())

@@ -67,7 +67,6 @@ export default function userReducer(state = initialState, action, payload){
                 default:
                     return state
             }
-
         case SET_SPELLS:
             return{
                 ...state,
