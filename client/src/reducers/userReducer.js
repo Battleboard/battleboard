@@ -13,7 +13,8 @@ import {
     GET_PACKS,
     BUY_PACK,
     SET_LOADOUTS,
-	SET_SELECTED_GAME
+	SET_SELECTED_GAME,
+    CLEAR_SPELLS
     } from '../actions/types';
 
 const initialState = {
@@ -139,6 +140,11 @@ export default function userReducer(state = initialState, action, payload){
 				...state,
 				selectedGame: action.payload
 			}
+        case CLEAR_SPELLS:
+            return{
+                ...state,
+                spells: []
+            }
         default:
             return state;
     }

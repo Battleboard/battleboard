@@ -1,7 +1,7 @@
 
 import { spells } from "../json/spells";
 import { useSelector, useDispatch } from 'react-redux';
-import { setLoadouts, setPhase } from '../actions/userActions';
+import { setLoadouts, setPhase, setSpells, clearSpells, removeSpell } from '../actions/userActions';
 import Button from './styled/Button'
 import { setGameRoom } from '../actions/roomActions';
 import SpellCircleImage from "./SpellCircleImage";
@@ -34,13 +34,15 @@ const SpellBook = ({ type }) => {
    
     const SelectedLoadOut = (button) => {
         setSelectedLoadOut(button)
+        dispatch(clearSpells())
+        dispatch(setSpells(loadouts[selectedLoadOut]))
     }
     
     const RemoveSpell = (spell) => {
         let copy = [...loadouts]
         copy[selectedLoadOut] = copy[selectedLoadOut].filter(s => s.name !== spell.name)
-       // console.log("copy",copy)
-       dispatch(setLoadouts(copy))
+        dispatch(setLoadouts(copy))
+        dispatch(removeSpell(spell))
     }
 
     const AddSpell = (spell) => {
@@ -48,6 +50,7 @@ const SpellBook = ({ type }) => {
             let copy = [...loadouts]
             copy[selectedLoadOut].push(spell)
             dispatch(setLoadouts(copy))
+            dispatch(setSpells(spell))
         }
     }
     
@@ -73,7 +76,7 @@ const SpellBook = ({ type }) => {
             const response = JSON.parse(message.data);
             if(response.method === 'join'){
                 //save the game room information to store
-                setGameRoom(response.game)
+                dispatch(setGameRoom(response.game))
             }
         }
     }
