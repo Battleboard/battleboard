@@ -1,58 +1,114 @@
 import Spells from "./Spells"
 
 
-{Object.keys(spell).filter(e => e !== 'name' && e !== "source" && e !== 'debuffs' && e !== 'spellList' && e !== 'index').map((key, index) => {
+
 
 //mapping through an array of objects and repalcing the called apon key with a image
 
 // use if statement (case statement)
 
-const infoImage = () => {
+export const infoImage = (key) => {
     switch(key) {
         case "damage":
-            return <div>
+            return <div style={{float: "left"}}>
             <img src ="/images/icons/sword.svg" style={{width: 15, height: 15}} />
             </div>
         case "heal":
-            return <img src ="/images/icons/healing.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/healing.svg" style={{width: 15, height: 15}} />
+            </div>
         case "shield":
-            return <img src ="/images/icons/shield.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/shield.svg" style={{width: 15, height: 15}} />
+            </div>
         case "damageOverTime":
-            return <img src ="/images/icons/sword.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/sword.svg" style={{width: 15, height: 15}} />
+            </div>
         case "damageOverTimeDuration":
-            return <img src ="/images/icons/sword.svg" img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/sword.svg" style={{width: 15, height: 15}}/>
+                <img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            </div>
         case "healOverTime":
-            return <img src ="/images/icons/healing.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/healing.svg" style={{width: 15, height: 15}} />
+            </div>
         case "healOverTimeDuration":
-            return <img src ="/images/icons/healing.svg" img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/healing.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            </div>
         case "shieldOverTime":
-            return <img src ="/images/icons/shield.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/shield.svg" style={{width: 15, height: 15}} />
+            </div>
         case "shieldOverTimeDuration":
-            return <img src ="/images/icons/shield.svg" img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/shield.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            </div>
         case "criticalDamageChance":
-            return <img src ="/images/icons/crit.svg" img src ="/images/icons/chance.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/crit.svg" style={{width: 15, height: 15}}/>
+                <img src ="/images/icons/chance.svg" style={{width: 15, height: 15}} />
+            </div>
         case "criticalDamageIncrease":
-            return <img src ="/images/icons/crit.svg" img src ="/images/icons/sword.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/crit.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/sword.svg" style={{width: 15, height: 15}} />
+            </div>
         case "criticalHealChance":
-            return <img src ="/images/icons/crit.svg" img src ="/images/icons/chance.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/crit.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/chance.svg" style={{width: 15, height: 15}} />
+            </div>
         case "criticalHealIncrease":
-            return <img src ="/images/icons/crit.svg" img src ="/images/icons/healing.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/crit.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/healing.svg" style={{width: 15, height: 15}} />
+            </div>
         case "criticalShieldChance":
-            return <img src ="/images/icons/crit.svg" img src ="/images/icons/chance.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/crit.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/chance.svg" style={{width: 15, height: 15}} />
+                </div>
         case "criticalShieldIncrease":
-            return <img src ="/images/icons/crit.svg" img src ="/images/icons/shield.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/crit.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/shield.svg" style={{width: 15, height: 15}} />
+            </div>
         case "clearDebuffType":
-            return <img src ="/images/icons/purify.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/purify.svg" style={{width: 15, height: 15}} />
+            </div>
         case "clearDebuffAmount":
-            return <img src ="/images/icons/purify.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/purify.svg" style={{width: 15, height: 15}} />
+            </div>
         case "clearDebuffDurationCondition":
-            return <img src ="/images/icons/purify.svg" img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/purify.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            </div>
         case "clearDebuffDuration":
-            return <img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/timer.svg" style={{width: 15, height: 15}} />
+            </div>
         case "clearDebuffAmountCondition":
-            return <img src ="/images/icons/sword.svg" img src ="/images/icons/plusMinus.svg" style={{width: 15, height: 15}} />
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/purify.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/plusMinus.svg" style={{width: 15, height: 15}} />
+            </div>
         case "clearDebuffQuantity": 
+            return <div style={{float: "left"}}>
+                <img src ="/images/icons/purify.svg" style={{width: 15, height: 15}} />
+                <img src ="/images/icons/quantity.svg" style={{width: 15, height: 15}} />
+            </div>
+        case "attribute":
+            return <div style={{float: "left"}}></div>
         default:
             return "Image Not Found";                                                          
     }
 }
+
