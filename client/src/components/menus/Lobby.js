@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import store from '../../store';
 import { setPhase, setSelectedGame } from '../../actions/userActions';
-import { setClient, setGameRoom, setConnection, getRooms } from '../../actions/roomActions';
+import { setClient, setGameRoom, setConnection, getRooms, setGame } from '../../actions/roomActions';
 import Button from '../styled/Button'
 
 const Modal = ({ createGameRoom }) => {
@@ -48,9 +48,9 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
 
     useEffect(() => {
         setConnection(ws);
+        console.log('set connection to: ', ws)
     // eslint-disable-next-line
     }, [ws])
-
 
     useEffect(() => {
         store.dispatch(getRooms());
@@ -64,9 +64,8 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
                 setClient(response.clientId);
             }
         }
-      }
-      // eslint-disable-next-line
-      , [])
+    // eslint-disable-next-line
+    }, [])
 
     const onPasswordChange = (e) => setPassword(e.target.value)
 
@@ -86,7 +85,7 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
             const response = JSON.parse(message.data);
             
             if(response.method === 'create'){
-                //setGame(response.game.id);
+                setGame(response.game.id)
                 //joinGameRoom(response.game.id)
                 dispatch(setPhase('pre-battle'))
                 dispatch(setSelectedGame(response.game.id))
