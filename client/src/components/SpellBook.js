@@ -23,7 +23,7 @@ const spell_column_styles = {
     margin: '10px auto'
 }
 
-const button_styles = { border: '1px solid white', height: 60, margin: 'auto 20px', color: '#FFF'}
+const button_styles = { border: '1px solid white', height: 60, margin: 'auto 20px', color: '#FFF', outline: 'none'}
 
 const SpellBook = ({ type }) => {
     const dispatch = useDispatch()
@@ -90,11 +90,9 @@ const SpellBook = ({ type }) => {
 
         {/* Loadout Navbar */}
         <div style={{textAlign:"center", height: "100px", width: "100%", backgroundColor: "#333", margin: 0, marginLeft: 0, display: 'flex', justifyContent: 'space-between'}}>
-            <Button style={button_styles} onClick = {() => SelectedLoadOut(0)}>Loadout 1</Button>
-            <Button style={button_styles} onClick = {() => SelectedLoadOut(1)}>Loadout 2</Button>
-            <Button style={button_styles} onClick = {() => SelectedLoadOut(2)}>Loadout 3</Button>
-            <Button style={button_styles} onClick = {() => SelectedLoadOut(3)}>Loadout 4</Button>
-            <Button style={button_styles} onClick = {() => SelectedLoadOut(4)}>Loadout 5</Button>
+            {loadouts.map((loadout, index) => {
+                return <Button style={{...button_styles, border: selectedLoadOut === index ? '1px solid green' : '1px solid white', color: selectedLoadOut === index ? 'green' : 'white'}} onClick={() => SelectedLoadOut(index)}>Loadout {index + 1}</Button>
+            })}
             {type === 'loadouts' ? <Button style={{...button_styles}}  onClick = {() => dispatch(saveLoadouts())}>Save</Button> : <Button style={{...button_styles}} onClick={joinGameRoom}>Fight</Button>}
         </div> 
 

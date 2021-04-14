@@ -1,9 +1,7 @@
 import Button from './styled/Button'
 import { useDispatch, useSelector } from 'react-redux'
-// import { useState, useEffect } from 'react'
 import { setPhase } from '../actions/userActions'
 import { logout } from '../actions/authActions'
-// import BuyPackModal from './BuyPackModal';
 import {deleteRoom} from '../actions/roomActions';
 
 const button_styles = { border: '1px solid #FFF', color: '#FFF', margin: 8 }
@@ -13,25 +11,6 @@ const Navigation = () => {
     const dispatch = useDispatch()
     const auth = useSelector(state => state.auth)
     const user = useSelector(state => state.user)
-    // const packSpells = useSelector(state => state.user.packSpells)
-
-    // const [modal, setModal] = useState(false)
-    // const [modalSpells, setModalSpells] = useState({})
-
-
-    // useEffect(() => {
-    //     if(packSpells.length !== 0){
-    //         toggleModal(packSpells)
-    //         dispatch(clearPack())
-    //     }
-    // // eslint-disable-next-line
-    // }, [packSpells])
-
-
-    // const toggleModal = (spells) => {
-    //     setModalSpells(spells)
-    //     setModal(!modal)
-    // }
 
     return <div style={{width: '100%', height: 80, background: '#000', margin: 0, display: 'flex'}}>
         {/* Title */}
@@ -42,8 +21,8 @@ const Navigation = () => {
 
                 {phase !== 'menu' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Lobby</Button>}
                 {phase === 'battle' && <Button style={{ border: '1px solid #FFF', color: '#FFF', margin: 8 }} onClick={() => {
-                    dispatch(deleteRoom());
-                    dispatch(setPhase('gameroom'));
+                    dispatch(deleteRoom())
+                    dispatch(setPhase('gameroom'))
                 }}>Leave Room</Button>}
             </div>}
 
