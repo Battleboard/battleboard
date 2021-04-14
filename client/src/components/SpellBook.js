@@ -55,8 +55,8 @@ const SpellBook = ({ type }) => {
         dispatch(setPhase("battle"))
 
         const payLoad = {
-            "method":"join",
-            "clientId":store.getState().room.clientId,
+            "method": "join",
+            "clientId": store.getState().room.clientId,
             "gameId": selectedGame,
             "spells": store.getState().user.spells,
             "health": store.getState().user.startingHealth,
@@ -68,7 +68,6 @@ const SpellBook = ({ type }) => {
 
         connection.send(JSON.stringify(payLoad));
         
-
         connection.onmessage = message => {
             const response = JSON.parse(message.data);
             if(response.method === 'join'){
