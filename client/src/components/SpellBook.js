@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { spells } from "../json/spells";
 import { useSelector, useDispatch } from 'react-redux';
 import { setLoadouts, setPhase, saveLoadouts, setSpells, clearSpells, removeSpell } from '../actions/userActions';
-import Button from './styled/Button'
+import Button from '@material-ui/core/Button';
 import { setGameRoom } from '../actions/roomActions';
 import SpellCircleImage from "./SpellCircleImage";
 import { useState } from 'react';
@@ -91,7 +91,7 @@ const SpellBook = ({ type }) => {
         {/* Loadout Navbar */}
         <div style={{textAlign:"center", height: "100px", width: "100%", backgroundColor: "#333", margin: 0, marginLeft: 0, display: 'flex', justifyContent: 'space-between'}}>
             {loadouts.map((loadout, index) => {
-                return <Button style={{...button_styles, border: selectedLoadOut === index ? '1px solid green' : '1px solid white', color: selectedLoadOut === index ? 'green' : 'white'}} onClick={() => SelectedLoadOut(index)}>Loadout {index + 1}</Button>
+                return <Button variant="outlined" style={{...button_styles, border: selectedLoadOut === index ? '1px solid #0FB019' : '1px solid white', color: selectedLoadOut === index ? '#0FB019' : 'white'}} onClick={() => SelectedLoadOut(index)}>Loadout {index + 1}</Button>
             })}
             {type === 'loadouts' ? <Button style={{...button_styles}}  onClick = {() => dispatch(saveLoadouts())}>Save</Button> : <Button style={{...button_styles}} onClick={joinGameRoom}>Fight</Button>}
         </div> 
