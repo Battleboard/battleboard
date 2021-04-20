@@ -22,13 +22,19 @@ const Card = ({ spell, action, style, owned }) => {
 		</div>
 
 		<div style={{display: 'flex'}}>
-			<div style={{flexGrow: 2}}>
+			<div style={{ display:"flex",flexGrow: 2, flexWrap: "wrap"}}>
 				{Object.keys(spell).filter(e => e !== 'name' && e !== "source" && e !== 'debuffs' && e !== 'spellList' && e !== 'index').map((key, index) => {
 					if(spell[key] !== 0 && spell[key] !== ''){
-						return <div key={index} style={{display: 'flex'}}>
-							<p style={{margin: 0, padding: 5, fontSize: 12, flexGrow: 2}}>{infoImage(key)}</p>
-							<p style={{margin: 0, padding: 5, fontSize: 12, flexGrow: 1, textAlign: 'right'}}>{spell[key]}</p>
+						console.log(index)
+						return <div key={index} style={{ width: "49%", flexWrap: "wrap",display: 'flex', justifyContent:"center" }}>
+							<div style = {{display: "flex"}}>
+								<p style={{margin: 0, padding: 5, fontSize: 20,}}>{infoImage(key)}</p>
+								<p style={{margin: 0, padding: 5, fontSize: 20, textAlign: 'right'}}>{spell[key]}</p>
+							</div>
+						
+							
 						</div>
+
 					} else {
 						return null
 					}
