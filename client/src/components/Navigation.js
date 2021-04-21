@@ -19,7 +19,7 @@ const Navigation = () => {
             {auth.isAuthenticated && <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                 <Button style={button_styles} onClick={() => dispatch(logout())}>Logout</Button>
 
-                {phase !== 'menu' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Lobby</Button>}
+                {phase !== 'menu' && phase !== "gameroom" && phase !== 'battle' && <Button style={button_styles} onClick={() => {dispatch(setPhase('gameroom'))}}>Lobby</Button>}
                 {phase === 'battle' && <Button style={{ border: '1px solid #FFF', color: '#FFF', margin: 8 }} onClick={() => {
                     dispatch(deleteRoom())
                     dispatch(setPhase('gameroom'))
