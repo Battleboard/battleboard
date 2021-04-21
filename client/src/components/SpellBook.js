@@ -12,8 +12,7 @@ import store from '../store';
 
 const spell_row_styles = { 
     display: "flex", 
-    flexWrap: "wrap", 
-    height: 500,
+    flexWrap: "wrap",
     width: '95%',
     margin: '10px auto'
 }
