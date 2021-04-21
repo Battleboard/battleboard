@@ -89,10 +89,9 @@ export const getSpells = (id) => (dispatch) => {
     axios.get('/api/users/unlockedSpells/' + id)
         .then(res => 
             dispatch({
-                type:GET_SPELLS,
+                type: GET_SPELLS,
                 payload: res.data
             }))
-
 }
 
 export const openPack = () => (dispatch) => {
@@ -116,7 +115,7 @@ export const buySpell = (spell) => (dispatch) => {
 export const setGold = (id, amount) => (dispatch) => {
     axios.post('/api/users/gold/' + id, {amount})
         .then(res => dispatch({
-            type:GET_GOLD,
+            type: GET_GOLD,
             payload: res.data
         }))
 }
@@ -124,7 +123,7 @@ export const setGold = (id, amount) => (dispatch) => {
 export const getGold = (id) => (dispatch) => {
     axios.get('/api/users/gold/' + id)
         .then(res => dispatch({
-            type:GET_GOLD,
+            type: GET_GOLD,
             payload: res.data
         }))
 }
