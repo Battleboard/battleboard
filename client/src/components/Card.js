@@ -28,13 +28,10 @@ const Card = ({ spell, action, style, owned }) => {
 						console.log(index)
 						return <div key={index} style={{ width: "49%", flexWrap: "wrap",display: 'flex', justifyContent:"center" }}>
 							<div style = {{display: "flex"}}>
-								<p style={{margin: 0, padding: 5, fontSize: 20,}}>{infoImage(key)}</p>
-								<p style={{margin: 0, padding: 5, fontSize: 20, textAlign: 'right'}}>{spell[key]}</p>
+								<div style={{margin: 0, padding: 5, fontSize: 20,}}>{infoImage(key)}</div>
+								<div style={{margin: 0, padding: 5, fontSize: 20, textAlign: 'right'}}>{spell[key]}</div>
 							</div>
-						
-							
 						</div>
-
 					} else {
 						return null
 					}
