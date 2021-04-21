@@ -1,10 +1,25 @@
 
 import {infoImage} from "./CardInfoToImage";
 
-const Card = ({ spell, action, style, owned, color }) => {
+const Card = ({ spell, action, style, owned, attribute }) => {
+
+	const returnBorderColor = () => {
+		switch(attribute){
+			case "strength":
+				return "#bd0404"
+			case "agility":
+				return "#0fb019"
+			case 'magic':
+				return "#0974da"
+			case 'holy':
+				return '#e6ec1c'
+			default:
+				return 'purple'
+		}
+	}
 
 	const container_styles = {
-		border: `2px solid ${color}`,
+		border: `2px solid ${returnBorderColor()}`,
 		borderRadius: 4,
 		width: 200,
 		height: 230,
