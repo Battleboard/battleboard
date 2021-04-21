@@ -20,10 +20,9 @@ import {
     } from './types';
 import axios from 'axios'
 import store from '../store';
-import spells from '../json/spells.json'
+import { spells } from '../json/spells.json'
 
 export const getUser = () => (dispatch) => {
-    console.log("ss")
     axios.get('/api/users/user/' + store.getState().auth.id)
     
         .then(res => dispatch({
@@ -98,7 +97,7 @@ export const getSpells = (id) => (dispatch) => {
 
 export const openPack = () => (dispatch) => {
     if(store.getState().user.packs >= 1){
-        axios.post('/api/packs/openpack/' + store.getState().auth.id, { 'spells': spells.spells })
+        axios.post('/api/packs/openpack/' + store.getState().auth.id, { spells })
             .then(res => dispatch({
                 type: OPEN_PACK,
                 payload: res.data

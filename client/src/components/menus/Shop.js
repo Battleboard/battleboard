@@ -73,7 +73,7 @@ const Shop = () => {
                 <Button style={{color: '#FFF', border: '1px solid #FFF', height: 60}} onClick={() => {
                     if (!packDisplay) setPackDisplay(true);
                     setOldSpellList(user.unlockedSpells)
-                    dispatch(openPack())  
+                    dispatch(openPack())
                 }}>Open Pack</Button>
             </div>
         </div>
