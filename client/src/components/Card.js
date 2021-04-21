@@ -1,20 +1,21 @@
 
 import {infoImage} from "./CardInfoToImage";
 
-const container_styles = {
-	border: '1px solid #7D7D7D',
-	borderRadius: 4,
-	width: 200,
-	height: 230,
-	margin: '10px 0 0 10px',
-	cursor: 'pointer',
-	userSelect: 'none',
-	background: '#FFF',
-	color: '#333',
-	position: 'relative'
-}
+const Card = ({ spell, action, style, owned, color }) => {
 
-const Card = ({ spell, action, style, owned }) => {
+	const container_styles = {
+		border: `2px solid ${color}`,
+		borderRadius: 4,
+		width: 200,
+		height: 230,
+		margin: '10px 0 0 10px',
+		cursor: 'pointer',
+		userSelect: 'none',
+		background: '#FFF',
+		color: '#333',
+		position: 'relative'
+	}
+
 	return <div style={{...container_styles, ...style}} onClick={action}>
 		<div style={{margin: 10, display: 'flex',flexDirection: "column"}}>
 			<h4 style={{margin: 0, padding: '20 0 0 20', flexGrow: 2}}>{spell.name}</h4>
@@ -25,7 +26,6 @@ const Card = ({ spell, action, style, owned }) => {
 			<div style={{ display:"flex",flexGrow: 2, flexWrap: "wrap"}}>
 				{Object.keys(spell).filter(e => e !== 'name' && e !== "source" && e !== 'debuffs' && e !== 'spellList' && e !== 'index').map((key, index) => {
 					if(spell[key] !== 0 && spell[key] !== ''){
-						console.log(index)
 						return <div key={index} style={{ width: "49%", flexWrap: "wrap",display: 'flex', justifyContent:"center" }}>
 							<div style = {{display: "flex"}}>
 								<div style={{margin: 0, padding: 5, fontSize: 20,}}>{infoImage(key)}</div>
