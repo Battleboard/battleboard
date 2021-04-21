@@ -122,8 +122,8 @@ const SpellBook = ({ type }) => {
 
         {/**selected Spells */}
         <div style={{display: "flex", textAlign:"center", minHeight: 250, width: "100vw", backgroundColor: "#333", position: "absolute", bottom: "0px"}}>
-            {loadouts[selectedLoadOut] && loadouts[selectedLoadOut].map((spell,index) => {
-                return <Card key={index} spell={spell} action = {() => RemoveSpell(spell)} />
+            {loadouts[selectedLoadOut] && loadouts[selectedLoadOut].map((spell, index) => {
+                return <Card key={index} attribute={spell.attribute} spell={spell} action = {() => RemoveSpell(spell)} />
             })}
         </div>
     </div>
