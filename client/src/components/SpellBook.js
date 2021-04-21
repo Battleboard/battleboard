@@ -82,7 +82,7 @@ const SpellBook = ({ type }) => {
         }
     }
 
-    //console.log(loadouts[selectedLoadOut])
+    // console.log(loadouts[selectedLoadOut])
     
     return <div style = {{display: "flex", margin:0, padding:0, userSelect: "none", flexDirection: 'column'}}>
 
@@ -106,10 +106,14 @@ const SpellBook = ({ type }) => {
         </div>
 
         {/**selected Spells */}
-        <div style={{display: "flex", textAlign:"center", minHeight: 250, width: "100vw", backgroundColor: "#333", position: "absolute", bottom: "0px"}}>
-            {loadouts[selectedLoadOut] && loadouts[selectedLoadOut].map((spell, index) => {
-                return <Card key={index} attribute={spell.attribute} spell={spell} action = {() => RemoveSpell(spell)} />
+        <div style={{display: "flex", position: 'relative', justifyContent: "center", textAlign:"center", minHeight: 250, width: "100vw", backgroundColor: "#333", bottom: "0px"}}>
+            {loadouts[selectedLoadOut] && loadouts[selectedLoadOut].map((spell,index) => {
+                return <Card key={index} spell={spell} action = {() => RemoveSpell(spell)} />
             })}
+            {/* **max card indidcator** */}
+            <div style={{ fontFamily: 'sans-serif', position: "absolute", top:"5px", right: "5px", color: "#FFFFFF", fontSize: "1.75rem", height: "100%"}}>
+                {loadouts[selectedLoadOut].length !== 6 ? `${loadouts[selectedLoadOut].length}/6` : "MAX"}
+            </div>
         </div>
     </div>
 }
