@@ -6,7 +6,6 @@ import {connect, useSelector} from 'react-redux';
 import BuySpellModal from './BuySpellModal';
 
 const Spells = ({auth, setSpells}) => {
-
     const [modal, setModal] = useState(false)
     const [modalSpell, setModalSpell] = useState({})
 
@@ -17,8 +16,8 @@ const Spells = ({auth, setSpells}) => {
 
     const user = useSelector(state => state.user)
     const unlockedSpells = useSelector(state => state.user.unlockedSpells)
-	return  <div style={{display: 'flex', flexWrap: 'wrap', flexGrow: 2, overflow: 'auto', maxHeight: '80vh' }}>
 
+	return <div style={{display: 'flex', flexWrap: 'wrap', flexGrow: 2, overflow: 'auto', maxHeight: '80vh' }}>
         {spells.map((spell, index) => {
             if(auth.role === 'admin'){
                 return <Card key={index} spell={spell} action={() => !user.spells.includes(spell) ? setSpells(spell) : null}/>
@@ -31,10 +30,10 @@ const Spells = ({auth, setSpells}) => {
         <BuySpellModal show={modal} spell={modalSpell} toggleShow={setModal}/>
 
     </div>
-};
+}
 
 const mapStateToProps = state => ({
     auth: state.auth
-});
+})
 
-export default connect(mapStateToProps, {setSpells})(Spells);
+export default connect(mapStateToProps, {setSpells})(Spells)

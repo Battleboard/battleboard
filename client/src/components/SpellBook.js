@@ -7,19 +7,14 @@ import { setGameRoom } from '../actions/roomActions';
 import SpellCircleImage from "./SpellCircleImage";
 import { useState } from 'react';
 import Card from "./Card";
+import Spells from "./Spells";
 import store from '../store';
 
-const spell_column_styles = { 
-    // display: "flex", 
-    // flexWrap: "wrap", 
-    // minWidth: "300px", 
-    // maxWidth: "300px",
-    // margin: '5px 0 0 5px',
-    display: 'grid',
-    gridTemplateColumns: '100px 100px 100px',
-    gridAutoFlow: 'dense',
-    gap: '10px',
-    // width: '300px',
+const spell_row_styles = { 
+    display: "flex", 
+    flexWrap: "wrap", 
+    height: 500,
+    width: '95%',
     margin: '10px auto'
 }
 
@@ -93,31 +88,35 @@ const SpellBook = ({ type }) => {
         {/* Loadout Navbar */}
         <div style={{textAlign:"center", height: "100px", width: "100%", backgroundColor: "#333", margin: 0, marginLeft: 0, display: 'flex', justifyContent: 'space-between'}}>
             {loadouts.map((loadout, index) => {
-                return <Button variant="outlined" style={{...button_styles, border: selectedLoadOut === index ? '1px solid #0FB019' : '1px solid white', color: selectedLoadOut === index ? '#0FB019' : 'white'}} onClick={() => SelectedLoadOut(index)}>Loadout {index + 1}</Button>
+                return <Button key={index} variant="outlined" style={{...button_styles, border: selectedLoadOut === index ? '1px solid #0FB019' : '1px solid white', color: selectedLoadOut === index ? '#0FB019' : 'white'}} onClick={() => SelectedLoadOut(index)}>Loadout {index + 1}</Button>
             })}
             {type === 'loadouts' ? <Button style={{...button_styles}}  onClick = {() => dispatch(saveLoadouts())}>Save</Button> : <Button style={{...button_styles}} onClick={joinGameRoom}>Fight</Button>}
         </div> 
 
         {/* Spell Columns */}
-        <div style={{margin: 0, width: '100%', padding: 0, display: "flex", height: 507, overflow: 'auto'}}>
-            <div style = {spell_column_styles}>
-                {spells.filter(spell => spell.attribute === "strength").map((spell,index) => {
-                    return <SpellCircleImage style={{gridColumn: 1}} color={"#bd0404"} key={index} ability={spell} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
+        <div style={{margin: 0, width: '100%', padding: 0, display: "flex", height: 507, overflow: 'auto', flexWrap: 'wrap'}}>
+
+            <div style = {spell_row_styles}>
+                {spells.filter(spell => spell.attribute === "strength").map((spell, index) => {
+                    return <Card key={index} spell={spell} color={"#bd0404"} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
                 })}
             </div>
-            <div style = {spell_column_styles}>
-                {spells.filter(spell => spell.attribute === "agility").map((spell,index) => {
-                    return <SpellCircleImage style={{gridColumn: 2}} color={"#0fb019"} key={index} ability={spell} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
+
+            <div style={spell_row_styles}>
+                {spells.filter(spell => spell.attribute === "agility").map((spell, index) => {
+                    return <Card key={index} spell={spell} color={"#0fb019"} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
                 })}
             </div>
-            <div style = {spell_column_styles}>
-                {spells.filter(spell => spell.attribute === "magic").map((spell,index) => {
-                    return <SpellCircleImage style={{gridColumn: 3}} color={"#0974da"} key={index} ability={spell} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
+
+            <div style={spell_row_styles}>
+                {spells.filter(spell => spell.attribute === "magic").map((spell, index) => {
+                    return <Card key={index} spell={spell} color={"#0974da"} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
                 })}
             </div>
-            <div style = {spell_column_styles}>
-                {spells.filter(spell => spell.attribute === "holy").map((spell,index) => {
-                    return <SpellCircleImage style={{gridColumn: 4}} color={"#e6ec1c"} key={index} ability={spell} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
+
+            <div style={spell_row_styles}>
+                {spells.filter(spell => spell.attribute === "holy").map((spell, index) => {
+                    return <Card key={index} spell={spell} color={"#e6ec1c"} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
                 })}
             </div>
         </div>
