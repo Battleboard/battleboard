@@ -77,13 +77,16 @@ const Login = ({ isAuthenticated, error, login, clearErrors }) =>  {
 				</div>
 			</form>
 			
+      {/* ** error handling ** */}
 			<div>
-				{msg && <div>
+				{msg && <div style={{borderRadius: "3px", fontFamily: 'sans-serif', fontSize: "1rem", textAlign: "center", width: "100%", position: "absolute", top: "-65px", padding: "16px", backgroundColor: "rgba(255, 0, 0, 0.6)", color: "#FFF"}}>
 					{msg.map((data, index) => {
-						return <div key={index}>
+						return (
+            <div key={index}>
 							{data.msg}
 						</div>
-					})}
+            )}
+          )}
 				</div>}
 
 				<p style={{fontFamily: 'sans-serif', textAlign: 'center', paddingTop: 5}}>Don't have an account? <Link to="/register">Register</Link></p>
