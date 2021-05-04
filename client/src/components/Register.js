@@ -59,6 +59,8 @@ const Register = ({ isAuthenticated, error, register, clearErrors}) => {
 
       },[error, isAuthenticated], [])
 
+      console.log(msg)
+
     return <div>
       <Link to="/">
         <img src="/images/icons/home.svg" alt="" style={{width: 50, height: 50, padding: 15}} />
@@ -83,13 +85,14 @@ const Register = ({ isAuthenticated, error, register, clearErrors}) => {
 			</form>
 
 			{/* Error Messages */}
-			{msg && <div>
-				{msg.map((data, index) => {
-					return <div style={{width: "200px", borderRadius: "3px", letterSpacing: "1.5px", marginTop: "1rem"}} key={index}> 
+			{msg && <div style={{borderRadius: "3px", fontFamily: 'sans-serif', fontSize: "1rem", textAlign: "center", width: "100%", position: "absolute", top: "-65px", padding: "16px", backgroundColor: "rgba(255, 0, 0, 0.6)", color: "#FFF"}}>
+				{msg.length !== 4 ? msg.map((data, index) => {
+					return <div key={index}> 
 						{data.msg} 
 					</div>
-				})}
+				}) : "Please complete the following fields"}
 			</div>}
+
 			<p style={{fontFamily: 'sans-serif', textAlign: 'center', paddingTop: 5}}>Already have an account? <Link to="/login">Log in</Link></p>
 		</div>
     </div>

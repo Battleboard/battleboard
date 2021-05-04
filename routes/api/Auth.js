@@ -47,7 +47,7 @@ router.post('/',urlencodedParser, [
             .then(user => {
              bcrypt.compare(password, user.password)
              .then(isMatch => {
-                 if(!isMatch) return res.status(400).json([{msg: "Pasword Invalid"}]);
+                 if(!isMatch) return res.status(400).json([{msg: "Password Invalid"}]);
                  jwt.sign(
                      {id: user.id},
                      secret,
