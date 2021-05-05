@@ -15,7 +15,7 @@ const initialState = {
     isLoading: false,
     id: '',
     name: '',
-    role:''
+    role: 'player'
 };
 
 export default function authReducer(state = initialState, action){
