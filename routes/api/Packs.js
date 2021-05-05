@@ -14,7 +14,6 @@ router.post('/openpack' + '/:id', function(req, res) {
     let min = 0;
     
     let cards = [];
-    console.log(req.params.id)
 
     for(let i=0; i < 3; i++){
        cards.push(Math.floor(Math.random() * (max - min) + min) );
@@ -22,7 +21,6 @@ router.post('/openpack' + '/:id', function(req, res) {
         
     if(req.params.id !== null){
         User.findOne({_id: req.params.id}).then(user => {
-            console.log(user)
             if(user){
                 user.packs -= 1
                 //for each card in the pack

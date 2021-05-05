@@ -55,7 +55,6 @@ const EnterPasswordedGameModal = () => {
 		</div>}
 
         <Button onClick={() => {
-			console.log('currentGame: ', currentGame)
 			//if statement might be incorrect
 			if (password === currentGame.password){
 				//set necessary information to let player join battle && join pre-battle
@@ -88,7 +87,6 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
 
     useEffect(() => {
         setConnection(ws);
-        console.log('set connection to: ', ws)
     // eslint-disable-next-line
     }, [ws])
 
@@ -109,8 +107,6 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
 
     //create a game room
     const createGameRoom = (roomName, password) => {
-		console.log('room.clientId: ', store.getState().room.clientId)
-		console.log('auth.name: ', store.getState().auth.name)
         const payLoad = {
             "method": "create",
             "clientId": store.getState().room.clientId,
@@ -142,7 +138,6 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
                 {/* Map the game list */}
                 {games && games.map((game, index) => {
                     return <div key={index} onClick={() => {
-						console.log('game', game)
                         //check if game is passworded
                         if (game.password !== '') {
                             setShowPasswordModal(!showPasswordModal)
