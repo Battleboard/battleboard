@@ -24,6 +24,8 @@ const button_styles = { border: '1px solid white', height: 60, margin: 'auto 20p
 const SpellBook = ({ type }) => {
     const dispatch = useDispatch()
     const loadouts = useSelector(state => state.user.loadouts)
+    const auth = useSelector(state => state.auth)
+    const unlockedSpells = useSelector(state => state.user.unlockedSpells)
     const selectedGame = useSelector(state => state.user.selectedGame)
     const connection = useSelector(state => state.room.connection)
     const [selectedLoadOut, setSelectedLoadOut] = useState(0)
@@ -99,7 +101,12 @@ const SpellBook = ({ type }) => {
             {attribute_types.map((type, index) => {
                 return <div style={spell_row_styles}>
                     {spells.filter(spell => spell.attribute === type).map((spell, index) => {
-                        return <Card key={index} spell={spell} attribute={type} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
+                        if(auth.role === 'admin'){
+                            return <Card key={index} spell={spell} attribute={type} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
+                        } else if (unlockedSpells.includes(index) && auth.role === 'player'){
+                            return <Card key={index} spell={spell} attribute={type} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
+                        }
+                        return <Card key={index} style={{opacity: '50%', cursor: 'default'}} spell={spell} action={() => console.log('works')}/>
                     })}
                 </div>
             })}
