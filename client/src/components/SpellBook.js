@@ -4,10 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setLoadouts, setPhase, saveLoadouts, setSpells, clearSpells, removeSpell } from '../actions/userActions';
 import Button from '@material-ui/core/Button';
 import { setGameRoom } from '../actions/roomActions';
-import SpellCircleImage from "./SpellCircleImage";
 import { useState } from 'react';
 import Card from "./Card";
-import Spells from "./Spells";
 import store from '../store';
 
 const attribute_types = ['strength', 'agility', 'magic', 'holy']
