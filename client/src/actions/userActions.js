@@ -105,6 +105,7 @@ export const openPack = () => (dispatch) => {
 }
 
 export const buySpell = (spell) => (dispatch) => {
+        console.log('buySpell user actions', spell)
         axios.post('/api/users/buyspell/' + store.getState().auth.id, {'spell': spell})
             .then(res => dispatch({
                 type: BUY_SPELL,

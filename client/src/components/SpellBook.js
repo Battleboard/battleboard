@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { spells } from "../json/spells";
 import { useSelector, useDispatch } from 'react-redux';
-import { setLoadouts, setPhase, saveLoadouts, setSpells, clearSpells, removeSpell } from '../actions/userActions';
+import { setLoadouts, setPhase, saveLoadouts, setSpells, clearSpells, removeSpell, buySpell } from '../actions/userActions';
 import Button from '@material-ui/core/Button';
 import { setGameRoom } from '../actions/roomActions';
 import { useState } from 'react';
 import Card from "./Card";
 import store from '../store';
+import Modal from './styled/Modal'
 
 const attribute_types = ['strength', 'agility', 'magic', 'holy']
 
@@ -23,16 +24,23 @@ const SpellBook = ({ type }) => {
     const dispatch = useDispatch()
     const loadouts = useSelector(state => state.user.loadouts)
     const auth = useSelector(state => state.auth)
+    const user = useSelector(state => state.user)
     const unlockedSpells = useSelector(state => state.user.unlockedSpells)
     const selectedGame = useSelector(state => state.user.selectedGame)
     const connection = useSelector(state => state.room.connection)
     const [selectedLoadOut, setSelectedLoadOut] = useState(0)
+    const [showBuySpellModal, setShowBuySpellModal] = useState(false)
+    const [selectedSpell, setSelectedSpell] = useState(null)
    
    //Sets the user's spells to the currently selected loadout's spell list
     useEffect(() => {
         dispatch(clearSpells())
         dispatch(setSpells(loadouts[selectedLoadOut]))
     }, [dispatch, loadouts, selectedLoadOut])
+
+    useEffect(() => {
+        console.log(unlockedSpells)
+    }, [unlockedSpells])
 
     const SelectedLoadOut = (button) => {
         setSelectedLoadOut(button)
@@ -86,6 +94,18 @@ const SpellBook = ({ type }) => {
     
     return <div style = {{display: "flex", margin:0, padding:0, userSelect: "none", flexDirection: 'column'}}>
 
+        {(showBuySpellModal && selectedSpell) && <Modal>
+            <h3>{selectedSpell.spell.name}</h3>
+            <img alt="" src={selectedSpell.spell.source} style={{height: 100, width: 100}}/>
+
+            {user.gold >= 500 && <Button onClick={() => {
+                dispatch(buySpell(selectedSpell.index))
+                setShowBuySpellModal(false)
+            }}>
+                Buy Spell
+            </Button>}
+        </Modal>}
+
         {/* Loadout Navbar */}
         <div style={{textAlign:"center", height: "100px", width: "100%", backgroundColor: "#333", margin: 0, marginLeft: 0, display: 'flex', justifyContent: 'space-between'}}>
             {loadouts.map((loadout, index) => {
@@ -97,14 +117,17 @@ const SpellBook = ({ type }) => {
         {/* Spell Columns */}
         <div style={{margin: 0, width: '100%', padding: 0, display: "flex", height: 507, overflow: 'auto', flexWrap: 'wrap'}}>
             {attribute_types.map((type, index) => {
-                return <div style={spell_row_styles}>
+                return <div style={spell_row_styles} key={index}>
                     {spells.filter(spell => spell.attribute === type).map((spell, index) => {
                         if(auth.role === 'admin'){
                             return <Card key={index} spell={spell} attribute={type} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
                         } else if (unlockedSpells.includes(index) && auth.role === 'player'){
                             return <Card key={index} spell={spell} attribute={type} action={() => !loadouts[selectedLoadOut].includes(spell) ? AddSpell(spell) : null}/>
                         }
-                        return <Card key={index} style={{opacity: '50%', cursor: 'default'}} spell={spell} action={() => console.log('works')}/>
+                        return <Card key={index} style={{opacity: '50%', cursor: 'default'}} spell={spell} action={() => {
+                            setShowBuySpellModal(true)
+                            setSelectedSpell({ spell, index})
+                        }}/>
                     })}
                 </div>
             })}

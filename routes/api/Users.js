@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const { check, body, validationResult } = require('express-validator');
 const urlencodedParser = bodyParser.urlencoded({extended:false})
 const secret = process.env.jwtSecret;
+const GLOBAL_SPELL_LIST = require("../../client/src/json/spells.json")
 
 const User = require("../../models/User");
 
@@ -31,14 +32,15 @@ router.post('/saveloadouts' + '/:id', function(req,res){
 })
 
 router.post('/buyspell' + '/:id', function(req,res){
-    
+    console.log('post request')
+
     User.findOne({_id: req.params.id}).then(user => {
         if(user){
             user.gold -= 500;
-            user.spells.push(req.body.spell.index)
+            user.unlockedSpells.push(req.body.spell)
 
             user.save()
-            .then(user => res.json({'gold':user.gold, 'spells':user.spells}))
+            .then(user => res.json({'gold': user.gold, 'spells': user.unlockedSpells}))
         }
     })
     
