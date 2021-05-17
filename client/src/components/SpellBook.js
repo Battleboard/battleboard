@@ -94,16 +94,34 @@ const SpellBook = ({ type }) => {
     
     return <div style = {{display: "flex", margin:0, padding:0, userSelect: "none", flexDirection: 'column'}}>
 
-        {(showBuySpellModal && selectedSpell) && <Modal>
-            <h3>{selectedSpell.spell.name}</h3>
-            <img alt="" src={selectedSpell.spell.source} style={{height: 100, width: 100}}/>
-
-            {user.gold >= 500 && <Button onClick={() => {
-                dispatch(buySpell(selectedSpell.index))
-                setShowBuySpellModal(false)
-            }}>
-                Buy Spell
-            </Button>}
+        {(showBuySpellModal && selectedSpell) && <Modal style={{border: '3px solid #333', background: '#DBE4EE'}}>
+            <span style={{position: 'absolute', top: 5, right: 10, fontSize: 18, fontFamily: 'sans-serif', cursor: 'pointer'}} onClick={() => setShowBuySpellModal(false)}>x</span>
+            <Card style={{margin: '15px auto 5px', cursor: 'default'}} spell={selectedSpell.spell} attribute={selectedSpell.spell.type} />
+            <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
+                <div style={{margin: '0px auto'}}>
+                    {user.gold >= 500 ? <Button 
+                        variant='outlined'
+                        style={{color: '#FFF', width: 100, margin: 10, border: '1px solid white'}}
+                        onClick={() => {
+                            dispatch(buySpell(selectedSpell.index))
+                            setShowBuySpellModal(false)
+                        }}>
+                        Buy Now
+                    </Button>
+                    : <Button 
+                        variant='outlined'
+                        style={{color: 'red', width: 200, margin: 10, border: '1px solid red'}}
+                        onClick={() => {
+                            setShowBuySpellModal(false)
+                        }}>
+                        Insufficient Funds
+                    </Button>}
+                </div>
+                <div style={{textAlign: 'center', width: '100%', fontSize: 24, height: 60, display: 'flex', margin: '0px auto', justifyContent: 'center'}}>
+                    <div style={{color: '#000', fontWeight: 'bold', marginRight: 5, marginTop: 1}}>500</div>
+                    <img src="/images/spells/dubloontoss.svg" alt="" style={{height: 30, width: 30}} />
+                </div>
+            </div>
         </Modal>}
 
         {/* Loadout Navbar */}
