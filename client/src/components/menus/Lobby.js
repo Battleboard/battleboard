@@ -23,20 +23,20 @@ const CreateRoomModal = ({ toggleCreateRoom, createGameRoom }) => {
 
                 {/* Password */}
                 <div style={{ display: 'flex', flexDirection: 'column', margin: "8px", borderRadius: "4px" }}>
-                    <div style={{ fontSize: '1.25rem', userSelect: 'none' }}>Password</div>
+                    <div style={{ fontSize: '1.25rem', userSelect: 'none' }} >Password</div>
                     <input style={{ padding: '8px',  }} type="text" name="password" value={password} placeholder="Password" onChange={onPasswordChange}/>
                 </div>
             </div>
 
         <div style={{ alignSelf: 'center' }}>
-            <Button onClick={() => createGameRoom(roomName, password)}>Create Game</Button>
+            <Button style={{ marginRight: 8 }} onClick={() => createGameRoom(roomName, password)}>Create Game</Button>
             <Button onClick={toggleCreateRoom}>Cancel</Button>
         </div>
 
     </div>
 }
 
-const EnterPasswordedGameModal = () => {
+const EnterPasswordedGameModal = ({ toggleShowPassword }) => {
 	const dispatch = useDispatch()
 	const games = useSelector(state => state.room.games)
 	const user = useSelector(state => state.user)
@@ -50,28 +50,31 @@ const EnterPasswordedGameModal = () => {
 
 	const onPasswordChange = (e) => setPassword(e.target.value)
 	
-    return <div style={{width: 400, height: 150, background: '#FFF', position: 'absolute', top: '50%', left: '50%', transform: 'translateX(-50%) translateY(-50%)'}}>
+    return <div style={{ width: 400, height: 200, fontFamily:'system-ui', background: '#DBE4EE', position: 'absolute', top: '50%', left: '50%', transform: 'translateX(-50%) translateY(-50%)', display: 'flex', justifyContent: "space-around", flexDirection: 'column', border: '2px solid #000000' }}>
 		{/* Password */}
-        <div style={{display: 'flex'}}>
-            <div>Password</div>
-            <input type="text" name="password" value={password} placeholder="Password" onChange={onPasswordChange}/>
+        <div style={{ display: 'flex', flexDirection: 'column', margin: "8px", borderRadius: "4px" }}>
+            <div style={{ fontSize: '1.25rem', userSelect: 'none' }} >Password</div>
+            <input style={{ padding: '8px' }} type="text" name="password" value={password} placeholder="Password" onChange={onPasswordChange}/>
         </div>
 
-		{errors && <div style={{color: 'red'}}>
+		{errors && <div style={{ width: 370, borderRadius: "3px", fontFamily: 'sans-serif', fontSize: "1rem", textAlign: "center", position: "absolute", top: "-65px", padding: "16px", backgroundColor: "rgba(255, 0, 0, 0.6)", color: "#FFF" }}>
 			Incorrect Password
 		</div>}
 
-        <Button onClick={() => {
-			//if statement might be incorrect
-			if (password === currentGame.password){
-				//set necessary information to let player join battle && join pre-battle
-				dispatch(setPhase("pre-battle"))
-				setErrors(false)
-			} else {
-				//display that the password is incorrect
-				setErrors(true)
-			}
-		}}>Join Game</Button>
+        <div style={{ alignSelf: 'center' }}>
+            <Button style={{ marginRight: 8 }} onClick={() => {
+                //if statement might be incorrect
+                if (password === currentGame.password){
+                    //set necessary information to let player join battle && join pre-battle
+                    dispatch(setPhase("pre-battle"))
+                    setErrors(false)
+                } else {
+                    //display that the password is incorrect
+                    setErrors(true)
+                }
+            }}>Join Game</Button>
+            <Button onClick={toggleShowPassword}>Cancel</Button>
+        </div>
 	</div>
 }
 
@@ -83,6 +86,8 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
 	const [showPasswordModal, setShowPasswordModal] = useState(false)
 
     const toggleCreateRoom = () => setShowCreateGameModal(!showCreateGameModal)
+
+    const toggleShowPassword = () => setShowPasswordModal(!showPasswordModal)
     
     var HOST = null;
 
@@ -140,7 +145,7 @@ const Lobby = ({setClient, setGameRoom, setConnection}) => {
 	return <div style={{background: 'lightblue', display: 'flex', height: '100%'}}>
 
         {showCreateGameModal && <CreateRoomModal toggleCreateRoom={toggleCreateRoom} createGameRoom={createGameRoom} />}
-        {showPasswordModal && <EnterPasswordedGameModal />}
+        {showPasswordModal && <EnterPasswordedGameModal toggleShowPassword={toggleShowPassword} />}
 
 		{/* Left Side - Game List */}
         <div style={{flexGrow: 6, background: '#212121'}}>
