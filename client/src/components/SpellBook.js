@@ -101,7 +101,7 @@ const SpellBook = ({ type }) => {
                 <div style={{margin: '0px auto'}}>
                     {user.gold >= 500 ? <Button 
                         variant='outlined'
-                        style={{color: '#FFF', width: 100, margin: 10, border: '1px solid white'}}
+                        style={{color: '#333', width: 100, margin: 10, border: '1px solid #333'}}
                         onClick={() => {
                             dispatch(buySpell(selectedSpell.index))
                             setShowBuySpellModal(false)
@@ -118,7 +118,7 @@ const SpellBook = ({ type }) => {
                     </Button>}
                 </div>
                 <div style={{textAlign: 'center', width: '100%', fontSize: 24, height: 60, display: 'flex', margin: '0px auto', justifyContent: 'center'}}>
-                    <div style={{color: '#000', fontWeight: 'bold', marginRight: 5, marginTop: 1}}>500</div>
+                    <div style={{color: '#333', fontWeight: 'bold', marginRight: 5, marginTop: 1}}>500</div>
                     <img src="/images/spells/dubloontoss.svg" alt="" style={{height: 30, width: 30}} />
                 </div>
             </div>
